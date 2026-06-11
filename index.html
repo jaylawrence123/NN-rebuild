@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutty &amp; Nostalgic — Snacks They Discontinued. We Didn't.</title>
+  <meta name="description" content="Nutty &amp; Nostalgic recreates discontinued snacks from the 80s, 90s, and early 2000s as nut butters. Shop the drops.">
+
+  <!-- Font connections -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Bebas Neue + Figtree: above-fold priority. Lilita One + VT323: normal load. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Figtree:wght@400;700&family=Lilita+One&family=VT323&display=swap">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- ================================================
+       SECTION 0: ANNOUNCEMENT BAR
+       Fixed 32px — ink bg, cream VT323 marquee
+  ================================================ -->
+  <div class="announcement-bar" role="region" aria-label="Site announcements">
+    <span class="announcement-bar__text">FREE SHIPPING ON ORDERS $65 OR MORE</span>
+  </div>
+
+  <!-- ================================================
+       HEADER / NAV
+       Fixed below announcement bar — cream, ink border
+  ================================================ -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+
+      <!-- Left: hamburger (mobile) / nav links (desktop) -->
+      <div class="site-header__left">
+        <button class="hamburger" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul class="site-nav__list">
+            <li><a href="/" class="site-nav__link" aria-current="page">HOME</a></li>
+            <li><a href="/collections/all" class="site-nav__link">SHOP THE DROP</a></li>
+            <li><a href="/pages/about" class="site-nav__link">ABOUT</a></li>
+            <li><a href="/pages/get-notified" class="site-nav__link">GET NOTIFIED</a></li>
+            <li><a href="/pages/reviews" class="site-nav__link">REVIEWS</a></li>
+            <li><a href="/pages/contact" class="site-nav__link">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Center: logo -->
+      <a href="/" class="site-header__logo" aria-label="Nutty and Nostalgic — Home">
+        <img src="https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png" alt="Nutty &amp; Nostalgic" class="site-header__logo-img">
+      </a>
+
+      <!-- Right: cart -->
+      <div class="site-header__right">
+        <a href="/cart" class="header-cart" aria-label="Shopping cart, 0 items">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="header-cart__count" id="cart-count" aria-live="polite">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile nav backdrop -->
+  <div class="mobile-nav__backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <!-- Mobile nav slide-in -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-nav__head">
+      <img src="https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png" alt="Nutty &amp; Nostalgic" class="mobile-nav__logo-img">
+      <button class="mobile-nav__close" id="nav-close" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <line x1="3" y1="3" x2="17" y2="17"/><line x1="17" y1="3" x2="3" y2="17"/>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="mobile-nav__list">
+      <li><a href="/" class="mobile-nav__link">HOME</a></li>
+      <li><a href="/collections/all" class="mobile-nav__link">SHOP THE DROP</a></li>
+      <li><a href="/pages/about" class="mobile-nav__link">ABOUT</a></li>
+      <li><a href="/pages/get-notified" class="mobile-nav__link">GET NOTIFIED</a></li>
+      <li><a href="/pages/reviews" class="mobile-nav__link">REVIEWS</a></li>
+      <li><a href="/pages/contact" class="mobile-nav__link">CONTACT</a></li>
+    </ul>
+
+    <a href="/collections/all" class="btn btn--primary mobile-nav__cta">SHOP THE DROPS</a>
+  </nav>
+
+  <!-- ================================================
+       MAIN CONTENT
+  ================================================ -->
+  <main id="main-content">
+
+    <!-- ============================================
+         SECTION 1: HERO
+         Mobile: stacked (marquee panel / content panel)
+         Desktop 768px+: side-by-side 50/50
+    ============================================ -->
+    <section class="hero" aria-label="Hero">
+
+      <!-- PANEL 1: Image background + jar marquee scrolling over it -->
+      <div class="hero__panel hero__panel--marquee">
+
+        <!-- Broadcast badge -->
+        <span class="hero__channel-badge" aria-hidden="true">CH 90 &#9654;</span>
+
+        <!-- Background image -->
+        <img
+          class="hero__panel-img"
+          src="https://i.ibb.co/tp6w8R1N/Chat-GPT-Image-Jun-10-2026-02-41-31-PM.png"
+          alt=""
+          aria-hidden="true"
+          width="1600"
+          height="900"
+        >
+
+        <!-- Jar marquee scrolls over the image -->
+        <div class="hero__marquee-clip">
+          <div class="hero__marquee-track" aria-hidden="true">
+            <img class="marquee-jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="">
+            <img class="marquee-jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="">
+            <img class="marquee-jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="">
+            <img class="marquee-jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="">
+            <img class="marquee-jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="">
+            <!-- Duplicate set for seamless loop -->
+            <img class="marquee-jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="">
+            <img class="marquee-jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="">
+            <img class="marquee-jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="">
+            <img class="marquee-jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="">
+            <img class="marquee-jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PANEL 2: Video fills panel — headline + CTA overlay on top -->
+      <div class="hero__panel hero__panel--content">
+
+        <!-- Hero video loop -->
+        <div class="hero__video-bg">
+          <video playsinline muted autoplay loop>
+            <source src="assets/video/hero.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- REC indicator -->
+        <div class="hero__rec" aria-hidden="true">
+          <span class="hero__rec-dot"></span>
+          <span class="hero__rec-label">REC</span>
+        </div>
+
+        <!-- Text + CTA overlaid on the video -->
+        <div class="hero__overlay">
+          <h1 class="hero__headline">
+            <span class="hero__hl--cream">PRE-ORDERS</span><br>
+            <span class="hero__hl--yellow">NOW LIVE.</span>
+          </h1>
+          <a href="/collections/all" class="btn btn--primary hero__cta">PRE-ORDER NOW</a>
+        </div>
+
+      </div>
+
+    </section>
+    <!-- END HERO -->
+
+    <!-- ============================================
+         REMAINING SECTIONS — built after hero review
+         Stubs here so the page has context below fold
+    ============================================ -->
+
+    <!-- ============================================
+         PROOF TICKER STRIP
+    ============================================ -->
+    <div class="proof-ticker" aria-label="Social proof">
+      <div class="proof-ticker__track" aria-hidden="true">
+        <span class="proof-ticker__item"><span class="proof-ticker__star">&#9733;</span> 4,000+ FIVE-STAR REVIEWS</span>
+        <span class="proof-ticker__item">200K ON INSTAGRAM</span>
+        <span class="proof-ticker__item">FREE SHIPPING OVER $50</span>
+        <span class="proof-ticker__item">NEW DROPS EVERY MONTH</span>
+        <span class="proof-ticker__item"><span class="proof-ticker__star">&#9733;</span> 4,000+ FIVE-STAR REVIEWS</span>
+        <span class="proof-ticker__item">200K ON INSTAGRAM</span>
+        <span class="proof-ticker__item">FREE SHIPPING OVER $50</span>
+        <span class="proof-ticker__item">NEW DROPS EVERY MONTH</span>
+      </div>
+    </div>
+
+    <!-- ============================================
+         SECTION 3: THE DROPS
+    ============================================ -->
+    <section class="drops" aria-labelledby="drops-title">
+
+      <div class="drops__header">
+        <h2 class="section-title" id="drops-title">THE DROPS</h2>
+      </div>
+
+      <div class="drops__grid">
+
+        <!-- SHELF 1 -->
+        <div class="drop-shelf">
+          <article class="drop-card">
+            <div class="drop-card__img">
+              <img src="https://i.ibb.co/d1nyTDn/90s-crisps-transparent.png" alt="Reptar Bar nut butter" width="400" height="400" loading="lazy">
+            </div>
+            <h3 class="drop-card__name">THE REPTAR BAR</h3>
+            <p class="drop-card__price">$14.99</p>
+            <p class="drop-card__desc">Green-tinted chocolate hazelnut butter. It's not easy being this good.</p>
+            <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+          </article>
+
+          <article class="drop-card">
+            <div class="drop-card__img">
+              <img src="https://i.ibb.co/d1nyTDn/90s-crisps-transparent.png" alt="Placeholder drop" width="400" height="400" loading="lazy">
+            </div>
+            <h3 class="drop-card__name">PLACEHOLDER DROP</h3>
+            <p class="drop-card__price">$14.99</p>
+            <p class="drop-card__desc">Your childhood, crushed into a jar and sent to your door.</p>
+            <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+          </article>
+        </div>
+
+        <!-- SHELF 2 -->
+        <div class="drop-shelf">
+          <article class="drop-card">
+            <div class="drop-card__img">
+              <img src="https://i.ibb.co/d1nyTDn/90s-crisps-transparent.png" alt="Placeholder drop" width="400" height="400" loading="lazy">
+            </div>
+            <h3 class="drop-card__name">PLACEHOLDER DROP</h3>
+            <p class="drop-card__price">$14.99</p>
+            <p class="drop-card__desc">They cancelled it. We brought it back. You're welcome.</p>
+            <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+          </article>
+
+          <article class="drop-card">
+            <div class="drop-card__img">
+              <img src="https://i.ibb.co/d1nyTDn/90s-crisps-transparent.png" alt="Placeholder drop" width="400" height="400" loading="lazy">
+            </div>
+            <h3 class="drop-card__name">PLACEHOLDER DROP</h3>
+            <p class="drop-card__price">$14.99</p>
+            <p class="drop-card__desc">Remember staying up past your bedtime for this? Same energy.</p>
+            <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+          </article>
+        </div>
+
+        <!-- SHELF 3 -->
+        <div class="drop-shelf">
+          <article class="drop-card">
+            <div class="drop-card__img">
+              <img src="https://i.ibb.co/d1nyTDn/90s-crisps-transparent.png" alt="Placeholder drop" width="400" height="400" loading="lazy">
+            </div>
+            <h3 class="drop-card__name">PLACEHOLDER DROP</h3>
+            <p class="drop-card__price">$14.99</p>
+            <p class="drop-card__desc">The one you've been asking about. Finally back on air.</p>
+            <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+          </article>
+
+          <article class="drop-card drop-card--soldout">
+            <div class="drop-card__img">
+              <img src="https://i.ibb.co/d1nyTDn/90s-crisps-transparent.png" alt="Placeholder drop sold out" width="400" height="400" loading="lazy">
+            </div>
+            <h3 class="drop-card__name">PLACEHOLDER DROP</h3>
+            <p class="drop-card__price drop-card__price--soldout">SOLD OUT</p>
+            <p class="drop-card__desc">Gone. Get on the list before the next run sells out too.</p>
+            <button class="btn btn--soldout drop-card__btn">NOTIFY ME</button>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: How It Works — COMING NEXT -->
+    <div class="section-stub">
+      <span class="section-stub__label">SECTION 4 · HOW IT WORKS</span>
+    </div>
+
+    <!-- Section 5: Feature Drop Spotlight — COMING NEXT -->
+    <div class="section-stub">
+      <span class="section-stub__label">SECTION 5 · FEATURE DROP SPOTLIGHT</span>
+    </div>
+
+    <!-- Section 6: UGC / IG Strip — COMING NEXT -->
+    <div class="section-stub">
+      <span class="section-stub__label">SECTION 6 · UGC / IG STRIP</span>
+    </div>
+
+    <!-- Section 7: Email Capture — COMING NEXT -->
+    <div class="section-stub">
+      <span class="section-stub__label">SECTION 7 · EMAIL CAPTURE (REWIND CLUB)</span>
+    </div>
+
+    <!-- Section 8: Footer — COMING NEXT -->
+    <div class="section-stub section-stub--footer">
+      <span class="section-stub__label">SECTION 8 · FOOTER</span>
+    </div>
+
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
