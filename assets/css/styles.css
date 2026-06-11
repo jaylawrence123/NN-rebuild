@@ -513,6 +513,7 @@ main { padding-top: var(--offset); }
   align-items: flex-end;
   gap: 0;
   padding-inline: 0;
+  width: max-content;
   animation: jar-scroll 22s linear infinite;
   will-change: transform;
   flex-shrink: 0;
@@ -778,6 +779,9 @@ main { padding-top: var(--offset); }
    ===================================================== */
 .drops {
   padding: 2.5rem 1.125rem 3rem;
+  max-width: 1200px;
+  margin-inline: auto;
+  width: 100%;
 }
 .drops__header {
   margin-bottom: 2rem;
@@ -875,19 +879,115 @@ main { padding-top: var(--offset); }
 }
 
 /* =====================================================
+   SECTION 4: BRAND MISSION — full-bleed cinematic
+   ===================================================== */
+.brand-mission {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  border-top: 2.5px solid var(--ink);
+}
+
+/* Image fills section */
+.brand-mission__bg {
+  position: absolute;
+  inset: 0;
+}
+.brand-mission__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+  filter: sepia(0.5) saturate(0.72) brightness(0.78) contrast(1.1);
+}
+/* Film grain */
+.brand-mission__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.42' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Text overlay — anchored to bottom-left */
+.brand-mission__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(42,36,32,0.92) 0%,
+    rgba(42,36,32,0.5) 40%,
+    rgba(42,36,32,0.0) 72%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 2.25rem 1.375rem 2.5rem;
+  gap: 1rem;
+  z-index: 3;
+}
+
+.brand-mission__headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 14vw, 80px);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+}
+.bm__hl--cream { color: var(--cream); }
+.bm__hl--yellow {
+  color: var(--yellow);
+  text-shadow: -2px 0 rgba(230,59,46,0.55), 2px 0 rgba(46,107,230,0.5);
+}
+
+.brand-mission__body {
+  font-family: 'Figtree', sans-serif;
+  font-size: 1rem;
+  color: rgba(245,230,200,0.82);
+  line-height: 1.55;
+}
+
+.brand-mission__cta {
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+}
+
+/* =====================================================
    DESKTOP: 768px+
    ===================================================== */
 @media (min-width: 768px) {
+  :root { --nav-h: 86px; }
+
   .site-nav { display: flex; align-items: center; }
   .hamburger { display: none; }
-  .site-header__inner { padding-inline: 1.5rem; }
 
-  .site-nav__list { display: flex; align-items: center; gap: 0.125rem; }
+  /* Logo left — switch from centered grid to flex row */
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    padding-inline: 2rem;
+    gap: 0;
+  }
+  .site-header__logo {
+    order: -1;
+    flex-shrink: 0;
+    margin-right: 2.5rem;
+  }
+  .site-header__logo-img { height: 82px; }
+  .site-header__left { flex: 1; }
+  .site-header__right { margin-left: auto; }
+
+  .site-nav__list { display: flex; align-items: center; gap: 0.25rem; }
   .site-nav__link {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: var(--ink);
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.875rem;
     letter-spacing: 0.1em;
     white-space: nowrap;
     transition: color 0.12s;
@@ -896,40 +996,52 @@ main { padding-top: var(--offset); }
   .site-nav__link[aria-current="page"] { color: var(--red); }
   .site-nav__link:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 2px; }
 
-  /* Hero: side-by-side */
-  .hero { flex-direction: row; min-height: calc(86dvh - var(--offset)); }
-  @supports not (min-height: 86dvh) { .hero { min-height: calc(86vh - var(--offset)); } }
+  /* Hero: side-by-side — video left, image right */
+  .hero { flex-direction: row; height: clamp(420px, 58vh, 560px); min-height: unset; }
 
   .hero__panel--marquee {
+    order: 2;
     width: 50%;
-    height: auto;
+    height: 100%;
     min-height: unset;
     border-bottom: none;
-    border-right: 2.5px solid var(--ink);
+    border-right: none;
+    border-left: 2.5px solid var(--ink);
   }
   .hero__panel--content {
+    order: 1;
     width: 50%;
-    height: auto;
+    height: 100%;
     min-height: unset;
+    aspect-ratio: unset;
   }
   .hero__overlay {
     padding: 2.5rem 2.75rem;
     justify-content: flex-end;
   }
-  .hero__headline { font-size: clamp(44px, 3.8vw, 64px); }
+  .hero__headline { font-size: clamp(60px, 6vw, 96px); }
 
   /* Sticker hover wiggle — desktop only */
   .hero__sticker--sparkles { transition: transform 0.2s ease; }
   .hero__sticker--sparkles:hover { transform: rotate(7deg) scale(1.1); }
+
+  /* Brand mission: cap height on desktop — portrait image would be enormous at full width */
+  .brand-mission { aspect-ratio: unset; height: clamp(500px, 75vh, 800px); }
+  .brand-mission__overlay { padding: 3rem 3.5rem; justify-content: center; }
+  .brand-mission__headline { font-size: clamp(56px, 5.5vw, 88px); }
 }
 
 @media (min-width: 1024px) {
   .site-header__inner { padding-inline: 2rem; }
   .site-nav__link { font-size: 1.0625rem; }
   .hero__overlay { padding: 3rem 3.5rem; }
-  .drops { padding: 3.5rem 2rem 4rem; }
-  .drop-shelf { grid-template-columns: repeat(3, 1fr); }
+  .drops { padding: 3rem 2rem 3.5rem; }
+  .drops__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 1.5rem; }
+  .drop-shelf { display: contents; }
   .drop-card__name { font-size: 1.0625rem; }
+  .section-title { font-size: clamp(36px, 4vw, 52px); }
+  .brand-mission__overlay { padding: 3.5rem 4rem; }
+  .brand-mission__headline { font-size: clamp(64px, 6vw, 104px); }
 }
 
 @media (min-width: 1280px) {
