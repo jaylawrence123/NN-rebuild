@@ -443,96 +443,51 @@ main { padding-top: var(--offset); }
   border-bottom: 2.5px solid var(--ink);
 }
 
-/* ---- PANEL 1: Marquee ---- */
+/* ---- PANEL 1: Before/after shelf wipe ---- */
 .hero__panel--marquee {
   position: relative;
+  order: 2;
   height: 220px;
   width: 100%;
-  background: var(--cream);
-  border-bottom: 2.5px solid var(--ink);
+  border-top: 2.5px solid var(--ink);
+  border-bottom: none;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;
 }
 
-/* Background image — fills panel behind the marquee */
-.hero__panel-img {
+.hero__panel--content { order: 1; }
+
+.hero__ba {
   position: absolute;
   inset: 0;
+}
+.hero__ba img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   display: block;
-  z-index: 0;
-  /* 90s color grade: warm, slightly faded, lifted blacks */
-  filter: sepia(0.6) saturate(0.65) brightness(0.82) contrast(1.08);
 }
 
-/* Warm vignette — edges darken like an old photo */
-.hero__panel--marquee::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 35%, rgba(40,18,4,0.55) 100%);
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* Film grain — coarse, overlay blend, 90s photo feel */
-.hero__panel--marquee::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.42' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-  opacity: 0.58;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 4;
-}
-
-/* Marquee sits on top of image */
-.hero__marquee-clip {
-  position: relative;
+.hero__ba--before {
   z-index: 1;
 }
-
-/* Clip wrapper for horizontal overflow */
-.hero__marquee-clip {
-  width: 100%;
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
+.hero__ba--before img {
+  filter: sepia(0.15) saturate(0.85) brightness(0.94) contrast(1.04);
 }
 
-/* Marquee track — 10 jars (5×2) animates translateX(-50%) */
-.hero__marquee-track {
-  display: flex;
-  align-items: flex-end;
-  gap: 0;
-  padding-inline: 0;
-  width: max-content;
-  animation: jar-scroll 22s linear infinite;
-  will-change: transform;
-  flex-shrink: 0;
+.hero__ba--after {
+  z-index: 2;
+  clip-path: inset(0 100% 0 0);
+  animation: hero-ba-wipe 9s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  filter: brightness(1.12) saturate(1.08);
+}
+@keyframes hero-ba-wipe {
+  0%,  14% { clip-path: inset(0 100% 0 0); }
+  26%, 62% { clip-path: inset(0 0%   0 0); }
+  74%,100% { clip-path: inset(0 100% 0 0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero__marquee-track { animation-play-state: paused; }
-}
-@keyframes jar-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.marquee-jar {
-  flex-shrink: 0;
-  height: 155px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-  align-self: flex-end;
-  transform: translateY(50px);
+  .hero__ba--after { animation: none; clip-path: inset(0 50% 0 0); }
 }
 
 /* Morphing bag → jar unit */
@@ -879,6 +834,171 @@ main { padding-top: var(--offset); }
 }
 
 /* =====================================================
+   SECTION 5: CHANNEL FLIP — full-bleed wipe transformation
+   ===================================================== */
+.channel-flip {
+  background: var(--ink);
+  padding-top: 4.5rem;
+  border-top: 2.5px solid rgba(245,230,200,0.08);
+  overflow: hidden;
+}
+
+.channel-flip__hd {
+  text-align: center;
+  padding: 0 1.375rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cf-eyebrow {
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  color: rgba(245,230,200,0.35);
+  letter-spacing: 0.1em;
+}
+
+.cf-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 13vw, 72px);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+}
+.cf-title__cream { color: var(--cream); }
+.cf-title__yellow { color: var(--yellow); }
+
+/* Stage — matches landscape image ratio on mobile */
+.cf-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+/* Both panels fill the entire stage */
+.cf-panel {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* BEFORE — always behind */
+.cf-panel--before { z-index: 1; }
+
+/* AFTER — wipes in from right, sits on top */
+.cf-panel--after {
+  z-index: 3;
+  clip-path: inset(0 100% 0 0);
+}
+
+/* Full-bleed scene images */
+.cf-panel__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 0;
+}
+.cf-panel--before .cf-panel__bg {
+  filter: sepia(0.3) saturate(0.7) brightness(0.82) contrast(1.08);
+}
+.cf-panel--after .cf-panel__bg {
+  filter: brightness(1.04) saturate(1.06);
+}
+
+/* Edge vignette on both panels */
+.cf-panel--before::after,
+.cf-panel--after::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(42,36,32,0.55) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Giant background watermark text */
+.cf-wm {
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: min(38vw, 260px);
+  line-height: 1;
+  bottom: -0.06em;
+  letter-spacing: -0.03em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.cf-panel--before .cf-wm {
+  left: 0.25rem;
+  color: rgba(245,230,200,0.045);
+}
+.cf-panel--after .cf-wm {
+  right: 0.25rem;
+  left: auto;
+  color: rgba(255,196,46,0.055);
+}
+
+/* Corner labels */
+.cf-label {
+  position: absolute;
+  bottom: 1.25rem;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: 'VT323', monospace;
+  font-size: clamp(13px, 3.5vw, 16px);
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  pointer-events: none;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+}
+.cf-label--before {
+  left: 1.25rem;
+  color: rgba(245,230,200,0.72);
+}
+.cf-label--after {
+  right: 1.25rem;
+  text-align: right;
+  color: rgba(255,196,46,0.9);
+}
+.cf-label__name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.25rem, 5vw, 1.5rem);
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  line-height: 1;
+  text-shadow: 0 1px 8px rgba(0,0,0,1);
+}
+.cf-label--after .cf-label__name { color: var(--yellow); }
+
+/* Wipe animation — kicks in when .is-visible added */
+@keyframes cf-wipe {
+  0%, 16%  { clip-path: inset(0 100% 0 0); }
+  28%, 66% { clip-path: inset(0 0%   0 0); }
+  78%, 100%{ clip-path: inset(0 100% 0 0); }
+}
+
+.channel-flip.is-visible .cf-panel--after {
+  animation: cf-wipe 11s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .channel-flip.is-visible .cf-panel--after {
+    animation: none;
+    clip-path: inset(0 50% 0 0);
+  }
+}
+
+/* =====================================================
    SECTION 4: BRAND MISSION — full-bleed cinematic
    ===================================================== */
 .brand-mission {
@@ -1007,6 +1127,7 @@ main { padding-top: var(--offset); }
     border-bottom: none;
     border-right: none;
     border-left: 2.5px solid var(--ink);
+    background: var(--ink);
   }
   .hero__panel--content {
     order: 1;
@@ -1024,6 +1145,10 @@ main { padding-top: var(--offset); }
   /* Sticker hover wiggle — desktop only */
   .hero__sticker--sparkles { transition: transform 0.2s ease; }
   .hero__sticker--sparkles:hover { transform: rotate(7deg) scale(1.1); }
+
+  /* Channel flip */
+  .cf-stage { aspect-ratio: unset; height: clamp(500px, 58vh, 680px); }
+  .cf-title { font-size: clamp(52px, 4.5vw, 76px); }
 
   /* Brand mission: cap height on desktop — portrait image would be enormous at full width */
   .brand-mission { aspect-ratio: unset; height: clamp(500px, 75vh, 800px); }
