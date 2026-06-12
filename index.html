@@ -251,84 +251,69 @@
     </section>
 
     <!-- ============================================
-         SECTION 4: BRAND MISSION
+         SECTION 6: THE MASTER TAPES
+         VHS remaster before/after comparison slider
     ============================================ -->
-    <section class="brand-mission" aria-label="Brand mission">
+    <section class="master-tapes" aria-labelledby="tapes-title">
 
-      <!-- Full-bleed background image with grain -->
-      <div class="brand-mission__bg">
-        <picture>
-          <source media="(min-width: 768px)" srcset="https://i.ibb.co/LDzqbpN0/Chat-GPT-Image-Jun-10-2026-11-19-18-PM.png">
-          <img
-            src="https://i.ibb.co/JWS6BrHZ/nn-rebrand.png"
-            alt="Nutty and Nostalgic nut butter jars"
-            width="1792"
-            height="768"
-            loading="lazy"
-          >
-        </picture>
+      <div class="master-tapes__hd">
+        <span class="master-tapes__eyebrow">▶ FROM THE ARCHIVE</span>
+        <h2 class="master-tapes__title" id="tapes-title">WE FOUND THE<br>MASTER TAPES.</h2>
+        <p class="master-tapes__sub">The originals got discontinued. We remastered them.</p>
       </div>
 
-      <!-- Text overlay — anchored bottom-left -->
-      <div class="brand-mission__overlay">
-        <h2 class="brand-mission__headline">
-          <span class="bm__hl--cream">THEY CANCELLED IT.</span><br>
-          <span class="bm__hl--yellow">WE DIDN'T.</span>
-        </h2>
-        <p class="brand-mission__body">Every jar is a discontinued snack, rebuilt from scratch.</p>
-        <a href="/collections/all" class="btn btn--primary brand-mission__cta">SHOP THE DROPS</a>
+      <div class="master-tapes__screen" id="tape-screen">
+
+        <!-- Layer A: degraded 1992 broadcast (OG product) -->
+        <div class="tape-layer tape-layer--og" id="tape-og">
+          <img class="tape-img" id="tape-og-img" src="https://i.ibb.co/8DkNjHpy/pb-max.png" alt="Original PB Max bar" width="400" height="400">
+          <div class="tape-scanlines" aria-hidden="true"></div>
+          <div class="tape-grain" aria-hidden="true"></div>
+          <span class="tape-osd tape-osd--tl" aria-hidden="true">PLAY ▶</span>
+          <span class="tape-osd tape-osd--tr" aria-hidden="true">1992</span>
+        </div>
+
+        <!-- Layer B: remastered (N&N jar) — clipped by --wipe -->
+        <div class="tape-layer tape-layer--jar" id="tape-jar">
+          <img class="tape-img" id="tape-jar-img" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max D — N&N remaster" width="400" height="400">
+          <div class="tape-grain" aria-hidden="true"></div>
+          <span class="tape-osd tape-osd--tr tape-osd--remaster" aria-hidden="true">REMASTERED · 2026</span>
+        </div>
+
+        <!-- Drag handle -->
+        <div class="tape-handle" id="tape-handle" aria-hidden="true">
+          <div class="tape-handle__line"></div>
+          <div class="tape-handle__grip" id="tape-grip">◂▸</div>
+        </div>
+
+        <!-- Channel-change static noise -->
+        <div class="tape-static" id="tape-static" aria-hidden="true"></div>
+
+        <!-- Accessible range input (keyboard / screen reader) -->
+        <input type="range" class="tape-range" id="tape-range"
+               min="0" max="100" value="35"
+               aria-label="Drag to compare the original snack with the remastered N&N jar">
+
+      </div>
+
+      <!-- Tape selector -->
+      <div class="tape-selector" role="group" aria-label="Select a product tape">
+        <button type="button" class="tape-btn is-active" data-tape="0" aria-pressed="true">TAPE 01 · PB MAX</button>
+        <button type="button" class="tape-btn" data-tape="1" aria-pressed="false">TAPE 02 · PB CRISPS</button>
+        <button type="button" class="tape-btn" data-tape="2" aria-pressed="false">TAPE 03 · TURTLE PIES</button>
+        <button type="button" class="tape-btn" data-tape="3" aria-pressed="false">TAPE 04 · BUTTERFINGER BBs</button>
+        <button type="button" class="tape-btn" data-tape="4" aria-pressed="false">TAPE 05 · KUDOS</button>
+      </div>
+
+      <div class="master-tapes__foot">
+        <a href="/collections/all" class="btn btn--primary">SHOP THE REMASTERS</a>
       </div>
 
     </section>
 
-    <!-- ============================================
-         SECTION 5: CHANNEL FLIP — before/after
-    ============================================ -->
-    <section class="channel-flip" aria-label="Before and after transformation">
-
-      <div class="channel-flip__hd">
-        <span class="cf-eyebrow" aria-hidden="true">◉ BEFORE &amp; AFTER</span>
-        <h2 class="cf-title">
-          <span class="cf-title__cream">THE ORIGINAL.</span><br>
-          <span class="cf-title__yellow">THE REVIVAL.</span>
-        </h2>
-      </div>
-
-      <div class="cf-stage">
-
-        <!-- BEFORE — always behind -->
-        <div class="cf-panel cf-panel--before">
-          <span class="cf-wm" aria-hidden="true">THEN.</span>
-          <img class="cf-panel__bg"
-               src="https://i.ibb.co/20GMHYj0/NN-before.png"
-               alt="The original discontinued snacks on a 1990s convenience store shelf">
-          <div class="cf-label cf-label--before" aria-hidden="true">
-            <span>ORIGINAL BROADCAST</span>
-            <span class="cf-label__name">THE ORIGINALS</span>
-            <span>DISCONTINUED · 1990s</span>
-          </div>
-        </div>
-
-        <!-- AFTER — wipes in from right -->
-        <div class="cf-panel cf-panel--after">
-          <span class="cf-wm" aria-hidden="true">NOW.</span>
-          <img class="cf-panel__bg"
-               src="https://i.ibb.co/rGHshwGF/NN-after.png"
-               alt="Nutty and Nostalgic jars restocking the same shelf">
-          <div class="cf-label cf-label--after" aria-hidden="true">
-            <span>NOW PLAYING · CH 90</span>
-            <span class="cf-label__name">THE REVIVAL</span>
-            <span>BACK ON AIR · 2026</span>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- Section 6: UGC / IG Strip — COMING NEXT -->
+    <!-- Section 7: UGC / IG Strip — COMING NEXT -->
     <div class="section-stub">
-      <span class="section-stub__label">SECTION 6 · UGC / IG STRIP</span>
+      <span class="section-stub__label">SECTION 7 · UGC / IG STRIP</span>
     </div>
 
     <!-- Section 7: Email Capture — COMING NEXT -->

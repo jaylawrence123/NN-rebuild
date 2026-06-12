@@ -42,6 +42,187 @@
     if (e.key === 'Escape' && nav.classList.contains('is-open')) closeNav();
   });
 
+  /* ---- Channel flip: start animation on scroll into view ---- */
+  const flipSection = document.querySelector('.channel-flip');
+  if (flipSection) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.25 }).observe(flipSection);
+  }
+
+  /* ---- TV section: OG → jar wipe when product reaches viewport center ---- */
+  const tvSection = document.querySelector('.tv-section');
+  if (tvSection) {
+    const tvPairs = Array.from(tvSection.querySelectorAll('.tv-pair'));
+    let tvRafId = null;
+
+    function checkTvCenter() {
+      const cx = window.innerWidth / 2;
+      tvPairs.forEach(function (pair) {
+        const r = pair.getBoundingClientRect();
+        const pairCx = r.left + r.width / 2;
+        if (Math.abs(pairCx - cx) < r.width * 0.35) {
+          pair.classList.add('is-transforming');
+        } else if (r.right < 0) {
+          pair.classList.remove('is-transforming');
+        }
+      });
+      tvRafId = requestAnimationFrame(checkTvCenter);
+    }
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (!tvRafId) tvRafId = requestAnimationFrame(checkTvCenter);
+          } else {
+            if (tvRafId) { cancelAnimationFrame(tvRafId); tvRafId = null; }
+          }
+        });
+      }, { threshold: 0 }).observe(tvSection);
+    }
+  }
+
+  /* ---- Master Tapes: VHS comparison slider ---- */
+  (function () {
+    var screen   = document.getElementById('tape-screen');
+    if (!screen) return;
+
+    var ogLayer  = document.getElementById('tape-og');
+    var ogImg    = document.getElementById('tape-og-img');
+    var jarImg   = document.getElementById('tape-jar-img');
+    var grip     = document.getElementById('tape-grip');
+    var staticEl = document.getElementById('tape-static');
+    var range    = document.getElementById('tape-range');
+    var buttons  = Array.from(document.querySelectorAll('.tape-btn'));
+
+    var TAPES = [
+      { og: 'https://i.ibb.co/8DkNjHpy/pb-max.png',        jar: 'https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png',        bg: '#f0d8ca' },
+      { og: 'https://i.ibb.co/Q3Gm6vxV/pb-crisps.png',      jar: 'https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png',      bg: '#d5ddf0' },
+      { og: 'https://i.ibb.co/zVqWPZ44/turtle-pies.png',     jar: 'https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png',  bg: '#d0e8d5' },
+      { og: 'https://i.ibb.co/4LZ8TbB/butterfinger-bbs.png', jar: 'https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png', bg: '#eeddcc' },
+      { og: 'https://i.ibb.co/fYH6qqR7/kudos-bar.png',       jar: 'https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png',     bg: '#f0e8c5' }
+    ];
+
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var currentTape = 0;
+    var wipe = 35;
+    var dragging = false;
+    var rafId = null;
+    var pendingWipe = null;
+
+    function setWipe(pct) {
+      wipe = Math.min(98, Math.max(2, pct));
+      screen.style.setProperty('--wipe', wipe + '%');
+      range.value = wipe;
+    }
+
+    function scheduleWipe(clientX) {
+      var rect = screen.getBoundingClientRect();
+      pendingWipe = ((clientX - rect.left) / rect.width) * 100;
+      if (!rafId) rafId = requestAnimationFrame(flushWipe);
+    }
+
+    function flushWipe() {
+      rafId = null;
+      if (pendingWipe !== null) { setWipe(pendingWipe); pendingWipe = null; }
+    }
+
+    screen.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      screen.setPointerCapture(e.pointerId);
+      scheduleWipe(e.clientX);
+    });
+
+    screen.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      scheduleWipe(e.clientX);
+    });
+
+    screen.addEventListener('pointerup',     function () { dragging = false; });
+    screen.addEventListener('pointercancel', function () { dragging = false; });
+
+    range.addEventListener('input', function () {
+      setWipe(parseFloat(range.value));
+    });
+
+    range.addEventListener('focus', function () { grip.classList.add('has-focus'); });
+    range.addEventListener('blur',  function () { grip.classList.remove('has-focus'); });
+
+    function animateTo(target, ms) {
+      var start = wipe;
+      var t0 = performance.now();
+      function step(now) {
+        var t = Math.min(1, (now - t0) / ms);
+        setWipe(start + (target - start) * (1 - Math.pow(1 - t, 2)));
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function loadTape(i) {
+      var tape = TAPES[i];
+      ogImg.src  = tape.og;
+      jarImg.src = tape.jar;
+      screen.style.setProperty('--tape-og-bg', tape.bg);
+    }
+
+    function switchTape(i) {
+      if (i === currentTape) return;
+      currentTape = i;
+      buttons.forEach(function (btn, idx) {
+        btn.classList.toggle('is-active', idx === i);
+        btn.setAttribute('aria-pressed', idx === i ? 'true' : 'false');
+      });
+
+      if (rm) {
+        ogLayer.style.transition = 'opacity .12s';
+        ogLayer.style.opacity = '0';
+        setTimeout(function () {
+          loadTape(i);
+          ogLayer.style.opacity = '1';
+        }, 80);
+        return;
+      }
+
+      staticEl.classList.add('is-active');
+      setTimeout(function () { loadTape(i); }, 90);
+      setTimeout(function () { staticEl.classList.remove('is-active'); }, 190);
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        switchTape(parseInt(btn.dataset.tape, 10));
+      });
+    });
+
+    /* Preload all images after first paint */
+    window.addEventListener('load', function () {
+      TAPES.forEach(function (t) {
+        [t.og, t.jar].forEach(function (src) {
+          var img = new Image();
+          img.src = src;
+        });
+      });
+    });
+
+    /* Nudge affordance on first scroll into view */
+    var nudged = false;
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !nudged) {
+        nudged = true;
+        if (!rm) {
+          setTimeout(function () {
+            animateTo(45, 450);
+            setTimeout(function () { animateTo(35, 450); }, 450);
+          }, 500);
+        }
+      }
+    }, { threshold: 0.4 }).observe(screen);
+  }());
+
   /* ---- Reduced-motion: pause video when it exists ---- */
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
