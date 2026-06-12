@@ -38,9 +38,9 @@ NN-Rebuild/
 | 4 | Brand Mission | ❌ Removed from homepage |
 | 5 | Before / After (Channel Flip) | ❌ Removed from homepage |
 | 6 | Homesick (kitchen scene) | ✅ Done — pending full-res images |
-| 7 | UGC / IG Strip | 🔲 Pending |
-| 8 | Email Capture (Rewind Club) | 🔲 Pending |
-| 9 | Footer | 🔲 Pending |
+| 7 | Reviews | ✅ Done — placeholder photos/quotes |
+| 8 | Email Capture | ✅ Done |
+| 9 | Footer (channel-surf TV) | ✅ Done |
 
 > The Master Tapes VHS slider (old Section 6) was removed and is flagged for possible later use — full markup recoverable from commit `2834991`; its CSS/JS remain in place, inert. Brand Mission and Channel Flip markup is also recoverable from git history (commit `53d849f`).
 
@@ -59,6 +59,31 @@ Emotional mission section adapted from the draft Shopify theme: the five jars in
 - **Tablet 768–1023:** same portrait image cover-cropped (`min(75vh, 860px)`, `object-position: center 60%`)
 - **Desktop 1024+:** 16:9 image (`https://i.ibb.co/svxJX3SP/nn-desktop-2.png`), section `clamp(480px, 70vh, 720px)`, copy bottom-left on the clean counter corner, H1 `clamp(48px, 4.6vw, 72px)` (size capped so it stays off the jar labels)
 - ⚠️ Both images are low-res preview exports (640/427px wide) — swap URLs for full-res versions before launch
+
+## Section 7 — Reviews
+
+- Header: compact star rating eyebrow (5 small blue-boxed ★ + "4.86/5 CUSTOMER REVIEWS") above H1 "4,000+ PEOPLE FEEL LIKE KIDS AGAIN."
+- Cards: photo (square, top) / 5 boxed stars / Figtree quote / Bebas name + red VT323 "VERIFIED BUYER"
+- Mobile: swipeable scroll-snap row (hidden scrollbar); Desktop 1024+: 3×2 grid
+- All photos, quotes, and names are placeholders — feeds from a review app (Judge.me/Loox/Okendo) at conversion
+- NO auto-scroll marquee (reviews must be readable), NO IG/UGC framing — this is a review section
+
+## Section 8 — Email Capture
+
+- Full-bleed `--blue` section (logo blue), NO eyebrow label ("Rewind Club" branding rejected — internal class names only)
+- "FIRST DIBS" (cream) / "ON EVERY DROP." (yellow) + one-line sub + email input (cream 2.5px border, yellow on focus) + red GET IN button
+- Stacked mobile / inline row desktop. Static form — wires to Klaviyo/Shopify Email at conversion
+
+## Section 9 — Footer (channel-surf TV)
+
+The footer is a working TV. CH ▲/▼ buttons flip the whole footer between channels with a static burst; phosphor-green VT323 channel OSD top-left (ink on the yellow channel).
+
+- Surf order: CH 01 SHOP (yellow screen, giant ink Bebas links) → CH 02 INFO (blue screen) → CH 03 FOLLOW (red screen) → CH 04 GUIDE (default — splat logo + all 3 link columns, centered) → CH 90 OFF AIR (color bars + "END OF BROADCAST" + ◀◀ REWIND button)
+- REWIND fast-scrolls to top (~0.9s rAF ease) under a half-opacity full-screen static flicker
+- Thin brand-color SMPTE bar strip tops the footer on every channel
+- Footer logo is the green-splat wordmark (`https://i.ibb.co/4nXdcpcZ/nn-logo-footer.png`) — footer ONLY, nav keeps the standard logo
+- Reduced motion: instant channel swaps, instant scroll, no static
+- Default channel is the full guide — zero link findability lost
 
 ## Nav & Hero details
 

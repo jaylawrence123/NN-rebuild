@@ -236,3 +236,105 @@
   applyMotion(motionQuery);
 
 })();
+
+/* =====================================================
+   FOOTER: CHANNEL SURF — CH up/down flips the footer
+   between full-color channel screens with static bursts
+   ===================================================== */
+(function () {
+  'use strict';
+
+  var screen = document.getElementById('tv-screen');
+  if (!screen) return;
+
+  var osd      = document.getElementById('tv-osd');
+  var staticEl = document.getElementById('tv-static');
+  var upBtn    = document.getElementById('ch-up');
+  var downBtn  = document.getElementById('ch-down');
+  var channels = Array.from(screen.querySelectorAll('.tv-channel'));
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Surf order: 01 SHOP → 02 INFO → 03 FOLLOW → 04 GUIDE → 90 OFF AIR */
+  var ORDER  = ['1', '2', '3', '4', '90'];
+  var LABELS = {
+    '1':  'CH 01 · SHOP',
+    '2':  'CH 02 · INFO',
+    '3':  'CH 03 · FOLLOW',
+    '4':  'CH 04 · GUIDE',
+    '90': 'CH 90 · OFF AIR'
+  };
+
+  var current = '4';
+  var switching = false;
+
+  function show(ch) {
+    channels.forEach(function (el) {
+      var on = el.dataset.ch === ch;
+      el.classList.toggle('is-on', on);
+      if (on) { el.removeAttribute('hidden'); } else { el.setAttribute('hidden', ''); }
+    });
+    screen.dataset.ch = ch;
+    osd.textContent = LABELS[ch];
+    current = ch;
+  }
+
+  function surf(dir) {
+    if (switching) return;
+    var i = (ORDER.indexOf(current) + dir + ORDER.length) % ORDER.length;
+    var next = ORDER[i];
+
+    if (rm) { show(next); return; }
+
+    switching = true;
+    staticEl.classList.add('is-active');
+    setTimeout(function () { show(next); }, 110);
+    setTimeout(function () {
+      staticEl.classList.remove('is-active');
+      switching = false;
+    }, 240);
+  }
+
+  upBtn.addEventListener('click', function () { surf(1); });
+  downBtn.addEventListener('click', function () { surf(-1); });
+})();
+
+/* =====================================================
+   FOOTER: REWIND — fast scroll to top with static flicker
+   ===================================================== */
+(function () {
+  'use strict';
+
+  var btn = document.getElementById('footer-rewind');
+  if (!btn) return;
+
+  var staticEl = document.getElementById('rewind-static');
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rewinding = false;
+
+  btn.addEventListener('click', function () {
+    if (rm) { window.scrollTo(0, 0); return; }
+    if (rewinding) return;
+    rewinding = true;
+
+    staticEl.classList.add('is-active');
+
+    var from = window.scrollY;
+    var ms = Math.min(900, 350 + from * 0.12);
+    var t0 = performance.now();
+
+    function step(now) {
+      var p = Math.min(1, (now - t0) / ms);
+      var eased = 1 - Math.pow(1 - p, 3);
+      window.scrollTo(0, from * (1 - eased));
+      if (p < 1) {
+        requestAnimationFrame(step);
+      } else {
+        setTimeout(function () {
+          staticEl.classList.remove('is-active');
+          rewinding = false;
+        }, 120);
+      }
+    }
+    requestAnimationFrame(step);
+  });
+})();
