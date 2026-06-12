@@ -57,12 +57,25 @@
         <img src="https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png" alt="Nutty &amp; Nostalgic" class="site-header__logo-img">
       </a>
 
-      <!-- Right: cart -->
+      <!-- Right: search / account (desktop) / cart -->
       <div class="site-header__right">
+        <a href="/search" class="header-icon" aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </a>
+        <a href="/account/login" class="header-icon header-icon--account" aria-label="Account login">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </a>
         <a href="/cart" class="header-cart" aria-label="Shopping cart, 0 items">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            <rect x="6" y="2.5" width="12" height="5.5" rx="1.5"/>
+            <rect x="3.5" y="8" width="17" height="13.5" rx="3"/>
+            <line x1="9.2" y1="4.4" x2="9.2" y2="6.1" stroke-width="1.75"/>
+            <line x1="12" y1="4.4" x2="12" y2="6.1" stroke-width="1.75"/>
+            <line x1="14.8" y1="4.4" x2="14.8" y2="6.1" stroke-width="1.75"/>
           </svg>
           <span class="header-cart__count" id="cart-count" aria-live="polite">0</span>
         </a>
@@ -92,6 +105,7 @@
       <li><a href="/pages/get-notified" class="mobile-nav__link">GET NOTIFIED</a></li>
       <li><a href="/pages/reviews" class="mobile-nav__link">REVIEWS</a></li>
       <li><a href="/pages/contact" class="mobile-nav__link">CONTACT</a></li>
+      <li><a href="/account/login" class="mobile-nav__link">ACCOUNT</a></li>
     </ul>
 
     <a href="/collections/all" class="btn btn--primary mobile-nav__cta">SHOP THE DROPS</a>
@@ -140,6 +154,12 @@
 
         <!-- Text + CTA overlaid on the video -->
         <div class="hero__overlay">
+          <p class="hero__rating" aria-label="Rated 4.86 out of 5 by customers">
+            <span class="hero__rating-stars" aria-hidden="true">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </span>
+            <span class="hero__rating-text"><span class="hero__rating-word">EXCELLENT </span>4.86/5 CUSTOMER REVIEWS</span>
+          </p>
           <h1 class="hero__headline">
             <span class="hero__hl--cream">PRE-ORDERS</span><br>
             <span class="hero__hl--yellow">NOW LIVE.</span>
@@ -251,62 +271,29 @@
     </section>
 
     <!-- ============================================
-         SECTION 6: THE MASTER TAPES
-         VHS remaster before/after comparison slider
+         SECTION 6: HOMESICK
+         Full-bleed 90s kitchen scene — ink copy
+         sits directly on the counter, no gradient
     ============================================ -->
-    <section class="master-tapes" aria-labelledby="tapes-title">
+    <section class="homesick" aria-labelledby="homesick-title">
 
-      <div class="master-tapes__hd">
-        <span class="master-tapes__eyebrow">▶ FROM THE ARCHIVE</span>
-        <h2 class="master-tapes__title" id="tapes-title">WE FOUND THE<br>MASTER TAPES.</h2>
-        <p class="master-tapes__sub">The originals got discontinued. We remastered them.</p>
+      <div class="homesick__bg">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="https://i.ibb.co/svxJX3SP/nn-desktop-2.png">
+          <img
+            src="https://i.ibb.co/FbWv8L3Q/nn-mobile-2.png"
+            alt="All five Nutty and Nostalgic jars lined up on a 1990s kitchen counter"
+            width="427"
+            height="640"
+            loading="lazy"
+          >
+        </picture>
       </div>
 
-      <div class="master-tapes__screen" id="tape-screen">
-
-        <!-- Layer A: degraded 1992 broadcast (OG product) -->
-        <div class="tape-layer tape-layer--og" id="tape-og">
-          <img class="tape-img" id="tape-og-img" src="https://i.ibb.co/8DkNjHpy/pb-max.png" alt="Original PB Max bar" width="400" height="400">
-          <div class="tape-scanlines" aria-hidden="true"></div>
-          <div class="tape-grain" aria-hidden="true"></div>
-          <span class="tape-osd tape-osd--tl" aria-hidden="true">PLAY ▶</span>
-          <span class="tape-osd tape-osd--tr" aria-hidden="true">1992</span>
-        </div>
-
-        <!-- Layer B: remastered (N&N jar) — clipped by --wipe -->
-        <div class="tape-layer tape-layer--jar" id="tape-jar">
-          <img class="tape-img" id="tape-jar-img" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max D — N&N remaster" width="400" height="400">
-          <div class="tape-grain" aria-hidden="true"></div>
-          <span class="tape-osd tape-osd--tr tape-osd--remaster" aria-hidden="true">REMASTERED · 2026</span>
-        </div>
-
-        <!-- Drag handle -->
-        <div class="tape-handle" id="tape-handle" aria-hidden="true">
-          <div class="tape-handle__line"></div>
-          <div class="tape-handle__grip" id="tape-grip">◂▸</div>
-        </div>
-
-        <!-- Channel-change static noise -->
-        <div class="tape-static" id="tape-static" aria-hidden="true"></div>
-
-        <!-- Accessible range input (keyboard / screen reader) -->
-        <input type="range" class="tape-range" id="tape-range"
-               min="0" max="100" value="35"
-               aria-label="Drag to compare the original snack with the remastered N&N jar">
-
-      </div>
-
-      <!-- Tape selector -->
-      <div class="tape-selector" role="group" aria-label="Select a product tape">
-        <button type="button" class="tape-btn is-active" data-tape="0" aria-pressed="true">TAPE 01 · PB MAX</button>
-        <button type="button" class="tape-btn" data-tape="1" aria-pressed="false">TAPE 02 · PB CRISPS</button>
-        <button type="button" class="tape-btn" data-tape="2" aria-pressed="false">TAPE 03 · TURTLE PIES</button>
-        <button type="button" class="tape-btn" data-tape="3" aria-pressed="false">TAPE 04 · BUTTERFINGER BBs</button>
-        <button type="button" class="tape-btn" data-tape="4" aria-pressed="false">TAPE 05 · KUDOS</button>
-      </div>
-
-      <div class="master-tapes__foot">
-        <a href="/collections/all" class="btn btn--primary">SHOP THE REMASTERS</a>
+      <div class="homesick__overlay">
+        <h2 class="homesick__headline" id="homesick-title">HOMESICK FOR A PLACE<br>THAT DOESN'T EXIST.</h2>
+        <p class="homesick__body">We're not just recreating snacks. We're rebuilding the moments that came with them.</p>
+        <a href="/collections/all" class="btn btn--primary homesick__cta">TAKE ME BACK</a>
       </div>
 
     </section>

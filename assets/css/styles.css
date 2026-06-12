@@ -310,6 +310,23 @@ body.paper-off {
 }
 
 /* Cart */
+/* Shared icon-button style for search / account */
+.header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 6px;
+  transition: background 0.12s;
+}
+.header-icon:hover { background: rgba(42,36,32,0.08); }
+.header-icon:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+/* Account icon is desktop-only — mobile gets ACCOUNT in the slide-in menu */
+.header-icon--account { display: none; }
+
 .header-cart {
   position: relative;
   display: flex;
@@ -644,6 +661,56 @@ main { padding-top: var(--offset); }
 }
 
 /* Headline — cream/yellow on dark video */
+/* Review badge — sits just above the H1.
+   Mobile: stars (in logo-blue box) stacked above the text */
+.hero__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin-bottom: 0.25rem;
+}
+
+.hero__rating-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.hero__rating-stars span {
+  background: var(--blue);
+  color: var(--yellow);
+  width: 25px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.hero__rating-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  line-height: 1;
+}
+
+/* "EXCELLENT" only shows on desktop */
+.hero__rating-word { display: none; }
+
+/* Desktop: badge back to one inline row, full text */
+@media (min-width: 768px) {
+  .hero__rating {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero__rating-word { display: inline; }
+}
+
 .hero__headline {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(52px, 13vw, 72px);
@@ -1593,7 +1660,9 @@ main { padding-top: var(--offset); }
   }
   .site-header__logo-img { height: 82px; }
   .site-header__left { flex: 1; }
-  .site-header__right { margin-left: auto; }
+  .site-header__right { margin-left: auto; gap: 2px; }
+
+  .header-icon--account { display: flex; }
 
   .site-nav__list { display: flex; align-items: center; gap: 0.25rem; }
   .site-nav__link {
@@ -1664,4 +1733,127 @@ main { padding-top: var(--offset); }
 
 @media (min-width: 1280px) {
   .site-nav__link { font-size: 1.125rem; }
+}
+
+/* =====================================================
+   SECTION 6: HOMESICK
+   Full-bleed 90s kitchen scene — ink copy directly
+   on the counter, no gradient overlay
+   ===================================================== */
+
+.homesick {
+  position: relative;
+  overflow: hidden;
+  border-top: 2.5px solid var(--ink);
+  background: transparent;
+}
+
+.homesick__bg {
+  position: relative;
+}
+
+.homesick__bg img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Film grain — lighter than brand mission, image stays bright */
+.homesick__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.42' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Mobile: copy overlays the clean lower-half counter */
+.homesick__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding: 0 1.375rem 2rem;
+  gap: 0.875rem;
+  z-index: 3;
+}
+
+.homesick__headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(34px, 10.8vw, 62px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.homesick__body {
+  font-family: 'Figtree', sans-serif;
+  font-size: 0.9375rem;
+  color: rgba(42, 36, 32, 0.85);
+  line-height: 1.55;
+  max-width: 48ch;
+  text-wrap: balance;
+}
+
+.homesick__cta {
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+}
+
+/* Tablet: portrait image cropped shorter, copy stays on the counter */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .homesick__bg img {
+    height: min(75vh, 860px);
+    object-fit: cover;
+    object-position: center 60%;
+  }
+
+  .homesick__overlay { padding: 0 2rem 2.75rem; }
+
+  .homesick__headline { font-size: clamp(44px, 5.8vw, 58px); }
+
+  .homesick__body { font-size: 1rem; }
+}
+
+/* Desktop: copy overlays the clean lower-left counter */
+@media (min-width: 1024px) {
+  .homesick {
+    height: clamp(480px, 70vh, 720px);
+  }
+
+  .homesick__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .homesick__bg img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center 65%;
+  }
+
+  .homesick__overlay {
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+    padding: 3rem 3.5rem;
+    gap: 1rem;
+  }
+
+  .homesick__headline {
+    font-size: clamp(48px, 4.6vw, 72px);
+  }
+
+  .homesick__body {
+    font-size: 1.0625rem;
+    max-width: 44ch;
+  }
 }

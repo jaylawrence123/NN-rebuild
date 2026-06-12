@@ -32,15 +32,17 @@ NN-Rebuild/
 | # | Section | Status |
 |---|---------|--------|
 | 0 | Announcement Bar | ✅ Done |
-| 1 | Nav | ✅ Done |
-| 2 | Hero | ✅ Done |
+| 1 | Nav (search / account / jar cart) | ✅ Done |
+| 2 | Hero (incl. review badge) | ✅ Done |
 | 3 | The Drops | ✅ Done |
-| 4 | Brand Mission | ✅ Done |
-| 5 | Before / After (Channel Flip) | ✅ Done |
-| 6 | The Master Tapes (VHS slider) | ⚠️ Built — needs rework |
+| 4 | Brand Mission | ❌ Removed from homepage |
+| 5 | Before / After (Channel Flip) | ❌ Removed from homepage |
+| 6 | Homesick (kitchen scene) | ✅ Done — pending full-res images |
 | 7 | UGC / IG Strip | 🔲 Pending |
 | 8 | Email Capture (Rewind Club) | 🔲 Pending |
 | 9 | Footer | 🔲 Pending |
+
+> The Master Tapes VHS slider (old Section 6) was removed and is flagged for possible later use — full markup recoverable from commit `2834991`; its CSS/JS remain in place, inert. Brand Mission and Channel Flip markup is also recoverable from git history (commit `53d849f`).
 
 ## Design System
 
@@ -48,25 +50,21 @@ NN-Rebuild/
 - **Fonts:** Bebas Neue (all headings/UI), Figtree (body copy), VT323 (retro labels)
 - **Background:** PNG paper fiber texture (`https://i.ibb.co/5h6S4Fqg/nn-background.png`) applied as `body { background-image }` with `background-blend-mode: darken` and `background-attachment: fixed`. Sections that should show it are set to `background: transparent`. Nav uses the same texture via identical `background-image` + `background-attachment: fixed` for seamless continuity. Toggle off with `class="paper-off"` on `<body>`.
 
-## Section 6 — The Master Tapes (⚠️ Needs Rework)
+## Section 6 — Homesick
 
-VHS before/after comparison slider. Current implementation:
-- CRT TV bezel (4:3, 10px ink border, 18px/8px radius)
-- Layer A (OG product): degraded filter + scanlines + grain + jitter animation
-- Layer B (jar): clean cream bg, clipped by `--wipe` CSS variable
-- Draggable handle (pointer events → rAF → clip-path)
-- 5 VHS tape spine buttons switching between product pairs
-- Channel-change static noise on switch
-- IntersectionObserver nudge on first scroll into view
+Emotional mission section adapted from the draft Shopify theme: the five jars in a warm 1990s kitchen (ChatGPT-generated scenes), ink copy directly on the clean counter — no gradient overlay, no copy below the image.
 
-**Flagged for redesign** — Jay is not happy with it. Redesign in next session.
+- Copy: "HOMESICK FOR A PLACE / THAT DOESN'T EXIST." + subcopy + "TAKE ME BACK" CTA (`btn--primary`)
+- **Mobile (default):** 2:3 portrait image (`https://i.ibb.co/FbWv8L3Q/nn-mobile-2.png`), jars upper half, copy overlaid on lower-half counter, centered. H1 locked to exactly 2 lines (`white-space: nowrap` + `<br>`, `clamp(34px, 10.8vw, 62px)`)
+- **Tablet 768–1023:** same portrait image cover-cropped (`min(75vh, 860px)`, `object-position: center 60%`)
+- **Desktop 1024+:** 16:9 image (`https://i.ibb.co/svxJX3SP/nn-desktop-2.png`), section `clamp(480px, 70vh, 720px)`, copy bottom-left on the clean counter corner, H1 `clamp(48px, 4.6vw, 72px)` (size capped so it stays off the jar labels)
+- ⚠️ Both images are low-res preview exports (640/427px wide) — swap URLs for full-res versions before launch
 
-Product pairs (ibb.co URLs):
-- TAPE 01 · PB MAX: `https://i.ibb.co/8DkNjHpy/pb-max.png` → `https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png`
-- TAPE 02 · PB CRISPS: `https://i.ibb.co/Q3Gm6vxV/pb-crisps.png` → `https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png`
-- TAPE 03 · TURTLE PIES: `https://i.ibb.co/zVqWPZ44/turtle-pies.png` → `https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png`
-- TAPE 04 · BUTTERFINGER BBs: `https://i.ibb.co/4LZ8TbB/butterfinger-bbs.png` → `https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png`
-- TAPE 05 · KUDOS: `https://i.ibb.co/fYH6qqR7/kudos-bar.png` → `https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png`
+## Nav & Hero details
+
+- Nav right group: search (`/search`), account (`/account/login`, desktop only — mobile menu has an ACCOUNT link instead), cart (`/cart`)
+- Cart icon is a custom jar SVG (ridged lid + squat body) matching the feather-style 2.5 stroke of the other icons; red count bubble sits on the lid corner
+- Hero review badge above the H1: five ★ in individual `--blue` boxes (25×23px, 17px star) + "EXCELLENT 4.86/5 CUSTOMER REVIEWS" in small cream Bebas. Mobile: stacked (stars over text) and drops the word "EXCELLENT"; desktop: inline row
 
 ## Notes
 
@@ -74,7 +72,5 @@ Product pairs (ibb.co URLs):
 - Logo: left-aligned on desktop, centered on mobile (`https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png`)
 - Hero: VIDEO panel first on mobile (CTA above fold) / side-by-side on desktop (video left, before/after right)
 - Hero before/after panel: wipes between discontinued snack shelf → N&N jar shelf, no text
-- Brand Mission: `<picture>` element — portrait mobile image, landscape desktop image
-- Before/after section (5): 16:9 on mobile, clamped height on desktop, IntersectionObserver triggers wipe
 - Pre-order launch phase — H1 reads "PRE-ORDERS / NOW LIVE."
 - Convert to Shopify OS 2.0 after all sections are approved
