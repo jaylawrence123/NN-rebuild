@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop the Drop — Nutty &amp; Nostalgic</title>
+  <meta name="description" content="Shop the Drop — every Nutty &amp; Nostalgic flavor. Discontinued snacks, back in a jar.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Figtree:wght@400;700&family=Lilita+One&family=VT323&display=swap">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" role="region" aria-label="Site announcements">
+    <span class="announcement-bar__text">FREE SHIPPING ON ORDERS $65 OR MORE</span>
+  </div>
+
+  <!-- HEADER / NAV -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+
+      <div class="site-header__left">
+        <button class="hamburger" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul class="site-nav__list">
+            <li><a href="index.html" class="site-nav__link">HOME</a></li>
+            <li><a href="shop.html" class="site-nav__link">SHOP THE DROP</a></li>
+            <li><a href="/pages/about" class="site-nav__link">ABOUT</a></li>
+            <li><a href="/pages/get-notified" class="site-nav__link">GET NOTIFIED</a></li>
+            <li><a href="/pages/reviews" class="site-nav__link">REVIEWS</a></li>
+            <li><a href="/pages/contact" class="site-nav__link">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <a href="index.html" class="site-header__logo" aria-label="Nutty and Nostalgic — Home">
+        <img src="https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png" alt="Nutty &amp; Nostalgic" class="site-header__logo-img">
+      </a>
+
+      <div class="site-header__right">
+        <a href="/search" class="header-icon" aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </a>
+        <a href="/account/login" class="header-icon header-icon--account" aria-label="Account login">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </a>
+        <a href="/cart" class="header-cart" aria-label="Shopping cart, 0 items">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="6" y="2.5" width="12" height="5.5" rx="1.5"/>
+            <rect x="3.5" y="8" width="17" height="13.5" rx="3"/>
+            <line x1="9.2" y1="4.4" x2="9.2" y2="6.1" stroke-width="1.75"/>
+            <line x1="12" y1="4.4" x2="12" y2="6.1" stroke-width="1.75"/>
+            <line x1="14.8" y1="4.4" x2="14.8" y2="6.1" stroke-width="1.75"/>
+          </svg>
+          <span class="header-cart__count" id="cart-count" aria-live="polite">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="mobile-nav__backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-nav__head">
+      <img src="https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png" alt="Nutty &amp; Nostalgic" class="mobile-nav__logo-img">
+      <button class="mobile-nav__close" id="nav-close" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <line x1="3" y1="3" x2="17" y2="17"/><line x1="17" y1="3" x2="3" y2="17"/>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="mobile-nav__list">
+      <li><a href="index.html" class="mobile-nav__link">HOME</a></li>
+      <li><a href="shop.html" class="mobile-nav__link">SHOP THE DROP</a></li>
+      <li><a href="/pages/about" class="mobile-nav__link">ABOUT</a></li>
+      <li><a href="/pages/get-notified" class="mobile-nav__link">GET NOTIFIED</a></li>
+      <li><a href="/pages/reviews" class="mobile-nav__link">REVIEWS</a></li>
+      <li><a href="/pages/contact" class="mobile-nav__link">CONTACT</a></li>
+      <li><a href="/account/login" class="mobile-nav__link">ACCOUNT</a></li>
+    </ul>
+
+    <a href="shop.html" class="btn btn--primary mobile-nav__cta">SHOP THE DROPS</a>
+  </nav>
+
+  <!-- PRODUCT — --flavor drives all flavor-color elements -->
+  <main id="main-content" class="shop-page">
+
+    <!-- Before/after shelf wipe banner -->
+    <div class="shop-banner" aria-hidden="true">
+      <div class="shop-banner__ba shop-banner__ba--before">
+        <img src="https://i.ibb.co/20GMHYj0/NN-before.png" alt="">
+      </div>
+      <div class="shop-banner__ba shop-banner__ba--after">
+        <img src="https://i.ibb.co/rGHshwGF/NN-after.png" alt="">
+      </div>
+    </div>
+
+    <section class="shop" aria-labelledby="shop-title">
+      <div class="shop__hd">
+        <h1 class="shop__title" id="shop-title">SHOP THE DROP</h1>
+        <p class="shop__sub">Snacks they killed. Back in a jar.</p>
+      </div>
+
+      <div class="shop-grid">
+
+        <article class="drop-card" style="--flavor:#E63B2E">
+          <a class="drop-card__link" href="product.html">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max'd nut butter jar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">PB MAX'D</h3>
+          </a>
+          <p class="drop-card__price">$14.99</p>
+          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+        </article>
+
+        <article class="drop-card" style="--flavor:#7BC74D">
+          <a class="drop-card__link" href="product.html">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="Cowabunga Pies nut butter jar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">COWABUNGA PIES</h3>
+          </a>
+          <p class="drop-card__price">$14.99</p>
+          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+        </article>
+
+        <article class="drop-card" style="--flavor:#2E6BE6">
+          <a class="drop-card__link" href="product-crisps.html">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="90's Crisps nut butter jar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">90'S CRISPS</h3>
+          </a>
+          <p class="drop-card__price">$14.99</p>
+          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+        </article>
+
+        <article class="drop-card" style="--flavor:#1F2A63">
+          <a class="drop-card__link" href="product.html">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="NuttyFinger BBs nut butter jar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">NUTTYFINGER BBs</h3>
+          </a>
+          <p class="drop-card__price">$14.99</p>
+          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+        </article>
+
+        <article class="drop-card" style="--flavor:#FFC42E">
+          <a class="drop-card__link" href="product.html">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="Lunch Box Granola nut butter jar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">LUNCH BOX GRANOLA</h3>
+          </a>
+          <p class="drop-card__price">$14.99</p>
+          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
+        </article>
+
+        <article class="drop-card drop-card--soldout">
+          <div class="drop-card__img"><span class="drop-card__soon" aria-hidden="true">?</span></div>
+          <h3 class="drop-card__name">NEXT DROP</h3>
+          <p class="drop-card__price drop-card__price--soldout">COMING SOON</p>
+          <button class="btn btn--soldout drop-card__btn">NOTIFY ME</button>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="footer-bars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="site-footer__guide">
+      <img src="https://i.ibb.co/4nXdcpcZ/nn-logo-footer.png" alt="Nutty &amp; Nostalgic" class="site-footer__logo" width="640" height="500">
+      <div class="site-footer__cols">
+        <div class="site-footer__col">
+          <span class="site-footer__col-title">SHOP</span>
+          <a href="shop.html" class="site-footer__link">SHOP THE DROP</a>
+          <a href="/pages/get-notified" class="site-footer__link">GET NOTIFIED</a>
+          <a href="/search" class="site-footer__link">SEARCH</a>
+        </div>
+        <div class="site-footer__col">
+          <span class="site-footer__col-title">INFO</span>
+          <a href="/pages/about" class="site-footer__link">ABOUT</a>
+          <a href="/pages/reviews" class="site-footer__link">REVIEWS</a>
+          <a href="/pages/contact" class="site-footer__link">CONTACT</a>
+          <a href="/account/login" class="site-footer__link">ACCOUNT</a>
+        </div>
+        <div class="site-footer__col">
+          <span class="site-footer__col-title">FOLLOW</span>
+          <a href="#" class="site-footer__link">INSTAGRAM</a>
+          <a href="#" class="site-footer__link">TIKTOK</a>
+        </div>
+      </div>
+
+      <div class="site-footer__signoff">
+        <span class="offair-line">END OF BROADCAST</span>
+        <button type="button" class="footer-rewind" id="footer-rewind" aria-label="Rewind to the top of the page">◀◀ REWIND</button>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span class="site-footer__legal">© 2026 NUTTY &amp; NOSTALGIC. ALL RIGHTS RESERVED.</span>
+    </div>
+
+  </footer>
+
+  <div class="rewind-static" id="rewind-static" aria-hidden="true"></div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

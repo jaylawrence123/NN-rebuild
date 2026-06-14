@@ -25,7 +25,8 @@
 
 /* ---- RESET ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { overflow-x: hidden; }
+html { overflow-x: hidden; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   overflow-x: hidden;
   background-color: var(--cream);
@@ -829,6 +830,71 @@ main { padding-top: var(--offset); }
   margin-bottom: 2rem;
 }
 .drop-shelf:last-child { border-bottom: none; margin-bottom: 0; }
+
+/* =====================================================
+   SHOP THE DROP — collection page
+   ===================================================== */
+.shop-page { padding-top: var(--offset); }
+
+/* Banner — before/after shelf wipe (discontinued snacks → our jars) */
+.shop-banner {
+  position: relative;
+  width: 100%;
+  height: clamp(200px, 42vw, 420px);
+  overflow: hidden;
+  border-bottom: 2.5px solid var(--ink);
+}
+.shop-banner__ba { position: absolute; inset: 0; }
+.shop-banner__ba img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shop-banner__ba--before { z-index: 1; }
+.shop-banner__ba--before img { filter: sepia(0.15) saturate(0.85) brightness(0.94) contrast(1.04); }
+.shop-banner__ba--after {
+  z-index: 2;
+  clip-path: inset(0 100% 0 0);
+  animation: hero-ba-wipe 9s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  filter: brightness(1.12) saturate(1.08);
+}
+@media (prefers-reduced-motion: reduce) {
+  .shop-banner__ba--after { animation: none; clip-path: inset(0 50% 0 0); }
+}
+/* Banner is mobile-only — too stretched on wide screens */
+@media (min-width: 768px) {
+  .shop-banner { display: none; }
+}
+
+.shop {
+  padding: 2.5rem 1.375rem 4rem;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+.shop__hd { text-align: center; margin-bottom: 2.5rem; }
+.shop__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 12vw, 84px);
+  line-height: 1;
+  color: var(--ink);
+}
+.shop__sub {
+  font-family: 'Figtree', sans-serif;
+  font-size: 1.0625rem;
+  color: var(--ink);
+  opacity: 0.75;
+  margin-top: 0.5rem;
+}
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem 1.5rem;
+}
+@media (min-width: 600px) { .shop-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .shop-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.drop-card__soon {
+  font-family: 'VT323', monospace;
+  font-size: clamp(64px, 16vw, 110px);
+  line-height: 1;
+  color: rgba(245, 230, 200, 0.6);
+}
 
 /* Card — no container, no border, no shadow */
 .drop-card {

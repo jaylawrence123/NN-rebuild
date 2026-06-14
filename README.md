@@ -20,15 +20,23 @@ Then open `http://localhost:8080`
 
 ```
 NN-Rebuild/
-├── index.html          # homepage
-├── product.html        # product page template (prototyped on PB Max'd)
+├── index.html            # homepage
+├── shop.html             # Shop the Drop collection page (all 5 flavors)
+├── product.html          # PB Max'd product page
+├── product-crisps.html   # 90's Crisps product page
 ├── assets/
-│   ├── css/styles.css  # homepage + shared
-│   ├── css/pdp.css     # product-page-only styles
-│   ├── js/main.js      # all JS (homepage + PDP)
-│   ├── img/nn-reviews-tv.png   # walnut TV frame for reviews video
+│   ├── css/styles.css    # homepage + shop + shared
+│   ├── css/pdp.css       # product-page-only styles
+│   ├── js/main.js        # all JS
+│   ├── img/nn-reviews-tv.png
 │   └── video/hero.mp4
 ```
+
+## Pages & links
+- Nav "SHOP THE DROP" + all shop CTAs → `shop.html` (was `/collections/all`). Product breadcrumb: HOME / THE DROPS (shop.html) / flavor.
+- **shop.html**: mobile-only before/after wipe banner (reuses hero `hero-ba-wipe`, hidden ≥768px — too stretched wide) → "SHOP THE DROP" header → `.shop-grid` (1 col mobile / 2 col 600px / 3 col 1024px) of the 5 flavor wrapper cards + a gray "NEXT DROP / COMING SOON ?" card.
+- **Flavor pages built:** product.html = PB Max'd (#E63B2E), product-crisps.html = 90's Crisps (#2E6BE6). Pattern `product-<slug>.html`. Each PDP's flavor switcher leads with its own flavor; cross-links (homepage card + every PDP's switcher swatch + Collect-All-5 card) must point to each new page.
+- THE ORIGINAL section ends with a "GET IT WHILE IT'S BACK" CTA (cream button, hard shadow) that smooth-scrolls to `#buy` (the quantity stepper lives there) — NOT a second add-to-cart. Replaced the old DISCONTINUED stamp.
 
 ## Sections
 
