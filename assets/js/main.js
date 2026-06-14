@@ -238,6 +238,95 @@
 })();
 
 /* =====================================================
+   PRODUCT PAGE — bundle selector, gallery, sticky ATC
+   ===================================================== */
+(function () {
+  'use strict';
+
+  var buy = document.querySelector('.pdp-buy');
+  if (!buy) return;
+
+  /* Gallery slideshow */
+  var track = document.getElementById('pdp-track');
+  if (track) {
+    var slides = track.children.length;
+    var dots = Array.from(document.querySelectorAll('.pdp-dot'));
+    var index = 0;
+
+    function go(i) {
+      index = (i + slides) % slides;
+      track.style.transform = 'translateX(' + (-index * 100) + '%)';
+      dots.forEach(function (d, n) { d.classList.toggle('is-active', n === index); });
+    }
+
+    var prev = document.getElementById('pdp-prev');
+    var next = document.getElementById('pdp-next');
+    if (prev) prev.addEventListener('click', function () { go(index - 1); });
+    if (next) next.addEventListener('click', function () { go(index + 1); });
+    dots.forEach(function (d, n) { d.addEventListener('click', function () { go(n); }); });
+
+    /* Touch swipe */
+    var x0 = null;
+    track.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+  }
+
+  /* Quantity stepper */
+  var qtyVal = document.getElementById('qty-val');
+  var qtyMinus = document.getElementById('qty-minus');
+  var qtyPlus = document.getElementById('qty-plus');
+  if (qtyVal && qtyMinus && qtyPlus) {
+    var qty = 1;
+    function setQty(n) { qty = Math.max(1, Math.min(99, n)); qtyVal.textContent = qty; }
+    qtyMinus.addEventListener('click', function () { setQty(qty - 1); });
+    qtyPlus.addEventListener('click', function () { setQty(qty + 1); });
+  }
+
+  /* Before / after comparison slider */
+  var ba = document.getElementById('ba');
+  if (ba) {
+    var baRange = document.getElementById('ba-range');
+    var baDrag = false, baRaf = null, baPending = null;
+
+    function baSet(pct) {
+      pct = Math.max(2, Math.min(98, pct));
+      ba.style.setProperty('--split', pct + '%');
+      /* Each word fades in as its side is dragged open past center */
+      ba.style.setProperty('--orig-op', Math.max(0, Math.min(1, (pct - 50) / 38)));
+      ba.style.setProperty('--remade-op', Math.max(0, Math.min(1, (50 - pct) / 38)));
+      if (baRange) baRange.value = pct;
+    }
+    function baFromX(clientX) {
+      var r = ba.getBoundingClientRect();
+      return ((clientX - r.left) / r.width) * 100;
+    }
+    function baFlush() { baRaf = null; if (baPending !== null) { baSet(baPending); baPending = null; } }
+    function baSched(clientX) { baPending = baFromX(clientX); if (!baRaf) baRaf = requestAnimationFrame(baFlush); }
+
+    ba.addEventListener('pointerdown', function (e) { baDrag = true; ba.setPointerCapture(e.pointerId); baSched(e.clientX); });
+    ba.addEventListener('pointermove', function (e) { if (baDrag) baSched(e.clientX); });
+    ba.addEventListener('pointerup', function () { baDrag = false; });
+    ba.addEventListener('pointercancel', function () { baDrag = false; });
+    if (baRange) baRange.addEventListener('input', function () { baSet(parseFloat(baRange.value)); });
+  }
+
+  /* Sticky mobile ATC — show after the buy box scrolls out */
+  var sticky = document.getElementById('pdp-sticky');
+  var atc = document.querySelector('.pdp-atc');
+  if (sticky && atc) {
+    new IntersectionObserver(function (entries) {
+      sticky.classList.toggle('is-visible', !entries[0].isIntersecting);
+      sticky.setAttribute('aria-hidden', entries[0].isIntersecting ? 'true' : 'false');
+    }, { rootMargin: '-80px 0px 0px 0px' }).observe(atc);
+  }
+})();
+
+/* =====================================================
    FOOTER: CHANNEL SURF — CH up/down flips the footer
    between full-color channel screens with static bursts
    ===================================================== */

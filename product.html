@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PB Max'd — Nutty &amp; Nostalgic</title>
+  <meta name="description" content="PB Max'd nut butter — layers of real peanut butter, crunchy wholegrain cookies, and pure milk chocolate. The discontinued bar, back in a jar.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Figtree:wght@400;700&family=Lilita+One&family=VT323&display=swap">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/pdp.css">
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" role="region" aria-label="Site announcements">
+    <span class="announcement-bar__text">FREE SHIPPING ON ORDERS $65 OR MORE</span>
+  </div>
+
+  <!-- HEADER / NAV -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+
+      <div class="site-header__left">
+        <button class="hamburger" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul class="site-nav__list">
+            <li><a href="index.html" class="site-nav__link">HOME</a></li>
+            <li><a href="/collections/all" class="site-nav__link">SHOP THE DROP</a></li>
+            <li><a href="/pages/about" class="site-nav__link">ABOUT</a></li>
+            <li><a href="/pages/get-notified" class="site-nav__link">GET NOTIFIED</a></li>
+            <li><a href="/pages/reviews" class="site-nav__link">REVIEWS</a></li>
+            <li><a href="/pages/contact" class="site-nav__link">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <a href="index.html" class="site-header__logo" aria-label="Nutty and Nostalgic — Home">
+        <img src="https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png" alt="Nutty &amp; Nostalgic" class="site-header__logo-img">
+      </a>
+
+      <div class="site-header__right">
+        <a href="/search" class="header-icon" aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </a>
+        <a href="/account/login" class="header-icon header-icon--account" aria-label="Account login">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </a>
+        <a href="/cart" class="header-cart" aria-label="Shopping cart, 0 items">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="6" y="2.5" width="12" height="5.5" rx="1.5"/>
+            <rect x="3.5" y="8" width="17" height="13.5" rx="3"/>
+            <line x1="9.2" y1="4.4" x2="9.2" y2="6.1" stroke-width="1.75"/>
+            <line x1="12" y1="4.4" x2="12" y2="6.1" stroke-width="1.75"/>
+            <line x1="14.8" y1="4.4" x2="14.8" y2="6.1" stroke-width="1.75"/>
+          </svg>
+          <span class="header-cart__count" id="cart-count" aria-live="polite">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="mobile-nav__backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-nav__head">
+      <img src="https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png" alt="Nutty &amp; Nostalgic" class="mobile-nav__logo-img">
+      <button class="mobile-nav__close" id="nav-close" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <line x1="3" y1="3" x2="17" y2="17"/><line x1="17" y1="3" x2="3" y2="17"/>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="mobile-nav__list">
+      <li><a href="index.html" class="mobile-nav__link">HOME</a></li>
+      <li><a href="/collections/all" class="mobile-nav__link">SHOP THE DROP</a></li>
+      <li><a href="/pages/about" class="mobile-nav__link">ABOUT</a></li>
+      <li><a href="/pages/get-notified" class="mobile-nav__link">GET NOTIFIED</a></li>
+      <li><a href="/pages/reviews" class="mobile-nav__link">REVIEWS</a></li>
+      <li><a href="/pages/contact" class="mobile-nav__link">CONTACT</a></li>
+      <li><a href="/account/login" class="mobile-nav__link">ACCOUNT</a></li>
+    </ul>
+
+    <a href="/collections/all" class="btn btn--primary mobile-nav__cta">SHOP THE DROPS</a>
+  </nav>
+
+  <!-- PRODUCT — --flavor drives all flavor-color elements -->
+  <main id="main-content" class="pdp" style="--flavor:#E63B2E; --flavor-text:#F5E6C8;">
+
+    <nav class="pdp-crumb" aria-label="Breadcrumb">
+      <a href="index.html">HOME</a><span aria-hidden="true">/</span><a href="/collections/all">THE DROPS</a><span aria-hidden="true">/</span><span class="pdp-crumb__here">PB MAX'D</span>
+    </nav>
+
+    <!-- ====== BUY ZONE ====== -->
+    <section class="pdp-buy" aria-label="Product">
+
+      <!-- Gallery slideshow -->
+      <div class="pdp-gallery">
+        <div class="pdp-slider">
+          <div class="pdp-track" id="pdp-track">
+            <div class="pdp-slide pdp-slide--card">
+              <img class="pdp-slide__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max'd jar">
+            </div>
+            <div class="pdp-slide pdp-slide--jar">
+              <img src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max'd jar on its own">
+            </div>
+            <div class="pdp-slide pdp-slide--ph"><span>CROSS-SECTION SHOT</span></div>
+            <div class="pdp-slide pdp-slide--ph"><span>IN THE WILD SHOT</span></div>
+          </div>
+          <button type="button" class="pdp-arrow pdp-arrow--prev" id="pdp-prev" aria-label="Previous image">&#8249;</button>
+          <button type="button" class="pdp-arrow pdp-arrow--next" id="pdp-next" aria-label="Next image">&#8250;</button>
+          <div class="pdp-dots" id="pdp-dots" aria-label="Image navigation">
+            <button type="button" class="pdp-dot is-active" aria-label="Image 1"></button>
+            <button type="button" class="pdp-dot" aria-label="Image 2"></button>
+            <button type="button" class="pdp-dot" aria-label="Image 3"></button>
+            <button type="button" class="pdp-dot" aria-label="Image 4"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buy box -->
+      <div class="pdp-info">
+        <h1 class="pdp-title">PB MAX'D</h1>
+
+        <a href="#pdp-reviews" class="pdp-rating">
+          <span class="pdp-rating__stars" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
+          <span class="pdp-rating__text">4.86 · 128 REVIEWS</span>
+        </a>
+
+        <ul class="pdp-bullets">
+          <li>Layers of real peanut butter</li>
+          <li>Crunchy wholegrain cookie pieces</li>
+          <li>Pure milk chocolate</li>
+        </ul>
+
+        <p class="pdp-promise">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          LOVE IT OR YOUR MONEY BACK
+        </p>
+
+        <div class="pdp-pricerow">
+          <span class="pdp-price" id="pdp-price">$14.99</span>
+          <span class="pdp-stock">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            IN STOCK
+          </span>
+          <div class="pdp-qty" aria-label="Quantity">
+            <button type="button" class="pdp-qty__btn" id="qty-minus" aria-label="Decrease quantity">&minus;</button>
+            <span class="pdp-qty__val" id="qty-val" aria-live="polite">1</span>
+            <button type="button" class="pdp-qty__btn" id="qty-plus" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <div class="pdp-flavors">
+          <span class="pdp-flavors__label">FLAVOR &mdash; <strong>PB MAX'D</strong></span>
+          <div class="pdp-flavors__row">
+            <a class="pdp-flavor is-active" href="product.html" style="--sw:#E63B2E" aria-label="PB Max'd" title="PB Max'd"><img src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt=""></a>
+            <a class="pdp-flavor" href="product.html" style="--sw:#7BC74D" aria-label="Cowabunga Pies" title="Cowabunga Pies"><img src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt=""></a>
+            <a class="pdp-flavor" href="product.html" style="--sw:#2E6BE6" aria-label="90's Crisps" title="90's Crisps"><img src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt=""></a>
+            <a class="pdp-flavor" href="product.html" style="--sw:#1F2A63" aria-label="NuttyFinger BBs" title="NuttyFinger BBs"><img src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt=""></a>
+            <a class="pdp-flavor" href="product.html" style="--sw:#FFC42E" aria-label="Lunch Box Granola" title="Lunch Box Granola"><img src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt=""></a>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn--primary pdp-atc">ADD TO CART</button>
+
+        <ul class="pdp-trust" aria-label="Why shop with us">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>SECURE<br>CHECKOUT</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            <span>30-DAY<br>RETURNS</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <span>TRUSTED<br>STORE</span>
+          </li>
+        </ul>
+
+        <p class="pdp-ship">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          FREE SHIPPING ON ORDERS $65 OR MORE
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ====== THE ORIGINAL ====== -->
+    <section class="pdp-original" aria-labelledby="pdp-original-title">
+
+      <div class="og-ticket">
+        <span class="og-ticket__eyebrow">THE ORIGINAL</span>
+        <h2 class="og-ticket__title" id="pdp-original-title">REMEMBER PB MAX?</h2>
+      </div>
+
+      <div class="ba" id="ba" style="--split:50%;">
+        <div class="ba__layer ba__layer--before">
+          <img src="https://i.ibb.co/8DkNjHpy/pb-max.png" alt="The original PB Max candy bar" draggable="false">
+          <span class="ba__word ba__word--before" aria-hidden="true">ORIGINAL</span>
+        </div>
+        <div class="ba__layer ba__layer--after">
+          <img src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max'd nut butter jar" draggable="false">
+          <span class="ba__word ba__word--after" aria-hidden="true">REMADE</span>
+        </div>
+        <div class="ba__divider" aria-hidden="true"><span class="ba__grip">&#8249;&#8250;</span></div>
+        <input type="range" min="0" max="100" value="50" class="ba__range" id="ba-range" aria-label="Drag to compare the original PB Max with the N&amp;N jar">
+      </div>
+
+      <p class="og-story">Mars launched PB Max in 1989 — peanut butter stacked on a whole-grain cookie, drowned in milk chocolate. It pulled in $50 million a year. They killed it anyway, reportedly because the family behind Mars didn't like peanut butter. A grudge took it. We brought it back.</p>
+
+      <span class="pdp-original__stamp" aria-hidden="true">DISCONTINUED</span>
+
+    </section>
+
+    <!-- ====== WHAT'S INSIDE ====== -->
+    <section class="pdp-inside" aria-labelledby="pdp-inside-title">
+      <div class="pdp-inside__copy">
+        <h2 class="pdp-inside__title" id="pdp-inside-title">WHAT'S INSIDE</h2>
+
+        <div class="pdp-spec">
+          <span class="pdp-spec__label">INGREDIENTS</span>
+          <p class="pdp-spec__body" id="spec-ingredients">[ Paste the full ingredient list here. ]</p>
+        </div>
+
+        <div class="pdp-spec">
+          <span class="pdp-spec__label">ALLERGENS</span>
+          <p class="pdp-spec__body pdp-spec__body--warn" id="spec-allergens">Contains: [ list allergens ]</p>
+        </div>
+
+        <ul class="pdp-badges">
+          <li class="pdp-badge">READY-TO-EAT</li>
+          <li class="pdp-badge">16 OZ JAR</li>
+          <li class="pdp-badge">NOSTALGIC DESSERT</li>
+        </ul>
+      </div>
+
+      <div class="pdp-nutrition" aria-label="Nutrition facts">
+        <span class="pdp-nutrition__title">NUTRITION FACTS</span>
+        <div class="pdp-nutrition__row pdp-nutrition__row--head"><span>&mdash; servings per container</span></div>
+        <div class="pdp-nutrition__row"><span>Serving size</span><span>&mdash;</span></div>
+        <div class="pdp-nutrition__rule"></div>
+        <div class="pdp-nutrition__row pdp-nutrition__row--cal"><span>Calories</span><span>&mdash;</span></div>
+        <div class="pdp-nutrition__rule pdp-nutrition__rule--thin"></div>
+        <div class="pdp-nutrition__row"><span>Total Fat</span><span>&mdash;</span></div>
+        <div class="pdp-nutrition__row pdp-nutrition__row--sub"><span>Saturated Fat</span><span>&mdash;</span></div>
+        <div class="pdp-nutrition__row"><span>Cholesterol</span><span>&mdash;</span></div>
+        <div class="pdp-nutrition__row"><span>Sodium</span><span>&mdash;</span></div>
+        <div class="pdp-nutrition__row"><span>Total Carbohydrate</span><span>&mdash;</span></div>
+        <div class="pdp-nutrition__row pdp-nutrition__row--sub"><span>Dietary Fiber</span><span>&mdash;</span></div>
+        <div class="pdp-nutrition__row pdp-nutrition__row--sub"><span>Total Sugars</span><span>&mdash;</span></div>
+        <div class="pdp-nutrition__row"><span>Protein</span><span>&mdash;</span></div>
+        <span class="pdp-nutrition__note">Awaiting real label data.</span>
+      </div>
+    </section>
+
+    <!-- ====== REVIEWS ====== -->
+    <section class="pdp-reviews" id="pdp-reviews" aria-labelledby="pdp-rev-title">
+      <div class="ugc__hd">
+        <p class="ugc__rating">
+          <span class="ugc__stars" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
+          <span class="ugc__rating-text">4.86/5 · 128 REVIEWS</span>
+        </p>
+        <h2 class="ugc__title" id="pdp-rev-title">PEOPLE ARE LOSING IT.</h2>
+      </div>
+
+      <div class="ugc__reviews">
+        <article class="rev">
+          <span class="rev__mark" aria-hidden="true">&ldquo;</span>
+          <span class="rev__stars" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
+          <p class="rev__quote">Placeholder review — a real quote about this exact flavor goes here. Big enough to actually read.</p>
+          <div class="rev__foot">
+            <img class="rev__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max'd jar" width="120" height="120" loading="lazy">
+            <span class="rev__who"><span class="rev__name">CUSTOMER NAME</span><span class="rev__verified">&#10003; VERIFIED BUYER</span></span>
+          </div>
+        </article>
+        <article class="rev">
+          <span class="rev__mark" aria-hidden="true">&ldquo;</span>
+          <span class="rev__stars" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
+          <p class="rev__quote">Placeholder review — a real quote about this exact flavor goes here. Big enough to actually read.</p>
+          <div class="rev__foot">
+            <img class="rev__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max'd jar" width="120" height="120" loading="lazy">
+            <span class="rev__who"><span class="rev__name">CUSTOMER NAME</span><span class="rev__verified">&#10003; VERIFIED BUYER</span></span>
+          </div>
+        </article>
+        <article class="rev">
+          <span class="rev__mark" aria-hidden="true">&ldquo;</span>
+          <span class="rev__stars" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
+          <p class="rev__quote">Placeholder review — a real quote about this exact flavor goes here. Big enough to actually read.</p>
+          <div class="rev__foot">
+            <img class="rev__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max'd jar" width="120" height="120" loading="lazy">
+            <span class="rev__who"><span class="rev__name">CUSTOMER NAME</span><span class="rev__verified">&#10003; VERIFIED BUYER</span></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== COLLECT ALL 5 ====== -->
+    <section class="pdp-collect" aria-labelledby="pdp-collect-title">
+      <div class="pdp-collect__hd">
+        <h2 class="pdp-collect__title" id="pdp-collect-title">COLLECT ALL 5.</h2>
+        <a href="/collections/all" class="pdp-collect__link">SHOP THE DROP →</a>
+      </div>
+      <div class="pdp-collect__row">
+        <a class="mini-card" href="product.html" data-flavor="green" style="--flavor:#7BC74D">
+          <span class="mini-card__img"><img class="mini-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt=""></span>
+          <span class="mini-card__name">COWABUNGA PIES</span>
+        </a>
+        <a class="mini-card" href="product.html" data-flavor="blue" style="--flavor:#2E6BE6">
+          <span class="mini-card__img"><img class="mini-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt=""></span>
+          <span class="mini-card__name">90'S CRISPS</span>
+        </a>
+        <a class="mini-card" href="product.html" data-flavor="navy" style="--flavor:#1F2A63">
+          <span class="mini-card__img"><img class="mini-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt=""></span>
+          <span class="mini-card__name">NUTTYFINGER BBs</span>
+        </a>
+        <a class="mini-card" href="product.html" data-flavor="yellow" style="--flavor:#FFC42E">
+          <span class="mini-card__img"><img class="mini-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt=""></span>
+          <span class="mini-card__name">LUNCH BOX GRANOLA</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sticky mobile add-to-cart -->
+  <div class="pdp-sticky" id="pdp-sticky" aria-hidden="true">
+    <img class="pdp-sticky__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="">
+    <span class="pdp-sticky__info">
+      <span class="pdp-sticky__name">PB MAX'D</span>
+      <span class="pdp-sticky__price" id="pdp-sticky-price">$14.99</span>
+    </span>
+    <button type="button" class="btn btn--primary pdp-sticky__btn">ADD TO CART</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="footer-bars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="tv-screen" id="tv-screen" data-ch="4">
+
+      <span class="tv-osd" id="tv-osd" aria-hidden="true">CH 04 · GUIDE</span>
+
+      <div class="tv-controls">
+        <button type="button" class="tv-btn" id="ch-down" aria-label="Channel down">CH ▼</button>
+        <button type="button" class="tv-btn" id="ch-up" aria-label="Channel up">CH ▲</button>
+      </div>
+
+      <section class="tv-channel tv-channel--guide is-on" data-ch="4" aria-label="Channel 04, guide">
+        <img src="https://i.ibb.co/4nXdcpcZ/nn-logo-footer.png" alt="Nutty &amp; Nostalgic" class="site-footer__logo" width="640" height="500">
+        <div class="site-footer__cols">
+          <div class="site-footer__col">
+            <span class="site-footer__col-title">SHOP</span>
+            <a href="/collections/all" class="site-footer__link">SHOP THE DROP</a>
+            <a href="/pages/get-notified" class="site-footer__link">GET NOTIFIED</a>
+            <a href="/search" class="site-footer__link">SEARCH</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-title">INFO</span>
+            <a href="/pages/about" class="site-footer__link">ABOUT</a>
+            <a href="/pages/reviews" class="site-footer__link">REVIEWS</a>
+            <a href="/pages/contact" class="site-footer__link">CONTACT</a>
+            <a href="/account/login" class="site-footer__link">ACCOUNT</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-title">FOLLOW</span>
+            <a href="#" class="site-footer__link">INSTAGRAM</a>
+            <a href="#" class="site-footer__link">TIKTOK</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="tv-channel tv-channel--shop" data-ch="1" aria-label="Channel 01, shop" hidden>
+        <a href="/collections/all" class="tv-biglink">SHOP THE DROP</a>
+        <a href="/pages/get-notified" class="tv-biglink">GET NOTIFIED</a>
+        <a href="/search" class="tv-biglink">SEARCH</a>
+      </section>
+
+      <section class="tv-channel tv-channel--info" data-ch="2" aria-label="Channel 02, info" hidden>
+        <a href="/pages/about" class="tv-biglink">ABOUT</a>
+        <a href="/pages/reviews" class="tv-biglink">REVIEWS</a>
+        <a href="/pages/contact" class="tv-biglink">CONTACT</a>
+        <a href="/account/login" class="tv-biglink">ACCOUNT</a>
+      </section>
+
+      <section class="tv-channel tv-channel--follow" data-ch="3" aria-label="Channel 03, follow" hidden>
+        <a href="#" class="tv-biglink">INSTAGRAM</a>
+        <a href="#" class="tv-biglink">TIKTOK</a>
+      </section>
+
+      <section class="tv-channel tv-channel--offair" data-ch="90" aria-label="Channel 90, off air" hidden>
+        <div class="offair-bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span class="offair-line">END OF BROADCAST</span>
+        <button type="button" class="footer-rewind" id="footer-rewind" aria-label="Rewind to the top of the page">◀◀ REWIND</button>
+      </section>
+
+      <div class="tv-static" id="tv-static" aria-hidden="true"></div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <span class="site-footer__legal">© 2026 NUTTY &amp; NOSTALGIC. ALL RIGHTS RESERVED.</span>
+    </div>
+
+  </footer>
+
+  <div class="rewind-static" id="rewind-static" aria-hidden="true"></div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
