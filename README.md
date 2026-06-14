@@ -25,6 +25,8 @@ NN-Rebuild/
 ├── product.html              # PB Max'd product page
 ├── product-crisps.html       # 90's Crisps product page
 ├── product-cowabunga.html    # Cowabunga Pies product page
+├── product-nuttyfinger.html  # NuttyFinger BBs product page
+├── product-lunchbox.html     # Lunch Box Granola product page
 ├── assets/
 │   ├── css/styles.css    # homepage + shop + shared
 │   ├── css/pdp.css       # product-page-only styles
@@ -36,9 +38,9 @@ NN-Rebuild/
 ## Pages & links
 - Nav "SHOP THE DROP" + all shop CTAs → `shop.html` (was `/collections/all`). Product breadcrumb: HOME / THE DROPS (shop.html) / flavor.
 - **shop.html**: mobile-only before/after wipe banner (reuses hero `hero-ba-wipe`, hidden ≥768px — too stretched wide) → "SHOP THE DROP" header → `.shop-grid` (1 col mobile / 2 col 600px / 3 col 1024px) of the 5 flavor wrapper cards + a gray "NEXT DROP / COMING SOON ?" card.
-- **Flavor pages built (3 of 5):** product.html = PB Max'd (#E63B2E, cream text), product-crisps.html = 90's Crisps (#2E6BE6, cream text), product-cowabunga.html = Cowabunga Pies (#7BC74D, **ink** text — green is light). Remaining: NuttyFinger BBs (#1F2A63 navy, cream text), Lunch Box Granola (#FFC42E yellow, ink text). Pattern `product-<slug>.html`. Each PDP's flavor switcher leads with its own flavor; cross-links (homepage card + shop card + every PDP's switcher swatch + Collect-All-5 card) must point to each new page.
+- **All 5 flavor pages built + fully cross-linked:** product.html = PB Max'd (#E63B2E, cream), product-crisps.html = 90's Crisps (#2E6BE6, cream), product-cowabunga.html = Cowabunga Pies (#7BC74D, ink), product-nuttyfinger.html = NuttyFinger BBs (#1F2A63, cream), product-lunchbox.html = Lunch Box Granola (#FFC42E, ink). Pattern `product-<slug>.html`. Each PDP's switcher leads with its own flavor; every switcher swatch + Collect-All-5 card + homepage/shop card resolves to a real page (only the PB Max'd swatch points to product.html, correctly).
   - Flavor-text rule: cream (#F5E6C8) on dark bands (red/blue/navy), ink (#2A2420) on light bands (green/yellow).
-  - Origin stories (all researched/verified): PB Max'd = Mars PB Max bar (1989, ~$50M/yr, killed reportedly over Mars family disliking peanut butter); 90's Crisps = Planters P.B. Crisps (1992 giant-peanut graham cookie, killed 1995 low demand); Cowabunga Pies = Hostess TMNT Pudding Pies (1991 movie tie-in, green-glazed vanilla puddin' w/ trading cards, vanished same year).
+  - Origin stories (all researched/verified): PB Max'd = Mars PB Max (1989, ~$50M/yr, killed reportedly over Mars family disliking PB); 90's Crisps = Planters P.B. Crisps (1992 giant-peanut graham cookie, killed 1995); Cowabunga Pies = Hostess TMNT Pudding Pies (1991 movie tie-in, green-glazed vanilla puddin', gone same year); NuttyFinger BBs = Nestlé Butterfinger BB's (1992, Bart Simpson ads, killed 2006, most-missed '90s snack in 2021 poll); Lunch Box Granola = Mars Kudos bar (1986 candy-as-granola, "Kudos I'm yours", discontinued 2017).
 - THE ORIGINAL section ends with a "GET IT WHILE IT'S BACK" CTA (cream button, hard shadow) that smooth-scrolls to `#buy` (the quantity stepper lives there) — NOT a second add-to-cart. Replaced the old DISCONTINUED stamp.
 
 ## Sections
