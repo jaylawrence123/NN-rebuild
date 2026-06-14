@@ -111,6 +111,12 @@ Channel-surfing was REMOVED June 13 2026 (Jay: "get rid of the channel arrows").
 ## Mobile nav (matches the footer)
 The slide-in mobile menu (`.mobile-nav`, mobile-only — never opens on desktop) mirrors the footer: ink bg + dead-channel TV-snow `::before` (same dot-noise, 0.13 opacity, gentle shimmer) + inset CRT vignette. Header at top = the big green-splat footer logo (`nn-logo-footer.png`, `width: min(210px, 74%)`, centered) with the close X absolute top-right. Header bar still uses the standard wordmark logo.
 
+## WHAT'S INSIDE — accordion (all 5 PDPs)
+Ingredients / Allergens / Nutrition Facts are native `<details>`/`<summary>` accordions (no JS, accessible; `+`→`−` toggle). Single centered column (`.pdp-inside` max-width 760px, the old 2-col grid removed). Maps cleanly to Shopify (Dawn uses the same `<details>` pattern) — drawer content → metafields (ingredients/allergens rich text, nutrition = image), wrapper stays static.
+- **PB Max'd has REAL data**: full ingredient list (cased to Title Case from a mixed paste; content unchanged), allergens "Contains: Milk, Wheat, Peanuts, Soy" + facility note, and the real Nutrition Facts label IMAGE (`assets/img/nutrition/pb-max.png`, framed, local).
+- Other 4 flavors: accordion placeholders ("Nutrition label coming soon") until Jay sends each flavor's ingredients/allergens/label image. Nutrition is now an IMAGE per flavor (the old CSS Nutrition-Facts panel is deprecated; `.pdp-nutrition*` CSS now unused → sweep later).
+- Made in USA badge (`assets/img/made-in-usa.png`, local) sits below the FREE SHIPPING line in the buy box on all 5 PDPs.
+
 ## OG snack images — local
 The before/after "original snack" images are LOCAL in `assets/img/og/` (pb-max, pb-crisps, turtle-pies, butterfinger-bbs, kudos-bar) — pulled off ibb after it flaked on load. Before-image alt text fixed per flavor (was a clone leftover "The original PB Max candy bar" on every page).
 

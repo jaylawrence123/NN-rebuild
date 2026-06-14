@@ -529,7 +529,7 @@ main { padding-top: var(--offset); }
 .hero__ba--after {
   z-index: 2;
   clip-path: inset(0 100% 0 0);
-  animation: hero-ba-wipe 9s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  animation: hero-ba-wipe 6s cubic-bezier(0.77, 0, 0.175, 1) infinite;
   filter: brightness(1.12) saturate(1.08);
 }
 @keyframes hero-ba-wipe {
