@@ -85,16 +85,15 @@ Emotional mission section adapted from the draft Shopify theme: the five jars in
 - "FIRST DIBS" (cream) / "ON EVERY DROP." (yellow) + one-line sub + email input (cream 2.5px border, yellow on focus) + red GET IN button
 - Stacked mobile / inline row desktop. Static form — wires to Klaviyo/Shopify Email at conversion
 
-## Section 9 — Footer (channel-surf TV)
+## Section 9 — Footer (simplified guide + dead-channel static)
 
-The footer is a working TV. CH ▲/▼ buttons flip the whole footer between channels with a static burst; phosphor-green VT323 channel OSD top-left (ink on the yellow channel).
+Channel-surfing was REMOVED June 13 2026 (Jay: "get rid of the channel arrows"). Footer is now the clean guide.
 
-- Surf order: CH 01 SHOP (yellow screen, giant ink Bebas links) → CH 02 INFO (blue screen) → CH 03 FOLLOW (red screen) → CH 04 GUIDE (default — splat logo + all 3 link columns, centered) → CH 90 OFF AIR (color bars + "END OF BROADCAST" + ◀◀ REWIND button)
+- Thin brand-color SMPTE bar strip at top (`.footer-bars`) → `.site-footer__guide`: splat logo + 3 link columns (SHOP / INFO / FOLLOW) + centered `.site-footer__signoff` ("END OF BROADCAST" + ◀◀ REWIND) → legal line
+- **Dead-channel TV static**: `.site-footer::before` = crisp black/white dot snow (thresholded fractalNoise via feComponentTransfer discrete 0/1), screen-blend, ~0.15 opacity, gentle 0.55s shimmer. `::after` = occasional signal-tear glitch every ~11s. Inset CRT vignette. Reduced-motion disables.
 - REWIND fast-scrolls to top (~0.9s rAF ease) under a half-opacity full-screen static flicker
-- Thin brand-color SMPTE bar strip tops the footer on every channel
 - Footer logo is the green-splat wordmark (`https://i.ibb.co/4nXdcpcZ/nn-logo-footer.png`) — footer ONLY, nav keeps the standard logo
-- Reduced motion: instant channel swaps, instant scroll, no static
-- Default channel is the full guide — zero link findability lost
+- DEAD CSS to sweep next cleanup: `.tv-screen`, `.tv-channel*`, `.tv-osd`, `.tv-controls`, `.tv-btn`, `.tv-static`, `.tv-biglink`, `.offair-bars` (channel-surf system, markup removed)
 
 ## Nav & Hero details
 
