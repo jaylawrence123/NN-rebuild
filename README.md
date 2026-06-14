@@ -28,9 +28,12 @@ NN-Rebuild/
 ├── product-nuttyfinger.html  # NuttyFinger BBs product page
 ├── product-lunchbox.html     # Lunch Box Granola product page
 ├── about.html                # About page (founder + the archive)
+├── contact.html              # Contact page (call/text, request a revival, message form, FAQ)
 ├── assets/
 │   ├── css/styles.css    # homepage + shop + shared
 │   ├── css/pdp.css       # product-page-only styles
+│   ├── css/about.css     # about-page-only styles
+│   ├── css/contact.css   # contact-page-only styles
 │   ├── js/main.js        # all JS
 │   ├── img/nn-reviews-tv.png
 │   └── video/hero.mp4
@@ -104,19 +107,30 @@ Emotional mission section adapted from the draft Shopify theme: the five jars in
 Channel-surfing was REMOVED June 13 2026 (Jay: "get rid of the channel arrows"). Footer is now the clean guide.
 
 - Thin brand-color SMPTE bar strip at top (`.footer-bars`) → `.site-footer__guide`: splat logo + 3 link columns (SHOP / INFO / FOLLOW) + centered `.site-footer__signoff` ("END OF BROADCAST" + ◀◀ REWIND) → legal line
-- **Dead-channel TV static**: `.site-footer::before` = crisp black/white dot snow (thresholded fractalNoise via feComponentTransfer discrete 0/1), screen-blend, ~0.15 opacity, gentle 0.55s shimmer. `::after` = occasional signal-tear glitch every ~11s. Inset CRT vignette. Reduced-motion disables.
+- **Dead-channel TV static**: `.site-footer::before` = crisp black/white dot snow (thresholded fractalNoise via feComponentTransfer discrete 0/1), screen-blend, gentle 0.55s shimmer. `::after` = occasional signal-tear glitch every ~11s. Inset CRT vignette. Reduced-motion disables.
+- **Static intensity (June 14 2026):** bumped ~2× (was barely visible on mobile). The visible level is driven by the shared `tv-snow` keyframe in `styles.css` (now ~0.26–0.34, was ~0.13–0.17) — ONE dial that controls the static on footer + mobile nav + About Archive + Contact Revival. Per-element `opacity` (the reduced-motion fallback) raised to 0.28 on each.
 - REWIND fast-scrolls to top (~0.9s rAF ease) under a half-opacity full-screen static flicker
 - Footer logo is the green-splat wordmark (`https://i.ibb.co/4nXdcpcZ/nn-logo-footer.png`) — footer ONLY, nav keeps the standard logo
 - DEAD CSS to sweep next cleanup: `.tv-screen`, `.tv-channel*`, `.tv-osd`, `.tv-controls`, `.tv-btn`, `.tv-static`, `.tv-biglink`, `.offair-bars` (channel-surf system, markup removed)
 
 ## Mobile nav (matches the footer)
-The slide-in mobile menu (`.mobile-nav`, mobile-only — never opens on desktop) mirrors the footer: ink bg + dead-channel TV-snow `::before` (same dot-noise, 0.13 opacity, gentle shimmer) + inset CRT vignette. Header at top = the big green-splat footer logo (`nn-logo-footer.png`, `width: min(210px, 74%)`, centered) with the close X absolute top-right. Header bar still uses the standard wordmark logo.
+The slide-in mobile menu (`.mobile-nav`, mobile-only — never opens on desktop) mirrors the footer: ink bg + dead-channel TV-snow `::before` (same dot-noise, shared `tv-snow` shimmer) + inset CRT vignette. Header at top = the big green-splat footer logo (`nn-logo-footer.png`, `width: min(210px, 74%)`, centered) with the close X absolute top-right. Header bar still uses the standard wordmark logo.
 
 ## About page (`about.html`, `about.css`)
 Built A+C hybrid after rejecting a generic centered-type version (research: authentic founder story = #1 DTC trust driver). ABOUT nav link wired sitewide.
 - **Founder intro:** Jay's photo (`assets/img/jay-about.jpg`, local) — SQUARE crop (`object-position 50% 40%`), ink frame + hard shadow, VHS-camcorder treatment (drifting tracking band, animated grain overlay, subtle handheld jitter, blinking REC; NO hard scanlines per rule). Paired with headline "I'M JAY. I BRING BACK THE SNACKS THEY KILLED." ("SNACKS THEY KILLED" in logo BLUE w/ red+yellow chromatic aberration) + first-person story (drafted from Jay's label copy — PLACEHOLDER, swap for his real voice).
 - **THE ARCHIVE:** ink band with footer/dropdown dead-channel static behind the cards. 5 case-file flip cards: front = OG snack + "KILLED [year]" (real years: PB Max 1994, Turtle Pies 1991, PB Crisps 1995, Butterfinger BB's 2006, Kudos 2017), flips on hover/tap to the jar + "REVIVED 2026", links to product. Native CSS 3D flip + tap-toggle JS.
 - **CTA:** "YOUR CHILDHOOD'S BACK IN STOCK." → Shop / Get Notified.
+
+## Contact page (`contact.html`, `contact.css`)
+CONTACT nav link wired sitewide (`contact.html`, replacing the old `/pages/contact` placeholder on all pages). Structure top→bottom:
+- **Call/text hero — "TALK TO A REAL HUMAN":** big bold tap-to-call/text number **954·275·6577** (`tel:`/`sms:` links) in a cream card + CALL / TEXT buttons + email fallback (`jay@nuttynostalgic.com`). Go right to the source.
+- **REQUEST A REVIVAL (the hook):** dark "case file" band with dead-channel static (Archive/footer motif). Nominate a discontinued snack → why it mattered → email. Turns the page into a vote on what's made next; ties to The Archive.
+- **Answering-machine contact form:** charcoal "device" with blinking red light + green VT323 "1 NEW MESSAGE" readout — "LEAVE A MESSAGE AFTER THE TONE." Fields: name, email, optional order #, message.
+- **FAQ:** native `<details>` accordions (shipping, allergens, order help, flavor suggestions, wholesale/press).
+- **Follow:** Instagram + TikTok buttons, both `@nuttynostalgic`.
+- **Shopify map:** custom look, native plumbing — both forms use Shopify `contact[...]` field names (`contact[name]`/`[email]`/`[body]`/`[Order number]`, revival uses `contact[Snack to revive]`/`[Why it mattered]` + a hidden `contact[Form type]`), so they drop into `{% form 'contact' %}` at conversion (no app). Mock actions are `#` placeholders.
+- Contact-page footer has the real IG/TikTok URLs; the other 7 pages' footer FOLLOW links are still `#` placeholders (propagate before launch).
 
 ## WHAT'S INSIDE — accordion (all 5 PDPs)
 Ingredients / Allergens / Nutrition Facts are native `<details>`/`<summary>` accordions (no JS, accessible; `+`→`−` toggle). Single centered column (`.pdp-inside` max-width 760px, the old 2-col grid removed). Maps cleanly to Shopify (Dawn uses the same `<details>` pattern) — drawer content → metafields (ingredients/allergens rich text, nutrition = image), wrapper stays static.

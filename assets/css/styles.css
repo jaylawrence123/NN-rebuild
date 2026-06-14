@@ -431,7 +431,7 @@ body.paper-off {
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23s)'/%3E%3C/svg%3E");
   background-size: 90px 90px;
-  opacity: 0.13;
+  opacity: 0.28;
   mix-blend-mode: screen;
   animation: tv-snow 0.55s steps(1) infinite;
 }
@@ -2496,7 +2496,7 @@ main { padding-top: var(--offset); }
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23s)'/%3E%3C/svg%3E");
   background-size: 90px 90px;
-  opacity: 0.15;
+  opacity: 0.28;
   mix-blend-mode: screen;
   animation: tv-snow 0.55s steps(1) infinite;
 }
@@ -2517,11 +2517,11 @@ main { padding-top: var(--offset); }
 }
 
 @keyframes tv-snow {
-  0%   { background-position: 0 0;        opacity: 0.15; }
-  25%  { background-position: -20px 14px; opacity: 0.13; }
-  50%  { background-position: 16px -16px; opacity: 0.17; }
-  75%  { background-position: -12px 18px; opacity: 0.13; }
-  100% { background-position: 18px 8px;   opacity: 0.16; }
+  0%   { background-position: 0 0;        opacity: 0.30; }
+  25%  { background-position: -20px 14px; opacity: 0.26; }
+  50%  { background-position: 16px -16px; opacity: 0.34; }
+  75%  { background-position: -12px 18px; opacity: 0.26; }
+  100% { background-position: 18px 8px;   opacity: 0.32; }
 }
 @keyframes tv-glitch {
   0%, 92%, 100% { opacity: 0; top: 30%; }

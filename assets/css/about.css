@@ -11,89 +11,63 @@
   flex-direction: column;
   gap: 2rem;
 }
-.about-intro__photo {
+/* Polaroid taped to the page */
+.polaroid {
   position: relative;
   width: 100%;
-  max-width: 340px;
-  aspect-ratio: 1 / 1;
-  margin: 0 auto;
-  border: 3px solid var(--ink);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 7px 8px 0 rgba(42, 36, 32, 0.22);
+  max-width: 320px;
+  margin: 1rem auto 0;
+  padding: 14px 14px 18px;
+  background: #fbf7ec;
+  box-shadow: 4px 8px 18px rgba(42, 36, 32, 0.28);
+  transform: rotate(-2.5deg);
 }
-.about-intro__photo img {
+.polaroid__shot {
   display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--ink);
+}
+.polaroid__shot img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 40%;
-  filter: saturate(1.12) contrast(1.04);
-  animation: vhs-jitter 4.5s steps(1) infinite;
+  filter: sepia(0.18) saturate(1.05) contrast(0.98) brightness(1.02);
 }
-/* VHS grain */
-.about-intro__photo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 120px 120px;
-  opacity: 0.1;
-  mix-blend-mode: overlay;
-  animation: tv-snow 0.5s steps(1) infinite;
+.polaroid__caption {
+  display: block;
+  margin-top: 14px;
+  text-align: center;
 }
-/* VHS tracking band drifting down */
-.about-intro__photo::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -20%;
-  height: 26px;
-  z-index: 3;
-  pointer-events: none;
-  background: linear-gradient(to bottom, transparent, rgba(245, 230, 200, 0.14), transparent);
-  animation: vhs-track 6s linear infinite;
-}
-@keyframes vhs-jitter {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(-0.6px, 0.4px); }
-  50% { transform: translate(0.5px, -0.5px); }
-  75% { transform: translate(-0.4px, 0.3px); }
-}
-@keyframes vhs-track {
-  0% { top: -20%; }
-  100% { top: 120%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .about-intro__photo img { animation: none; }
-  .about-intro__photo::before { animation: none; }
-  .about-intro__photo::after { display: none; }
-}
-.about-intro__rec {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+.polaroid__name {
+  display: block;
   font-family: 'VT323', monospace;
-  font-size: 15px;
-  color: var(--cream);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-  letter-spacing: 0.06em;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--ink);
 }
-.about-intro__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--red);
-  animation: live-pulse 1.8s ease-in-out infinite;
+.polaroid__note {
+  display: block;
+  margin-top: 4px;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
 }
-@media (prefers-reduced-motion: reduce) { .about-intro__dot { animation: none; } }
+/* Translucent tape at the top corners */
+.polaroid__tape {
+  position: absolute;
+  top: -12px;
+  width: 84px;
+  height: 28px;
+  background: rgba(228, 218, 188, 0.55);
+  box-shadow: 0 1px 4px rgba(42, 36, 32, 0.15);
+  z-index: 2;
+}
+.polaroid__tape--l { left: 8px; transform: rotate(-8deg); }
+.polaroid__tape--r { right: 8px; transform: rotate(7deg); }
 
 .about-intro__copy { text-align: center; }
 .about-intro__title {
@@ -140,7 +114,7 @@
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23s)'/%3E%3C/svg%3E");
   background-size: 90px 90px;
-  opacity: 0.14;
+  opacity: 0.28;
   mix-blend-mode: screen;
   animation: tv-snow 0.55s steps(1) infinite;
 }
@@ -278,7 +252,7 @@
     gap: 3.5rem;
     padding: 3.5rem 2rem 4.5rem;
   }
-  .about-intro__photo { flex: 0 0 380px; margin: 0; }
+  .polaroid { flex: 0 0 340px; margin: 0; }
   .about-intro__copy { text-align: left; flex: 1; max-width: 540px; }
   .revive-grid { grid-template-columns: repeat(5, 1fr); }
   .about-cta__btns { flex-direction: row; justify-content: center; }

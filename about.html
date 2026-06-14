@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -38,7 +38,7 @@
             <li><a href="about.html" class="site-nav__link">ABOUT</a></li>
             <li><a href="/pages/get-notified" class="site-nav__link">GET NOTIFIED</a></li>
             <li><a href="/pages/reviews" class="site-nav__link">REVIEWS</a></li>
-            <li><a href="/pages/contact" class="site-nav__link">CONTACT</a></li>
+            <li><a href="contact.html" class="site-nav__link">CONTACT</a></li>
           </ul>
         </nav>
       </div>
@@ -91,7 +91,7 @@
       <li><a href="about.html" class="mobile-nav__link">ABOUT</a></li>
       <li><a href="/pages/get-notified" class="mobile-nav__link">GET NOTIFIED</a></li>
       <li><a href="/pages/reviews" class="mobile-nav__link">REVIEWS</a></li>
-      <li><a href="/pages/contact" class="mobile-nav__link">CONTACT</a></li>
+      <li><a href="contact.html" class="mobile-nav__link">CONTACT</a></li>
       <li><a href="/account/login" class="mobile-nav__link">ACCOUNT</a></li>
     </ul>
 
@@ -103,10 +103,15 @@
 
     <!-- Founder: photo + voice -->
     <section class="about-intro">
-      <div class="about-intro__photo">
-        <img src="assets/img/jay-about.jpg" alt="Jay, founder of Nutty &amp; Nostalgic">
-        <span class="about-intro__rec" aria-hidden="true"><span class="about-intro__dot"></span>REC</span>
-      </div>
+      <figure class="polaroid">
+        <span class="polaroid__tape polaroid__tape--l" aria-hidden="true"></span>
+        <span class="polaroid__tape polaroid__tape--r" aria-hidden="true"></span>
+        <span class="polaroid__shot"><img src="assets/img/jay-about.jpg" alt="Jay, founder of Nutty &amp; Nostalgic"></span>
+        <figcaption class="polaroid__caption">
+          <span class="polaroid__name">JAY &middot; FOUNDER</span>
+          <span class="polaroid__note">Born in the 80s, raised in the 90s</span>
+        </figcaption>
+      </figure>
       <div class="about-intro__copy">
         <h1 class="about-intro__title">I'M JAY.<br>I BRING BACK THE<br><span class="about-intro__hl">SNACKS THEY KILLED.</span></h1>
         <p class="about-intro__body">I was a 90s kid raised on snacks that don't exist anymore &mdash; the ones they pulled off the shelf and never brought back. So I started making them myself.</p>
@@ -233,7 +238,7 @@
           <span class="site-footer__col-title">INFO</span>
           <a href="about.html" class="site-footer__link">ABOUT</a>
           <a href="/pages/reviews" class="site-footer__link">REVIEWS</a>
-          <a href="/pages/contact" class="site-footer__link">CONTACT</a>
+          <a href="contact.html" class="site-footer__link">CONTACT</a>
           <a href="/account/login" class="site-footer__link">ACCOUNT</a>
         </div>
         <div class="site-footer__col">
