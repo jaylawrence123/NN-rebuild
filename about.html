@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop the Drop — Nutty &amp; Nostalgic</title>
-  <meta name="description" content="Shop the Drop — every Nutty &amp; Nostalgic flavor. Discontinued snacks, back in a jar.">
+  <title>About — Nutty &amp; Nostalgic</title>
+  <meta name="description" content="The story behind Nutty &amp; Nostalgic — recreating the discontinued snacks you thought were gone for good.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Figtree:wght@400;700&family=Lilita+One&family=VT323&display=swap">
 
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/about.css">
 </head>
 <body>
 
@@ -98,78 +99,115 @@
   </nav>
 
   <!-- PRODUCT — --flavor drives all flavor-color elements -->
-  <main id="main-content" class="shop-page">
+  <main id="main-content" class="about">
 
-    <!-- Before/after shelf wipe banner -->
-    <div class="shop-banner" aria-hidden="true">
-      <div class="shop-banner__ba shop-banner__ba--before">
-        <img src="https://i.ibb.co/20GMHYj0/NN-before.png" alt="">
+    <!-- Founder: photo + voice -->
+    <section class="about-intro">
+      <div class="about-intro__photo">
+        <img src="assets/img/jay-about.jpg" alt="Jay, founder of Nutty &amp; Nostalgic">
+        <span class="about-intro__rec" aria-hidden="true"><span class="about-intro__dot"></span>REC</span>
       </div>
-      <div class="shop-banner__ba shop-banner__ba--after">
-        <img src="https://i.ibb.co/rGHshwGF/NN-after.png" alt="">
+      <div class="about-intro__copy">
+        <h1 class="about-intro__title">I'M JAY.<br>I BRING BACK THE<br><span class="about-intro__hl">SNACKS THEY KILLED.</span></h1>
+        <p class="about-intro__body">I was a 90s kid raised on snacks that don't exist anymore &mdash; the ones they pulled off the shelf and never brought back. So I started making them myself.</p>
+        <p class="about-intro__body">Every jar is one of those discontinued snacks, rebuilt from scratch, so you can taste a piece of that time again. For a lot of us, these aren't just snacks &mdash; they're the simpler, happier moments we still carry with us.</p>
+        <p class="about-intro__sign">&mdash; Jay, Founder</p>
       </div>
-    </div>
+    </section>
 
-    <section class="shop" aria-labelledby="shop-title">
-      <div class="shop__hd">
-        <h1 class="shop__title" id="shop-title">SHOP THE DROP</h1>
-        <p class="shop__sub">Snacks they killed. Back in a jar.</p>
+    <!-- The Archive -->
+    <section class="about-archive">
+      <div class="about-archive__hd">
+        <h2 class="about-archive__title">THE ARCHIVE</h2>
+        <p class="about-archive__sub">Five snacks they discontinued. Five back from the dead. Hover or tap a case file.</p>
       </div>
 
-      <div class="shop-grid">
+      <div class="revive-grid">
 
-        <article class="drop-card" style="--flavor:#E63B2E">
-          <a class="drop-card__link" href="product.html">
-            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max'd nut butter jar" width="400" height="400" loading="lazy"></div>
-            <h3 class="drop-card__name">PB MAX'D</h3>
-          </a>
-          <p class="drop-card__price">$14.99</p>
-          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
-        </article>
+        <div class="revive-card" tabindex="0">
+          <div class="revive-card__inner">
+            <div class="revive-card__face revive-card__front">
+              <span class="revive-card__tag">KILLED 1994</span>
+              <img src="assets/img/og/pb-max.png" alt="The original PB Max bar">
+              <span class="revive-card__name">PB MAX</span>
+            </div>
+            <a class="revive-card__face revive-card__back" href="product.html" style="--flavor:#E63B2E; --flavor-text:#F5E6C8">
+              <span class="revive-card__tag revive-card__tag--back">REVIVED 2026</span>
+              <img src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB Max'd jar">
+              <span class="revive-card__name">PB MAX'D</span>
+            </a>
+          </div>
+        </div>
 
-        <article class="drop-card" style="--flavor:#7BC74D">
-          <a class="drop-card__link" href="product-cowabunga.html">
-            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="Cowabunga Pies nut butter jar" width="400" height="400" loading="lazy"></div>
-            <h3 class="drop-card__name">COWABUNGA PIES</h3>
-          </a>
-          <p class="drop-card__price">$14.99</p>
-          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
-        </article>
+        <div class="revive-card" tabindex="0">
+          <div class="revive-card__inner">
+            <div class="revive-card__face revive-card__front">
+              <span class="revive-card__tag">KILLED 1991</span>
+              <img src="assets/img/og/turtle-pies.png" alt="The original TMNT Pudding Pies">
+              <span class="revive-card__name">TURTLE PIES</span>
+            </div>
+            <a class="revive-card__face revive-card__back" href="product-cowabunga.html" style="--flavor:#7BC74D; --flavor-text:#2A2420">
+              <span class="revive-card__tag revive-card__tag--back">REVIVED 2026</span>
+              <img src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="Cowabunga Pies jar">
+              <span class="revive-card__name">COWABUNGA PIES</span>
+            </a>
+          </div>
+        </div>
 
-        <article class="drop-card" style="--flavor:#2E6BE6">
-          <a class="drop-card__link" href="product-crisps.html">
-            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="90's Crisps nut butter jar" width="400" height="400" loading="lazy"></div>
-            <h3 class="drop-card__name">90'S CRISPS</h3>
-          </a>
-          <p class="drop-card__price">$14.99</p>
-          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
-        </article>
+        <div class="revive-card" tabindex="0">
+          <div class="revive-card__inner">
+            <div class="revive-card__face revive-card__front">
+              <span class="revive-card__tag">KILLED 1995</span>
+              <img src="assets/img/og/pb-crisps.png" alt="The original Planters PB Crisps">
+              <span class="revive-card__name">PB CRISPS</span>
+            </div>
+            <a class="revive-card__face revive-card__back" href="product-crisps.html" style="--flavor:#2E6BE6; --flavor-text:#F5E6C8">
+              <span class="revive-card__tag revive-card__tag--back">REVIVED 2026</span>
+              <img src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="90's Crisps jar">
+              <span class="revive-card__name">90'S CRISPS</span>
+            </a>
+          </div>
+        </div>
 
-        <article class="drop-card" style="--flavor:#1F2A63">
-          <a class="drop-card__link" href="product-nuttyfinger.html">
-            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="NuttyFinger BBs nut butter jar" width="400" height="400" loading="lazy"></div>
-            <h3 class="drop-card__name">NUTTYFINGER BBs</h3>
-          </a>
-          <p class="drop-card__price">$14.99</p>
-          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
-        </article>
+        <div class="revive-card" tabindex="0">
+          <div class="revive-card__inner">
+            <div class="revive-card__face revive-card__front">
+              <span class="revive-card__tag">KILLED 2006</span>
+              <img src="assets/img/og/butterfinger-bbs.png" alt="The original Butterfinger BB's">
+              <span class="revive-card__name">BUTTERFINGER BB'S</span>
+            </div>
+            <a class="revive-card__face revive-card__back" href="product-nuttyfinger.html" style="--flavor:#1F2A63; --flavor-text:#F5E6C8">
+              <span class="revive-card__tag revive-card__tag--back">REVIVED 2026</span>
+              <img src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="NuttyFinger BBs jar">
+              <span class="revive-card__name">NUTTYFINGER BBs</span>
+            </a>
+          </div>
+        </div>
 
-        <article class="drop-card" style="--flavor:#FFC42E">
-          <a class="drop-card__link" href="product-lunchbox.html">
-            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="Lunch Box Granola nut butter jar" width="400" height="400" loading="lazy"></div>
-            <h3 class="drop-card__name">LUNCH BOX GRANOLA</h3>
-          </a>
-          <p class="drop-card__price">$14.99</p>
-          <button class="btn btn--primary drop-card__btn">ADD TO CART</button>
-        </article>
+        <div class="revive-card" tabindex="0">
+          <div class="revive-card__inner">
+            <div class="revive-card__face revive-card__front">
+              <span class="revive-card__tag">KILLED 2017</span>
+              <img src="assets/img/og/kudos-bar.png" alt="The original Kudos bar">
+              <span class="revive-card__name">KUDOS</span>
+            </div>
+            <a class="revive-card__face revive-card__back" href="product-lunchbox.html" style="--flavor:#FFC42E; --flavor-text:#2A2420">
+              <span class="revive-card__tag revive-card__tag--back">REVIVED 2026</span>
+              <img src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="Lunch Box Granola jar">
+              <span class="revive-card__name">LUNCH BOX GRANOLA</span>
+            </a>
+          </div>
+        </div>
 
-        <article class="drop-card drop-card--soldout">
-          <div class="drop-card__img"><span class="drop-card__soon" aria-hidden="true">?</span></div>
-          <h3 class="drop-card__name">NEXT DROP</h3>
-          <p class="drop-card__price drop-card__price--soldout">COMING SOON</p>
-          <button class="btn btn--soldout drop-card__btn">NOTIFY ME</button>
-        </article>
+      </div>
+    </section>
 
+    <!-- CTA -->
+    <section class="about-cta">
+      <h2 class="about-cta__title">YOUR CHILDHOOD'S<br>BACK IN STOCK.</h2>
+      <div class="about-cta__btns">
+        <a href="shop.html" class="btn btn--primary about-cta__btn">SHOP THE DROP</a>
+        <a href="/pages/get-notified" class="btn about-cta__btn about-cta__btn--ghost">GET NOTIFIED</a>
       </div>
     </section>
 

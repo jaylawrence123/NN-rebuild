@@ -27,6 +27,7 @@ NN-Rebuild/
 ├── product-cowabunga.html    # Cowabunga Pies product page
 ├── product-nuttyfinger.html  # NuttyFinger BBs product page
 ├── product-lunchbox.html     # Lunch Box Granola product page
+├── about.html                # About page (founder + the archive)
 ├── assets/
 │   ├── css/styles.css    # homepage + shop + shared
 │   ├── css/pdp.css       # product-page-only styles
@@ -110,6 +111,12 @@ Channel-surfing was REMOVED June 13 2026 (Jay: "get rid of the channel arrows").
 
 ## Mobile nav (matches the footer)
 The slide-in mobile menu (`.mobile-nav`, mobile-only — never opens on desktop) mirrors the footer: ink bg + dead-channel TV-snow `::before` (same dot-noise, 0.13 opacity, gentle shimmer) + inset CRT vignette. Header at top = the big green-splat footer logo (`nn-logo-footer.png`, `width: min(210px, 74%)`, centered) with the close X absolute top-right. Header bar still uses the standard wordmark logo.
+
+## About page (`about.html`, `about.css`)
+Built A+C hybrid after rejecting a generic centered-type version (research: authentic founder story = #1 DTC trust driver). ABOUT nav link wired sitewide.
+- **Founder intro:** Jay's photo (`assets/img/jay-about.jpg`, local) — SQUARE crop (`object-position 50% 40%`), ink frame + hard shadow, VHS-camcorder treatment (drifting tracking band, animated grain overlay, subtle handheld jitter, blinking REC; NO hard scanlines per rule). Paired with headline "I'M JAY. I BRING BACK THE SNACKS THEY KILLED." ("SNACKS THEY KILLED" in logo BLUE w/ red+yellow chromatic aberration) + first-person story (drafted from Jay's label copy — PLACEHOLDER, swap for his real voice).
+- **THE ARCHIVE:** ink band with footer/dropdown dead-channel static behind the cards. 5 case-file flip cards: front = OG snack + "KILLED [year]" (real years: PB Max 1994, Turtle Pies 1991, PB Crisps 1995, Butterfinger BB's 2006, Kudos 2017), flips on hover/tap to the jar + "REVIVED 2026", links to product. Native CSS 3D flip + tap-toggle JS.
+- **CTA:** "YOUR CHILDHOOD'S BACK IN STOCK." → Shop / Get Notified.
 
 ## WHAT'S INSIDE — accordion (all 5 PDPs)
 Ingredients / Allergens / Nutrition Facts are native `<details>`/`<summary>` accordions (no JS, accessible; `+`→`−` toggle). Single centered column (`.pdp-inside` max-width 760px, the old 2-col grid removed). Maps cleanly to Shopify (Dawn uses the same `<details>` pattern) — drawer content → metafields (ingredients/allergens rich text, nutrition = image), wrapper stays static.

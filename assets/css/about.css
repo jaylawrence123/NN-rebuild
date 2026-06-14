@@ -1,0 +1,285 @@
+/* =====================================================
+   ABOUT PAGE — founder letter + the archive
+   ===================================================== */
+
+/* ---- Founder intro: photo + voice ---- */
+.about-intro {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.375rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.about-intro__photo {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border: 3px solid var(--ink);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 7px 8px 0 rgba(42, 36, 32, 0.22);
+}
+.about-intro__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  filter: saturate(1.12) contrast(1.04);
+  animation: vhs-jitter 4.5s steps(1) infinite;
+}
+/* VHS grain */
+.about-intro__photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  animation: tv-snow 0.5s steps(1) infinite;
+}
+/* VHS tracking band drifting down */
+.about-intro__photo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20%;
+  height: 26px;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(245, 230, 200, 0.14), transparent);
+  animation: vhs-track 6s linear infinite;
+}
+@keyframes vhs-jitter {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-0.6px, 0.4px); }
+  50% { transform: translate(0.5px, -0.5px); }
+  75% { transform: translate(-0.4px, 0.3px); }
+}
+@keyframes vhs-track {
+  0% { top: -20%; }
+  100% { top: 120%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-intro__photo img { animation: none; }
+  .about-intro__photo::before { animation: none; }
+  .about-intro__photo::after { display: none; }
+}
+.about-intro__rec {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  color: var(--cream);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.06em;
+}
+.about-intro__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: live-pulse 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .about-intro__dot { animation: none; } }
+
+.about-intro__copy { text-align: center; }
+.about-intro__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(38px, 9.5vw, 66px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.about-intro__hl {
+  color: var(--blue);
+  text-shadow: -2px 0 rgba(230, 59, 46, 0.55), 2px 0 rgba(255, 196, 46, 0.5);
+}
+.about-intro__body {
+  font-family: 'Figtree', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-top: 1rem;
+}
+.about-intro__sign {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  color: var(--red);
+  margin-top: 1.25rem;
+}
+
+/* ---- The Archive (case files) ---- */
+.about-archive {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  border-top: 2.5px solid var(--ink);
+  padding: 4rem 1.375rem 4.5rem;
+  box-shadow: inset 0 0 110px rgba(0, 0, 0, 0.5);
+}
+/* Dead-channel TV static — matches footer + mobile nav */
+.about-archive::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23s)'/%3E%3C/svg%3E");
+  background-size: 90px 90px;
+  opacity: 0.14;
+  mix-blend-mode: screen;
+  animation: tv-snow 0.55s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) { .about-archive::before { animation: none; } }
+.about-archive__hd,
+.revive-grid { position: relative; z-index: 1; }
+.about-archive__hd { text-align: center; margin-bottom: 2.5rem; }
+.about-archive__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 11vw, 80px);
+  line-height: 1;
+  color: var(--cream);
+}
+.about-archive__sub {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  color: rgba(245, 230, 200, 0.7);
+  margin-top: 0.5rem;
+}
+.revive-grid {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* Flip case-file card */
+.revive-card {
+  perspective: 1000px;
+  aspect-ratio: 4 / 5;
+  cursor: pointer;
+}
+.revive-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.revive-card:hover .revive-card__inner,
+.revive-card:focus-visible .revive-card__inner,
+.revive-card.is-flipped .revive-card__inner { transform: rotateY(180deg); }
+.revive-card:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+.revive-card__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0.875rem 0.75rem;
+  text-decoration: none;
+}
+.revive-card__front { background: var(--cream-card); }
+.revive-card__front img {
+  width: 82%;
+  height: 56%;
+  object-fit: contain;
+  filter: saturate(0.85) contrast(0.96);
+}
+.revive-card__back {
+  transform: rotateY(180deg);
+  background: var(--flavor);
+}
+.revive-card__back img {
+  width: 74%;
+  height: 56%;
+  object-fit: contain;
+  filter: drop-shadow(4px 5px 0 rgba(42, 36, 32, 0.3));
+}
+.revive-card__tag {
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  border: 2px solid var(--red);
+  padding: 1px 9px;
+  align-self: center;
+}
+.revive-card__tag--back {
+  color: var(--flavor-text);
+  border-color: var(--flavor-text);
+}
+.revive-card__name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(14px, 3.6vw, 19px);
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1;
+}
+.revive-card__back .revive-card__name { color: var(--flavor-text); }
+
+@media (prefers-reduced-motion: reduce) { .revive-card__inner { transition: none; } }
+
+/* ---- CTA ---- */
+.about-cta {
+  text-align: center;
+  padding: 4rem 1.375rem 5rem;
+}
+.about-cta__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 10vw, 76px);
+  line-height: 0.98;
+  color: var(--ink);
+}
+.about-cta__btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  align-items: center;
+  margin-top: 1.75rem;
+}
+.about-cta__btn { font-size: 1.25rem; letter-spacing: 0.08em; min-width: 240px; }
+.about-cta__btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+}
+.about-cta__btn--ghost:hover { background: var(--ink); color: var(--cream); }
+
+/* ---- Desktop ---- */
+@media (min-width: 768px) {
+  .about-intro {
+    flex-direction: row;
+    align-items: center;
+    gap: 3.5rem;
+    padding: 3.5rem 2rem 4.5rem;
+  }
+  .about-intro__photo { flex: 0 0 380px; margin: 0; }
+  .about-intro__copy { text-align: left; flex: 1; max-width: 540px; }
+  .revive-grid { grid-template-columns: repeat(5, 1fr); }
+  .about-cta__btns { flex-direction: row; justify-content: center; }
+}

@@ -327,6 +327,20 @@
 })();
 
 /* =====================================================
+   ABOUT: Cancelled → Revived flip cards (tap on touch)
+   ===================================================== */
+(function () {
+  'use strict';
+  var cards = document.querySelectorAll('.revive-card');
+  if (!cards.length) return;
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () { card.classList.toggle('is-flipped'); });
+    var back = card.querySelector('.revive-card__back');
+    if (back) back.addEventListener('click', function (e) { e.stopPropagation(); });
+  });
+})();
+
+/* =====================================================
    FOOTER: REWIND — fast scroll to top with static flicker
    ===================================================== */
 (function () {
