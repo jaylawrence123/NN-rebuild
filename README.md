@@ -53,8 +53,8 @@ NN-Rebuild/
 |---|---------|--------|
 | 0 | Announcement Bar | ✅ Done |
 | 1 | Nav (search / account / jar cart) | ✅ Done |
-| 2 | Hero (incl. review badge) | ✅ Done |
-| 3 | The Drops | ✅ Done |
+| 2 | Hero (incl. review badge) | ✅ Done — square video + 90s grain/glitch |
+| 3 | Pre-Order Drop | ✅ Done |
 | 4 | Brand Mission | ❌ Removed from homepage |
 | 5 | Before / After (Channel Flip) | ❌ Removed from homepage |
 | 6 | Homesick (kitchen scene) | ✅ Done — pending full-res images |
@@ -95,6 +95,8 @@ Emotional mission section adapted from the draft Shopify theme: the five jars in
 - Mobile: swipeable scroll-snap row (hidden scrollbar); Desktop 1024+: 3×2 grid
 - All photos, quotes, and names are placeholders — feeds from a review app (Judge.me/Loox/Okendo) at conversion
 - NO auto-scroll marquee (reviews must be readable), NO IG/UGC framing — this is a review section
+- The walnut TV (`.ugc__screen`) plays `hero-main.mp4` with the same 90s grain + faded grade as the hero (grain only, no glitch); REC/▶PLAY overlays sit above the grain
+- Note: a 90s time-capsule clip (`assets/video/rewind.mp4` + poster) is parked/unused — tried as a standalone CRT section and in this TV, both rejected
 
 ## Section 8 — Email Capture
 
@@ -146,6 +148,9 @@ The before/after "original snack" images are LOCAL in `assets/img/og/` (pb-max, 
 - Nav right group: search (`/search`), account (`/account/login`, desktop only — mobile menu has an ACCOUNT link instead), cart (`/cart`)
 - Cart icon is a custom jar SVG (ridged lid + squat body) matching the feather-style 2.5 stroke of the other icons; red count bubble sits on the lid corner
 - Hero review badge above the H1: five ★ in individual `--blue` boxes (25×23px, 17px star) + "EXCELLENT 4.86/5 CUSTOMER REVIEWS" in small cream Bebas. Mobile: stacked (stars over text) and drops the word "EXCELLENT"; desktop: inline row
+- **Cart icon = basket image** (`assets/img/nn-cart-basket.png`, local — cream basket + red jar + yellow lid) replacing the old jar SVG; `.header-cart__icon` 34px mobile / 56px desktop
+- **Hero video panel is square (1:1) on mobile AND desktop.** Plays `assets/video/hero-main.mp4` (720×720, local). 90s treatment: faded grade + animated **film grain** (`.hero__video-bg::after` — high-contrast B/W noise, `opacity:0.5`, `mix-blend-mode:overlay`; mid-gray noise would be invisible under overlay) + **VHS glitch** (`hero-glitch` jolt/skew/chromatic flash on the video + `.hero__video-bg::before` tracking-band sweep, ~6.5s). All reduced-motion-safe.
+- **Proof ticker (red marquee):** 3 phrases — "FREE SHIPPING ON ORDERS $65 OR MORE / PRE-ORDER NOW / 3,800+ 5-STAR REVIEWS" — split by a yellow ▶ (`.proof-ticker__sep`). Faster (13s loop) with a VHS tracking shudder on the bar (`ticker-tracking`) + chromatic brand-color text ghost.
 
 ## Product page (`product.html`) — prototyped on PB Max'd
 
