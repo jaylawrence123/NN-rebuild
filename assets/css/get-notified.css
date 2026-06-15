@@ -1,0 +1,127 @@
+/* =====================================================
+   GET NOTIFIED — upcoming flavors + back-in-stock signup
+   ===================================================== */
+
+/* ---- Hero ---- */
+.notify-hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.75rem 1.375rem 1.75rem;
+  text-align: center;
+}
+.notify-hero__eyebrow {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--red);
+}
+.notify-hero__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(46px, 13vw, 84px);
+  line-height: 0.92;
+  color: var(--ink);
+  margin-top: 0.25rem;
+}
+.notify-hero__sub {
+  font-family: 'Figtree', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 46ch;
+  margin: 0.9rem auto 0;
+}
+
+/* ---- Grid ---- */
+.notify-grid-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.375rem 4rem;
+}
+.notify-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* ---- Card — mystery flavor wrapper ---- */
+.notify-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 1.25rem 0.875rem 1.1rem;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 rgba(42, 36, 32, 0.22);
+  background-color: var(--flavor);
+  background-image: url('https://i.ibb.co/W4Mz606Q/nn-rebuild-background.png');
+  background-size: 380px 380px;
+  background-blend-mode: multiply;
+  overflow: hidden;
+}
+.notify-card__tag {
+  align-self: flex-start;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--flavor-text);
+  opacity: 0.8;
+  border: 1.5px solid var(--flavor-text);
+  padding: 0 6px;
+}
+.notify-card__q {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 22vw, 120px);
+  line-height: 0.85;
+  color: var(--flavor-text);
+  opacity: 0.9;
+  text-shadow: 4px 4px 0 rgba(42, 36, 32, 0.28);
+  margin: 0.25rem 0 0.1rem;
+}
+.notify-card__name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(15px, 4.4vw, 20px);
+  letter-spacing: 0.06em;
+  color: var(--flavor-text);
+  line-height: 1;
+}
+.notify-card__btn {
+  margin-top: 0.65rem;
+  width: 100%;
+  padding: 0.6rem 0.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.0625rem;
+  letter-spacing: 0.08em;
+  color: var(--flavor);
+  background: var(--flavor-text);
+  border: 2.5px solid var(--ink);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.notify-card__btn:hover { transform: translateY(-2px); opacity: 0.92; }
+.notify-card__btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+/* ---- Footnote ---- */
+.notify-foot {
+  margin-top: 2rem;
+  text-align: center;
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+/* ---- Responsive ---- */
+@media (min-width: 600px) {
+  .notify-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 900px) {
+  .notify-grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .notify-hero { padding-top: 3.5rem; }
+}
+@media (min-width: 1200px) {
+  .notify-grid { grid-template-columns: repeat(5, 1fr); }
+}

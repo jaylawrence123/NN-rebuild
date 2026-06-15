@@ -1,0 +1,280 @@
+/* =====================================================
+   REVIEWS PAGE — scoreboard + Judge.me All Reviews
+   ===================================================== */
+
+/* ---- Summary scoreboard ---- */
+.rv-summary {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.75rem 1.375rem 1.5rem;
+}
+.rv-summary__head { text-align: center; margin-bottom: 1.75rem; }
+.rv-summary__eyebrow {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--red);
+}
+.rv-summary__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 12vw, 78px);
+  line-height: 0.92;
+  color: var(--ink);
+  margin-top: 0.25rem;
+}
+
+/* Panel: score block + breakdown bars */
+.rv-summary__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background: var(--cream-card);
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 7px 8px 0 rgba(42, 36, 32, 0.22);
+  padding: 1.75rem 1.5rem;
+}
+.rv-summary__score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+.rv-summary__avg {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 22vw, 110px);
+  line-height: 0.85;
+  color: var(--ink);
+}
+.rv-summary__stars {
+  display: flex;
+  gap: 4px;
+}
+.rv-summary__stars span {
+  background: var(--blue);
+  color: var(--yellow);
+  width: 30px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  line-height: 1;
+}
+.rv-summary__count {
+  font-family: 'VT323', monospace;
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.rv-summary__cta {
+  margin-top: 0.75rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  min-width: 220px;
+}
+
+/* Breakdown bars — hi-fi level-meter feel */
+.rv-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: center;
+}
+.rv-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.rv-bar__label {
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  color: var(--ink);
+  width: 28px;
+  flex-shrink: 0;
+}
+.rv-bar__track {
+  flex: 1;
+  height: 14px;
+  background: rgba(42, 36, 32, 0.12);
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.rv-bar__fill {
+  display: block;
+  height: 100%;
+  background: var(--blue);
+  background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.25) 0 3px, transparent 3px 7px);
+}
+.rv-bar__num {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: var(--ink-soft);
+  width: 48px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ---- Filter chips ---- */
+.rv-filters {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 1.375rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.rv-chip {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  background: transparent;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.rv-chip:hover { background: rgba(42, 36, 32, 0.08); }
+.rv-chip.is-active { background: var(--ink); color: var(--cream); }
+.rv-chip:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+/* ---- Reviews list ---- */
+.rv-list {
+  max-width: 1100px;
+  margin: 1.5rem auto 0;
+  padding: 0 1.375rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.rv-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--cream-card);
+  border: 2.5px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 5px 6px 0 rgba(42, 36, 32, 0.16);
+  padding: 1.25rem 1.25rem 1.1rem;
+}
+.rv-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rv-card__stars {
+  display: flex;
+  gap: 3px;
+}
+.rv-card__stars span {
+  background: var(--blue);
+  color: var(--yellow);
+  width: 22px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  line-height: 1;
+}
+.rv-card__date {
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.rv-card__quote {
+  font-family: 'Figtree', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.rv-card__foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 0.25rem;
+  padding-top: 0.85rem;
+  border-top: 2px solid rgba(42, 36, 32, 0.12);
+}
+.rv-card__jar {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.rv-card__who {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.rv-card__name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.07em;
+  color: var(--ink);
+}
+.rv-card__meta {
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+.rv-card__verified { color: var(--red); }
+
+/* ---- CTA ---- */
+.rv-cta {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3.5rem 1.375rem 4.5rem;
+}
+.rv-cta__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(34px, 8vw, 56px);
+  line-height: 0.98;
+  color: var(--ink);
+}
+.rv-cta__sub {
+  font-family: 'Figtree', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 42ch;
+  margin: 0.6rem auto 1.5rem;
+}
+.rv-cta__btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  align-items: center;
+}
+.rv-cta__btn { font-size: 1.25rem; letter-spacing: 0.08em; min-width: 240px; }
+.rv-cta__btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+}
+.rv-cta__btn--ghost:hover { background: var(--ink); color: var(--cream); }
+
+/* ---- Desktop ---- */
+@media (min-width: 768px) {
+  .rv-summary { padding-top: 3.5rem; }
+  .rv-summary__panel {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    padding: 2.25rem 2.5rem;
+  }
+  .rv-summary__score { flex: 0 0 300px; border-right: 2.5px solid rgba(42, 36, 32, 0.15); padding-right: 2.5rem; }
+  .rv-bars { flex: 1; }
+  .rv-list { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .rv-cta__btns { flex-direction: row; justify-content: center; }
+}
+@media (min-width: 1100px) {
+  .rv-list { grid-template-columns: repeat(3, 1fr); }
+}

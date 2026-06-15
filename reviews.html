@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews — Nutty &amp; Nostalgic</title>
+  <meta name="description" content="4.86/5 from 3,800+ verified buyers. Read what people say about the snacks we brought back from the dead.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Figtree:wght@400;700&family=Lilita+One&family=VT323&display=swap">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/reviews.css">
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" role="region" aria-label="Site announcements">
+    <span class="announcement-bar__text">FREE SHIPPING ON ORDERS $65 OR MORE</span>
+  </div>
+
+  <!-- HEADER / NAV -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+
+      <div class="site-header__left">
+        <button class="hamburger" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul class="site-nav__list">
+            <li><a href="index.html" class="site-nav__link">HOME</a></li>
+            <li><a href="shop.html" class="site-nav__link">SHOP THE DROP</a></li>
+            <li><a href="about.html" class="site-nav__link">ABOUT</a></li>
+            <li><a href="get-notified.html" class="site-nav__link">GET NOTIFIED</a></li>
+            <li><a href="reviews.html" class="site-nav__link" aria-current="page">REVIEWS</a></li>
+            <li><a href="contact.html" class="site-nav__link">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <a href="index.html" class="site-header__logo" aria-label="Nutty and Nostalgic — Home">
+        <img src="https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png" alt="Nutty &amp; Nostalgic" class="site-header__logo-img">
+      </a>
+
+      <div class="site-header__right">
+        <a href="/search" class="header-icon" aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </a>
+        <a href="/account/login" class="header-icon header-icon--account" aria-label="Account login">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </a>
+        <a href="/cart" class="header-cart" aria-label="Shopping cart, 0 items">
+          <img src="assets/img/nn-cart-basket.png" alt="" class="header-cart__icon" width="28" height="22" aria-hidden="true">
+          <span class="header-cart__count" id="cart-count" aria-live="polite">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="mobile-nav__backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-nav__head">
+      <img src="https://i.ibb.co/4nXdcpcZ/nn-logo-footer.png" alt="Nutty &amp; Nostalgic" class="mobile-nav__logo-img">
+      <button class="mobile-nav__close" id="nav-close" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <line x1="3" y1="3" x2="17" y2="17"/><line x1="17" y1="3" x2="3" y2="17"/>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="mobile-nav__list">
+      <li><a href="index.html" class="mobile-nav__link">HOME</a></li>
+      <li><a href="shop.html" class="mobile-nav__link">SHOP THE DROP</a></li>
+      <li><a href="about.html" class="mobile-nav__link">ABOUT</a></li>
+      <li><a href="get-notified.html" class="mobile-nav__link">GET NOTIFIED</a></li>
+      <li><a href="reviews.html" class="mobile-nav__link">REVIEWS</a></li>
+      <li><a href="contact.html" class="mobile-nav__link">CONTACT</a></li>
+      <li><a href="/account/login" class="mobile-nav__link">ACCOUNT</a></li>
+    </ul>
+
+    <a href="shop.html" class="btn btn--primary mobile-nav__cta">SHOP THE DROPS</a>
+  </nav>
+
+  <main id="main-content" class="reviews">
+
+    <!-- Summary scoreboard -->
+    <section class="rv-summary">
+      <div class="rv-summary__head">
+        <p class="rv-summary__eyebrow">&#9654; VERIFIED BY JUDGE.ME</p>
+        <h1 class="rv-summary__title">DON'T TAKE OUR<br>WORD FOR IT.</h1>
+      </div>
+
+      <div class="rv-summary__panel">
+        <div class="rv-summary__score">
+          <span class="rv-summary__avg">4.86</span>
+          <span class="rv-summary__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+          <span class="rv-summary__count">3,800+ VERIFIED REVIEWS</span>
+          <a href="#write" class="btn btn--primary rv-summary__cta">WRITE A REVIEW</a>
+        </div>
+
+        <!-- breakdown bars — fed by Judge.me aggregate at conversion -->
+        <ul class="rv-bars" aria-hidden="true">
+          <li class="rv-bar"><span class="rv-bar__label">5&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:92%"></span></span><span class="rv-bar__num">3,420</span></li>
+          <li class="rv-bar"><span class="rv-bar__label">4&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:9%"></span></span><span class="rv-bar__num">266</span></li>
+          <li class="rv-bar"><span class="rv-bar__label">3&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:3%"></span></span><span class="rv-bar__num">76</span></li>
+          <li class="rv-bar"><span class="rv-bar__label">2&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:1.5%"></span></span><span class="rv-bar__num">19</span></li>
+          <li class="rv-bar"><span class="rv-bar__label">1&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:1.5%"></span></span><span class="rv-bar__num">19</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Filter chips — replaced by Judge.me's own filter/sort controls at conversion -->
+    <div class="rv-filters" role="tablist" aria-label="Filter reviews">
+      <button type="button" class="rv-chip is-active">ALL REVIEWS</button>
+      <button type="button" class="rv-chip">WITH PHOTOS</button>
+      <button type="button" class="rv-chip">5 &#9733;</button>
+      <button type="button" class="rv-chip">4 &#9733;</button>
+      <button type="button" class="rv-chip">MOST RECENT</button>
+    </div>
+
+    <!-- ============================================
+         REVIEWS LIST
+         At Shopify conversion, replace the placeholder
+         cards below with the Judge.me ALL REVIEWS WIDGET:
+         <div class="jdgm-all-reviews-widget"></div>
+         then brand it with the CSS overrides in reviews.css.
+    ============================================ -->
+    <section class="rv-list" aria-label="Customer reviews">
+
+      <article class="rv-card">
+        <header class="rv-card__top">
+          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+          <span class="rv-card__date">JUN 2026</span>
+        </header>
+        <p class="rv-card__quote">First bite and I was nine again, sitting on the kitchen floor watching Saturday cartoons. I genuinely got emotional. My wife thinks I've lost it.</p>
+        <footer class="rv-card__foot">
+          <img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB MAX'D" width="120" height="120" loading="lazy">
+          <span class="rv-card__who">
+            <span class="rv-card__name">DANNY R.</span>
+            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span>
+          </span>
+        </footer>
+      </article>
+
+      <article class="rv-card">
+        <header class="rv-card__top">
+          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+          <span class="rv-card__date">JUN 2026</span>
+        </header>
+        <p class="rv-card__quote">Ordered it as a joke for my brother's birthday. Now we both have a jar and text about it like idiots. Tastes EXACTLY like I remember.</p>
+        <footer class="rv-card__foot">
+          <img class="rv-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="90'S CRISPS" width="120" height="120" loading="lazy">
+          <span class="rv-card__who">
+            <span class="rv-card__name">MARIA T.</span>
+            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; 90'S CRISPS</span>
+          </span>
+        </footer>
+      </article>
+
+      <article class="rv-card">
+        <header class="rv-card__top">
+          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+          <span class="rv-card__date">MAY 2026</span>
+        </header>
+        <p class="rv-card__quote">These were my after-school snack every single day and I thought they were gone forever. I teared up opening the box. Thank you for bringing them back.</p>
+        <footer class="rv-card__foot">
+          <img class="rv-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="COWABUNGA PIES" width="120" height="120" loading="lazy">
+          <span class="rv-card__who">
+            <span class="rv-card__name">KEVIN S.</span>
+            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; COWABUNGA PIES</span>
+          </span>
+        </footer>
+      </article>
+
+      <article class="rv-card">
+        <header class="rv-card__top">
+          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+          <span class="rv-card__date">MAY 2026</span>
+        </header>
+        <p class="rv-card__quote">I hadn't thought about these in twenty years. One spoonful and the whole memory came flooding back. Unreal how close it is to the original.</p>
+        <footer class="rv-card__foot">
+          <img class="rv-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="NUTTYFINGER BBS" width="120" height="120" loading="lazy">
+          <span class="rv-card__who">
+            <span class="rv-card__name">ALEX P.</span>
+            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; NUTTYFINGER BBs</span>
+          </span>
+        </footer>
+      </article>
+
+      <article class="rv-card">
+        <header class="rv-card__top">
+          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+          <span class="rv-card__date">APR 2026</span>
+        </header>
+        <p class="rv-card__quote">Bought one to try, came back and bought four more. My whole family is obsessed. This is the most fun I've had with a snack in years.</p>
+        <footer class="rv-card__foot">
+          <img class="rv-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="LUNCH BOX GRANOLA" width="120" height="120" loading="lazy">
+          <span class="rv-card__who">
+            <span class="rv-card__name">SAM W.</span>
+            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; LUNCH BOX GRANOLA</span>
+          </span>
+        </footer>
+      </article>
+
+      <article class="rv-card">
+        <header class="rv-card__top">
+          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+          <span class="rv-card__date">APR 2026</span>
+        </header>
+        <p class="rv-card__quote">Shipping was fast and the packaging is gorgeous. But the taste — it's a straight-up time machine. Already signed up to be notified for the next drop.</p>
+        <footer class="rv-card__foot">
+          <img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB MAX'D" width="120" height="120" loading="lazy">
+          <span class="rv-card__who">
+            <span class="rv-card__name">JESS M.</span>
+            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span>
+          </span>
+        </footer>
+      </article>
+
+    </section>
+
+    <!-- CTA -->
+    <section class="rv-cta" id="write">
+      <h2 class="rv-cta__title">TASTED ONE? TELL THE WORLD.</h2>
+      <p class="rv-cta__sub">Reviews from real buyers help the next kid find their favorite snack again.</p>
+      <div class="rv-cta__btns">
+        <a href="#" class="btn btn--primary rv-cta__btn">WRITE A REVIEW</a>
+        <a href="shop.html" class="btn rv-cta__btn rv-cta__btn--ghost">SHOP THE DROP</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="footer-bars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="site-footer__guide">
+      <img src="https://i.ibb.co/4nXdcpcZ/nn-logo-footer.png" alt="Nutty &amp; Nostalgic" class="site-footer__logo" width="640" height="500">
+      <div class="site-footer__cols">
+        <div class="site-footer__col">
+          <span class="site-footer__col-title">SHOP</span>
+          <a href="shop.html" class="site-footer__link">SHOP THE DROP</a>
+          <a href="get-notified.html" class="site-footer__link">GET NOTIFIED</a>
+          <a href="/search" class="site-footer__link">SEARCH</a>
+        </div>
+        <div class="site-footer__col">
+          <span class="site-footer__col-title">INFO</span>
+          <a href="about.html" class="site-footer__link">ABOUT</a>
+          <a href="reviews.html" class="site-footer__link">REVIEWS</a>
+          <a href="contact.html" class="site-footer__link">CONTACT</a>
+          <a href="/account/login" class="site-footer__link">ACCOUNT</a>
+        </div>
+        <div class="site-footer__col">
+          <span class="site-footer__col-title">FOLLOW</span>
+          <a href="https://instagram.com/nuttynostalgic" class="site-footer__link" target="_blank" rel="noopener">INSTAGRAM</a>
+          <a href="https://tiktok.com/@nuttynostalgic" class="site-footer__link" target="_blank" rel="noopener">TIKTOK</a>
+        </div>
+      </div>
+
+      <div class="site-footer__signoff">
+        <span class="offair-line">END OF BROADCAST</span>
+        <button type="button" class="footer-rewind" id="footer-rewind" aria-label="Rewind to the top of the page">◀◀ REWIND</button>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span class="site-footer__legal">© 2026 NUTTY &amp; NOSTALGIC. ALL RIGHTS RESERVED.</span>
+    </div>
+
+  </footer>
+
+  <div class="rewind-static" id="rewind-static" aria-hidden="true"></div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

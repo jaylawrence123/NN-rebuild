@@ -29,11 +29,15 @@ NN-Rebuild/
 ├── product-lunchbox.html     # Lunch Box Granola product page
 ├── about.html                # About page (founder + the archive)
 ├── contact.html              # Contact page (call/text, request a revival, message form, FAQ)
+├── get-notified.html         # Get Notified (20 per-flavor "notify me" cards → Kbite)
+├── reviews.html              # Reviews page (scoreboard + Judge.me All Reviews container)
 ├── assets/
 │   ├── css/styles.css    # homepage + shop + shared
 │   ├── css/pdp.css       # product-page-only styles
 │   ├── css/about.css     # about-page-only styles
 │   ├── css/contact.css   # contact-page-only styles
+│   ├── css/get-notified.css
+│   ├── css/reviews.css
 │   ├── js/main.js        # all JS
 │   ├── img/nn-reviews-tv.png
 │   └── video/hero.mp4
@@ -133,6 +137,14 @@ CONTACT nav link wired sitewide (`contact.html`, replacing the old `/pages/conta
 - **Follow:** Instagram + TikTok buttons, both `@nuttynostalgic`.
 - **Shopify map:** custom look, native plumbing — both forms use Shopify `contact[...]` field names (`contact[name]`/`[email]`/`[body]`/`[Order number]`, revival uses `contact[Snack to revive]`/`[Why it mattered]` + a hidden `contact[Form type]`), so they drop into `{% form 'contact' %}` at conversion (no app). Mock actions are `#` placeholders.
 - Contact-page footer has the real IG/TikTok URLs; the other 7 pages' footer FOLLOW links are still `#` placeholders (propagate before launch).
+
+## Get Notified page (`get-notified.html`, `get-notified.css`)
+Per-flavor "notify me when it drops" page powered by **Kbite: Back in Stock** at conversion. "GET ON THE LIST." header → grid of **20 placeholder "COMING SOON" cards** (wrapper-style, cycling brand colors, `NN·01`–`NN·20` tag, big "?", NOTIFY ME button). Each button has a `data-notify="flavor-0X"` hook; at conversion swap name/color/jar per flavor and wire the button to Kbite (popup trigger, or link to that product's coming-soon page where Kbite's form lives). Jay sends the real 20 flavors later.
+
+## Reviews page (`reviews.html`, `reviews.css`)
+Container for the **Judge.me All Reviews Widget**. Branded **scoreboard panel** (giant 4.86 + blue-boxed stars + 3,800+ count + WRITE A REVIEW + hi-fi-meter rating breakdown bars), filter chips, and a 1/2/3-col grid of branded review cards (stars/date/quote/flavor-jar/name/verified), closing CTA "TASTED ONE? TELL THE WORLD." H1 "DON'T TAKE OUR WORD FOR IT." At conversion: replace the `.rv-list` placeholder cards with `<div class="jdgm-all-reviews-widget">` (comment marks the spot) and restyle Judge.me's output via the CSS overrides. CSS-restyle only — full custom card HTML would need the Judge.me API (skipped).
+
+All nav/footer links now resolve to real `.html` pages — no remaining `/pages/...` placeholders.
 
 ## WHAT'S INSIDE — accordion (all 5 PDPs)
 Ingredients / Allergens / Nutrition Facts are native `<details>`/`<summary>` accordions (no JS, accessible; `+`→`−` toggle). Single centered column (`.pdp-inside` max-width 760px, the old 2-col grid removed). Maps cleanly to Shopify (Dawn uses the same `<details>` pattern) — drawer content → metafields (ingredients/allergens rich text, nutrition = image), wrapper stays static.
