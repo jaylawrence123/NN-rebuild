@@ -93,6 +93,108 @@
   </nav>
 
   <!-- PRODUCT — --flavor drives all flavor-color elements -->
+  <div class="cart-drawer__backdrop" id="cart-backdrop" aria-hidden="true"></div>
+
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Your cart" aria-hidden="true">
+
+    <div class="cart-drawer__head">
+      <span class="cart-drawer__title">YOUR CART <span class="cart-drawer__count" id="cart-drawer-count">2</span></span>
+      <button type="button" class="cart-drawer__close" id="cart-close" aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <line x1="3" y1="3" x2="17" y2="17"/><line x1="17" y1="3" x2="3" y2="17"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Free-shipping progress -->
+    <div class="cart-ship" id="cart-ship" data-threshold="65">
+      <p class="cart-ship__msg" id="cart-ship-msg"></p>
+      <div class="cart-ship__track"><span class="cart-ship__fill" id="cart-ship-fill"></span></div>
+      <div class="cart-ship__pop" id="cart-ship-pop" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    </div>
+
+    <!-- Line items -->
+    <div class="cart-items" id="cart-items">
+
+      <div class="cart-item" data-price="14.99" data-qty="1" style="--flavor:#E63B2E">
+        <img class="cart-item__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB MAX'D" width="120" height="120">
+        <div class="cart-item__info">
+          <span class="cart-item__name">PB MAX'D</span>
+          <span class="cart-item__variant">16 oz jar</span>
+          <div class="cart-qty" role="group" aria-label="Quantity">
+            <button type="button" class="cart-qty__btn" data-step="-1" aria-label="Decrease quantity">&minus;</button>
+            <span class="cart-qty__n">1</span>
+            <button type="button" class="cart-qty__btn" data-step="1" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+        <div class="cart-item__right">
+          <span class="cart-item__price">$14.99</span>
+          <button type="button" class="cart-item__remove" aria-label="Remove item">REMOVE</button>
+        </div>
+      </div>
+
+      <div class="cart-item" data-price="14.99" data-qty="1" style="--flavor:#2E6BE6">
+        <img class="cart-item__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="90'S CRISPS" width="120" height="120">
+        <div class="cart-item__info">
+          <span class="cart-item__name">90'S CRISPS</span>
+          <span class="cart-item__variant">16 oz jar</span>
+          <div class="cart-qty" role="group" aria-label="Quantity">
+            <button type="button" class="cart-qty__btn" data-step="-1" aria-label="Decrease quantity">&minus;</button>
+            <span class="cart-qty__n">1</span>
+            <button type="button" class="cart-qty__btn" data-step="1" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+        <div class="cart-item__right">
+          <span class="cart-item__price">$14.99</span>
+          <button type="button" class="cart-item__remove" aria-label="Remove item">REMOVE</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Upsell — one-tap add the rest of the set -->
+    <div class="cart-upsell">
+      <span class="cart-upsell__title">COMPLETE THE SET</span>
+      <div class="cart-upsell__row">
+        <button type="button" class="cart-add" data-name="COWABUNGA PIES" data-price="14.99" data-jar="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" data-flavor="#7BC74D">
+          <img src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="" width="120" height="120">
+          <span class="cart-add__name">Cowabunga Pies</span>
+          <span class="cart-add__price">$14.99</span>
+          <span class="cart-add__plus" aria-hidden="true">+</span>
+        </button>
+        <button type="button" class="cart-add" data-name="NUTTYFINGER BBs" data-price="14.99" data-jar="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" data-flavor="#1F2A63">
+          <img src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="" width="120" height="120">
+          <span class="cart-add__name">NuttyFinger BBs</span>
+          <span class="cart-add__price">$14.99</span>
+          <span class="cart-add__plus" aria-hidden="true">+</span>
+        </button>
+        <button type="button" class="cart-add" data-name="LUNCH BOX GRANOLA" data-price="14.99" data-jar="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" data-flavor="#FFC42E">
+          <img src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="" width="120" height="120">
+          <span class="cart-add__name">Lunch Box Granola</span>
+          <span class="cart-add__price">$14.99</span>
+          <span class="cart-add__plus" aria-hidden="true">+</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sticky footer -->
+    <div class="cart-foot">
+      <p class="cart-foot__note">&#9654; Pre-order &mdash; ships in a couple of weeks.</p>
+      <div class="cart-foot__subtotal">
+        <span>SUBTOTAL</span>
+        <span id="cart-subtotal">$29.98</span>
+      </div>
+      <a href="/checkout" class="btn btn--primary cart-foot__checkout">CHECKOUT</a>
+      <div class="cart-express" aria-label="Express checkout">
+        <button type="button" class="cart-express__btn cart-express__btn--shop">shop<span>Pay</span></button>
+        <button type="button" class="cart-express__btn cart-express__btn--pp">Pay<span>Pal</span></button>
+        <button type="button" class="cart-express__btn cart-express__btn--g">G&nbsp;Pay</button>
+      </div>
+      <p class="cart-foot__trust">&#128274; Secure checkout &middot; 30-day money-back guarantee</p>
+    </div>
+
+  </aside>
+
   <main id="main-content" class="pdp" style="--flavor:#2E6BE6; --flavor-text:#F5E6C8;">
 
     <nav class="pdp-crumb" aria-label="Breadcrumb">

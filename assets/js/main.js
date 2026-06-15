@@ -380,3 +380,145 @@
     requestAnimationFrame(step);
   });
 })();
+
+/* =====================================================
+   CART DRAWER — open/close, qty, live subtotal,
+   free-shipping bar + celebration, one-tap upsell
+   ===================================================== */
+(function () {
+  var drawer = document.getElementById('cart-drawer');
+  if (!drawer) return;
+
+  var backdrop = document.getElementById('cart-backdrop');
+  var closeBtn = document.getElementById('cart-close');
+  var itemsWrap = document.getElementById('cart-items');
+  var shipEl = document.getElementById('cart-ship');
+  var shipMsg = document.getElementById('cart-ship-msg');
+  var shipFill = document.getElementById('cart-ship-fill');
+  var subtotalEl = document.getElementById('cart-subtotal');
+  var drawerCount = document.getElementById('cart-drawer-count');
+  var navCount = document.getElementById('cart-count');
+  var threshold = parseFloat(shipEl.getAttribute('data-threshold')) || 65;
+  var wasUnlocked = false;
+
+  function money(n) { return '$' + n.toFixed(2); }
+
+  function recalc() {
+    var subtotal = 0, count = 0;
+    itemsWrap.querySelectorAll('.cart-item').forEach(function (item) {
+      var price = parseFloat(item.getAttribute('data-price')) || 0;
+      var qty = parseInt(item.getAttribute('data-qty'), 10) || 0;
+      subtotal += price * qty;
+      count += qty;
+      var line = item.querySelector('.cart-item__price');
+      if (line) line.textContent = money(price * qty);
+      var nEl = item.querySelector('.cart-qty__n');
+      if (nEl) nEl.textContent = qty;
+    });
+
+    if (subtotalEl) subtotalEl.textContent = money(subtotal);
+    if (drawerCount) drawerCount.textContent = count;
+    if (navCount) navCount.textContent = count;
+
+    var pct = Math.min(100, (subtotal / threshold) * 100);
+    shipFill.style.width = pct + '%';
+
+    var unlocked = subtotal >= threshold;
+    if (unlocked) {
+      var remain = subtotal - threshold;
+      shipMsg.innerHTML = remain > 0
+        ? '★ FREE SHIPPING UNLOCKED ★'
+        : '★ FREE SHIPPING UNLOCKED ★';
+      if (!wasUnlocked) {
+        // retrigger the celebration animation
+        shipEl.classList.remove('is-unlocked');
+        void shipEl.offsetWidth;
+        shipEl.classList.add('is-unlocked');
+      }
+    } else {
+      var left = threshold - subtotal;
+      shipMsg.innerHTML = "You're <strong>" + money(left) + "</strong> away from FREE SHIPPING";
+      shipEl.classList.remove('is-unlocked');
+    }
+    wasUnlocked = unlocked;
+  }
+
+  function openCart() {
+    drawer.classList.add('is-open');
+    backdrop.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCart() {
+    drawer.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Open from any cart icon in the header
+  document.querySelectorAll('.header-cart').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); openCart(); });
+  });
+  if (closeBtn) closeBtn.addEventListener('click', closeCart);
+  if (backdrop) backdrop.addEventListener('click', closeCart);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeCart();
+  });
+
+  // Qty steppers + remove (event delegation)
+  itemsWrap.addEventListener('click', function (e) {
+    var stepBtn = e.target.closest('.cart-qty__btn');
+    if (stepBtn) {
+      var item = stepBtn.closest('.cart-item');
+      var qty = (parseInt(item.getAttribute('data-qty'), 10) || 0) + parseInt(stepBtn.getAttribute('data-step'), 10);
+      if (qty <= 0) { item.remove(); } else { item.setAttribute('data-qty', qty); }
+      recalc();
+      return;
+    }
+    var rm = e.target.closest('.cart-item__remove');
+    if (rm) { rm.closest('.cart-item').remove(); recalc(); }
+  });
+
+  // One-tap upsell add
+  document.querySelectorAll('.cart-add').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var name = btn.getAttribute('data-name');
+      var existing = Array.prototype.find.call(
+        itemsWrap.querySelectorAll('.cart-item'),
+        function (it) { return it.querySelector('.cart-item__name').textContent === name; }
+      );
+      if (existing) {
+        existing.setAttribute('data-qty', (parseInt(existing.getAttribute('data-qty'), 10) || 0) + 1);
+      } else {
+        var price = btn.getAttribute('data-price');
+        var jar = btn.getAttribute('data-jar');
+        var flavor = btn.getAttribute('data-flavor');
+        var el = document.createElement('div');
+        el.className = 'cart-item';
+        el.setAttribute('data-price', price);
+        el.setAttribute('data-qty', '1');
+        el.setAttribute('style', '--flavor:' + flavor);
+        el.innerHTML =
+          '<img class="cart-item__jar" src="' + jar + '" alt="' + name + '" width="120" height="120">' +
+          '<div class="cart-item__info">' +
+            '<span class="cart-item__name">' + name + '</span>' +
+            '<span class="cart-item__variant">16 oz jar</span>' +
+            '<div class="cart-qty" role="group" aria-label="Quantity">' +
+              '<button type="button" class="cart-qty__btn" data-step="-1" aria-label="Decrease quantity">−</button>' +
+              '<span class="cart-qty__n">1</span>' +
+              '<button type="button" class="cart-qty__btn" data-step="1" aria-label="Increase quantity">+</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="cart-item__right">' +
+            '<span class="cart-item__price">' + ('$' + parseFloat(price).toFixed(2)) + '</span>' +
+            '<button type="button" class="cart-item__remove" aria-label="Remove item">REMOVE</button>' +
+          '</div>';
+        itemsWrap.appendChild(el);
+      }
+      recalc();
+    });
+  });
+
+  recalc();
+})();

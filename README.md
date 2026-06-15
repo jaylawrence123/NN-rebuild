@@ -146,6 +146,16 @@ Container for the **Judge.me All Reviews Widget**. Branded **scoreboard panel** 
 
 All nav/footer links now resolve to real `.html` pages — no remaining `/pages/...` placeholders.
 
+## Cart drawer (`.cart-*` in styles.css + main.js) — on all 11 pages
+Slide-in-from-right cart (basket icon opens it; markup sits after each page's mobile-nav). Conversion stack from the top-Shopify playbook:
+- **Free-shipping progress bar** (toward $65) with a **celebration** when crossed — bar turns green + shimmers, message flips to "★ FREE SHIPPING UNLOCKED ★", gold stars pop.
+- **Line items** (flavor-tinted jar tile, qty stepper, line price, remove), **"COMPLETE THE SET" one-tap upsell row**, and a **sticky footer** (pre-order note, live subtotal, CHECKOUT, Shop Pay/PayPal/G Pay express buttons, secure/money-back trust line).
+- All **live JS**: steppers, upsell add, and remove recompute line prices, subtotal, the count badge, and the progress bar in real time. Demo seeds 2 items @ $14.99. Maps to a Shopify cart-drawer section (AJAX cart API) at conversion.
+
+## Next (planned)
+- **Coming-soon / email-capture landing page** for the currently-live site (switching to **Omnisend**): a single fully-custom "get notified" page with everything else hidden. On Shopify = the native password/coming-soon page (fully themed) + Omnisend form; otherwise a standalone single page.
+- Optional: branded 404 (dead-channel) + Shipping/Returns & FAQ page.
+
 ## WHAT'S INSIDE — accordion (all 5 PDPs)
 Ingredients / Allergens / Nutrition Facts are native `<details>`/`<summary>` accordions (no JS, accessible; `+`→`−` toggle). Single centered column (`.pdp-inside` max-width 760px, the old 2-col grid removed). Maps cleanly to Shopify (Dawn uses the same `<details>` pattern) — drawer content → metafields (ingredients/allergens rich text, nutrition = image), wrapper stays static.
 - **PB Max'd has REAL data**: full ingredient list (cased to Title Case from a mixed paste; content unchanged), allergens "Contains: Milk, Wheat, Peanuts, Soy" + facility note, and the real Nutrition Facts label IMAGE (`assets/img/nutrition/pb-max.png`, framed, local).
