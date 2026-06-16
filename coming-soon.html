@@ -63,31 +63,7 @@
 
   </main>
 
-  <!-- Chatbot launcher (swap in the pager icon art once hosted) -->
-  <button type="button" class="cs-bot" id="cs-bot" aria-label="Chat with us">
-    <img src="assets/img/nn-pager-icon.png" alt="" aria-hidden="true">
-    <span class="cs-bot__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-    <span class="cs-bot__pulse" aria-hidden="true"></span>
-  </button>
-
-  <!-- Pager chat window (prototype skin — real Cloudflare bot drops in later) -->
-  <div class="pager" id="pager" role="dialog" aria-label="N&N pager chat" hidden>
-    <div class="pager__top">
-      <span class="pager__status"><span class="pager__light"></span>N&amp;N PAGER &middot; ONLINE</span>
-      <button type="button" class="pager__close" id="pager-close" aria-label="Close chat">&times;</button>
-    </div>
-    <div class="pager__screen" id="pager-screen">
-      <div class="pgr-msg pgr-msg--bot"><span class="pgr-msg__from">N&amp;N&nbsp;&#9656;</span> Yo! Pre-orders drop soon. Page me anything.</div>
-    </div>
-    <div class="pager__quick">
-      <button type="button" class="pager__qbtn" data-q="When do pre-orders open?">WHEN'S THE DROP?</button>
-      <button type="button" class="pager__qbtn" data-q="What is Nutty &amp; Nostalgic?">WHAT IS THIS?</button>
-    </div>
-    <div class="pager__input">
-      <input type="text" class="pager__field" id="pager-field" placeholder="TYPE A MESSAGE..." autocomplete="off">
-      <button type="button" class="pager__send" id="pager-send" aria-label="Send">&#9656;</button>
-    </div>
-  </div>
+  <!-- Chatbot (pager) parked pre-launch — markup/JS/CSS recoverable from git; see project notes -->
 
   <script>
     (function () {
@@ -106,56 +82,6 @@
           document.getElementById('cs-success').hidden = false;
         });
       }
-
-      /* ---- Pager chat (prototype: canned replies; real bot drops in later) ---- */
-      var bot = document.getElementById('cs-bot');
-      var pager = document.getElementById('pager');
-      var screen = document.getElementById('pager-screen');
-      var field = document.getElementById('pager-field');
-
-      function addMsg(text, who) {
-        var m = document.createElement('div');
-        m.className = 'pgr-msg pgr-msg--' + who;
-        m.innerHTML = (who === 'bot' ? '<span class="pgr-msg__from">N&amp;N&nbsp;▸</span> ' : '') + text;
-        screen.appendChild(m);
-        screen.scrollTop = screen.scrollHeight;
-      }
-      function reply(q) {
-        var t = q.toLowerCase(), a;
-        if (t.indexOf('when') > -1 || t.indexOf('drop') > -1 || t.indexOf('pre-order') > -1 || t.indexOf('launch') > -1)
-          a = "Real soon. Drop your email up top and you'll be first the second pre-orders open.";
-        else if (t.indexOf('what') > -1 || t.indexOf('who') > -1)
-          a = "We bring back the snacks they discontinued — remade as nut butters. The drop is almost here.";
-        else if (t.indexOf('price') > -1 || t.indexOf('cost') > -1 || t.indexOf('how much') > -1)
-          a = "Jars run $14.99. Free shipping over $65.";
-        else if (t.indexOf('ship') > -1)
-          a = "Free shipping on orders $65+. Pre-orders ship a couple weeks after they open.";
-        else
-          a = "Good question — I'll have the full answer at launch. For now, get on the list so you don't miss the drop!";
-        var typing = document.createElement('div');
-        typing.className = 'pgr-typing';
-        typing.innerHTML = '<span></span><span></span><span></span>';
-        screen.appendChild(typing);
-        screen.scrollTop = screen.scrollHeight;
-        setTimeout(function () { typing.remove(); addMsg(a, 'bot'); }, 850);
-      }
-      function send(q) {
-        q = (q || '').trim();
-        if (!q) return;
-        addMsg(q, 'user');
-        field.value = '';
-        reply(q);
-      }
-      function openPager() { pager.hidden = false; bot.classList.add('is-hidden'); setTimeout(function(){ field.focus(); }, 350); }
-      function closePager() { pager.hidden = true; bot.classList.remove('is-hidden'); }
-
-      if (bot) bot.addEventListener('click', openPager);
-      document.getElementById('pager-close').addEventListener('click', closePager);
-      document.getElementById('pager-send').addEventListener('click', function () { send(field.value); });
-      field.addEventListener('keydown', function (e) { if (e.key === 'Enter') send(field.value); });
-      Array.prototype.forEach.call(document.querySelectorAll('.pager__qbtn'), function (b) {
-        b.addEventListener('click', function () { send(b.getAttribute('data-q')); });
-      });
     })();
   </script>
 </body>
