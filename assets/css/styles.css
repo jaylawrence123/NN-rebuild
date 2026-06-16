@@ -2158,10 +2158,27 @@ main { padding-top: var(--offset); }
 
 .ugc {
   border-top: 2.5px solid var(--ink);
-  background: transparent;
+  background: var(--ink);
   padding: 3.5rem 0 4rem;
   overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 130px rgba(0, 0, 0, 0.55);
 }
+/* dead-channel TV static (footer style), mid intensity */
+.ugc::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='us'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23us)'/%3E%3C/svg%3E");
+  background-size: 90px 90px;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+  animation: tv-snow 0.55s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) { .ugc::before { animation: none; opacity: 0.16; } }
+.ugc__hd, .ugc__stage, .ugc__foot { position: relative; z-index: 1; }
 
 .ugc__hd {
   text-align: center;
@@ -2173,7 +2190,7 @@ main { padding-top: var(--offset); }
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(40px, 10vw, 64px);
   line-height: 1;
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .ugc__rating {
@@ -2206,7 +2223,7 @@ main { padding-top: var(--offset); }
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1rem;
   letter-spacing: 0.06em;
-  color: var(--ink);
+  color: var(--cream);
 }
 
 /* THE STAGE — video + featured pull-quote */
@@ -2304,21 +2321,28 @@ main { padding-top: var(--offset); }
   letter-spacing: 0.1em;
 }
 
-/* Featured pull-quote — the gut punch */
-.ugc__featured {
+/* Testimonial reel — cycles like a broadcast next to the TV */
+.ugc__reel { position: relative; flex-shrink: 0; }
+.ugc__reelwin {
+  position: relative;
+  display: grid;
+}
+.ugc__tm {
+  grid-area: 1 / 1;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 1rem;
-  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
 }
-
-.ugc__featured-stars {
-  display: flex;
-  gap: 3px;
-}
-
-.ugc__featured-stars span {
+.ugc__tm.is-active { opacity: 1; visibility: visible; }
+.ugc__tm-stars { display: flex; gap: 3px; }
+.ugc__tm-stars span {
   background: var(--blue);
   color: var(--yellow);
   width: 26px;
@@ -2329,36 +2353,67 @@ main { padding-top: var(--offset); }
   font-size: 17px;
   line-height: 1;
 }
-
-.ugc__featured-quote {
+.ugc__tm-quote {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(34px, 7.5vw, 52px);
-  line-height: 0.98;
+  font-size: clamp(28px, 5.2vw, 50px);
+  line-height: 1.0;
   letter-spacing: 0.005em;
-  color: var(--ink);
+  color: var(--cream);
   margin: 0;
 }
+.ugc__tm-cite { display: flex; align-items: center; gap: 12px; }
+.ugc__tm-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.08em; color: var(--cream); }
+.ugc__tm-verified { font-family: 'VT323', monospace; font-size: 15px; letter-spacing: 0.06em; color: #57e08a; }
 
-.ugc__featured-cite {
-  display: flex;
+/* static-cut flash between testimonials */
+.ugc__static {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='ucs'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23ucs)'/%3E%3C/svg%3E");
+  background-size: 90px 90px;
+  mix-blend-mode: screen;
+}
+.ugc__static.is-cut { opacity: 0.8; }
+@media (prefers-reduced-motion: reduce) { .ugc__static.is-cut { opacity: 0; } }
+
+/* channel readout + prev/next */
+.ugc__reelnav { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
+.ugc__reelbtn {
+  color: var(--cream);
+  border: 2px solid rgba(245, 230, 200, 0.4);
+  border-radius: 8px;
+  min-width: 44px;
+  height: 34px;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  font-style: normal;
+  justify-content: center;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
-
-.ugc__featured-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.25rem;
-  letter-spacing: 0.08em;
-  color: var(--ink);
-}
-
-.ugc__featured-verified {
+.ugc__reelbtn:hover { border-color: var(--yellow); color: var(--yellow); }
+.ugc__chreadout {
   font-family: 'VT323', monospace;
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  color: var(--red);
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  color: #57e08a;
+  text-shadow: 0 0 8px rgba(87, 224, 138, 0.4);
 }
+
+/* See all reviews link */
+.ugc__foot { text-align: center; margin-top: 2.75rem; padding: 0 1.375rem; }
+.ugc__seeall {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  border-bottom: 2px solid rgba(245, 230, 200, 0.35);
+  padding-bottom: 2px;
+}
+.ugc__seeall:hover { color: var(--yellow); border-color: var(--yellow); }
 
 /* THE REVIEWS — editorial testimonial columns */
 .ugc__reviews {
@@ -2447,41 +2502,15 @@ main { padding-top: var(--offset); }
   color: var(--red);
 }
 
-/* Desktop: video + featured side by side, reviews as 3 columns */
+/* Desktop: TV + cycling reel side by side */
 @media (min-width: 768px) {
   .ugc__stage {
     flex-direction: row;
     align-items: center;
     gap: 2.5rem;
   }
-
-  .ugc__tv {
-    flex: 1 1 58%;
-    min-width: 0;
-  }
-
-  .ugc__featured {
-    flex: 1 1 42%;
-  }
-
-  .ugc__reviews {
-    flex-direction: row;
-    margin-top: 3.5rem;
-  }
-
-  .rev {
-    flex: 1;
-    padding: 0 2rem;
-    border-top: none;
-    border-left: 2px solid var(--ink);
-  }
-
-  .rev:first-child {
-    padding-left: 0;
-    border-left: none;
-  }
-
-  .rev:last-child { padding-right: 0; }
+  .ugc__tv { flex: 1 1 56%; min-width: 0; }
+  .ugc__reel { flex: 1 1 44%; }
 }
 
 /* Review cards — swipeable row on mobile, grid on desktop */
@@ -2687,6 +2716,54 @@ main { padding-top: var(--offset); }
 /* =====================================================
    SECTION 9: FOOTER
    ===================================================== */
+
+/* ============================================
+   FAQ — alternating-color accordion cards
+============================================ */
+.faq {
+  max-width: 760px;
+  margin-inline: auto;
+  width: 100%;
+  padding: 2.5rem 1.25rem 3rem;
+}
+.faq__title { text-align: center; margin-bottom: 1.75rem; }
+.faq__list { display: flex; flex-direction: column; gap: 0.9rem; }
+.faq__item {
+  background: var(--c);
+  color: var(--ct);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 5px 5px 0 rgba(42, 36, 32, 0.3);
+  overflow: hidden;
+}
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  list-style: none;
+  padding: 1rem 1.15rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__chev { flex-shrink: 0; display: inline-flex; transition: transform 0.2s ease; }
+.faq__item[open] .faq__chev { transform: rotate(180deg); }
+.faq__a {
+  padding: 0 1.15rem 1.15rem;
+  font-family: 'Figtree', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.faq__a p { max-width: 62ch; }
+@media (prefers-reduced-motion: reduce) { .faq__chev { transition: none; } }
+@media (min-width: 768px) {
+  .faq__q { font-size: 1.6rem; }
+  .faq__a { font-size: 1.0625rem; }
+}
 
 .site-footer {
   background: var(--ink);

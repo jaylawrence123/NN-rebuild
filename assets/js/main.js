@@ -522,3 +522,36 @@
 
   recalc();
 })();
+
+/* ---- Reviews testimonial reel (broadcast-style cycle) ---- */
+(function () {
+  var reel = document.getElementById('rev-reel');
+  if (!reel) return;
+  var slides = Array.prototype.slice.call(reel.querySelectorAll('.ugc__tm'));
+  if (slides.length < 2) return;
+  var staticEl = document.getElementById('rev-static');
+  var chEl = document.getElementById('rev-ch');
+  var prev = document.getElementById('rev-prev');
+  var next = document.getElementById('rev-next');
+  var i = 0;
+  var timer;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach(function (s, idx) { s.classList.toggle('is-active', idx === i); });
+    if (chEl) chEl.textContent = 'CH ' + (slides[i].getAttribute('data-ch') || ('0' + (i + 1)));
+    if (staticEl && !reduce) {
+      staticEl.classList.add('is-cut');
+      setTimeout(function () { staticEl.classList.remove('is-cut'); }, 160);
+    }
+  }
+  function go(n) { show(n); restart(); }
+  function restart() { clearInterval(timer); timer = setInterval(function () { show(i + 1); }, 5000); }
+
+  if (next) next.addEventListener('click', function () { go(i + 1); });
+  if (prev) prev.addEventListener('click', function () { go(i - 1); });
+  reel.addEventListener('mouseenter', function () { clearInterval(timer); });
+  reel.addEventListener('mouseleave', restart);
+  restart();
+})();

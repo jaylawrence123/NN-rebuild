@@ -63,7 +63,8 @@ NN-Rebuild/
 | 4 | Brand Mission | ❌ Removed from homepage |
 | 5 | Before / After (Channel Flip) | ❌ Removed from homepage |
 | 6 | Homesick (kitchen scene) | ✅ Done — pending full-res images |
-| 7 | Reviews | ✅ Done — placeholder photos/quotes |
+| 7 | Reviews | ✅ Rebuilt — ink+static "broadcast" stage, TV centerpiece + cycling testimonial reel |
+| 7b | FAQ (alternating-color accordion + FAQPage schema) | ✅ Done |
 | 8 | Email Capture | ✅ Done |
 | 9 | Footer (channel-surf TV) | ✅ Done |
 
@@ -93,15 +94,15 @@ Emotional mission section adapted from the draft Shopify theme: the five jars in
 - **Desktop 1024+:** 16:9 image (`https://i.ibb.co/svxJX3SP/nn-desktop-2.png`), section `clamp(480px, 70vh, 720px)`, copy bottom-left on the clean counter corner, H1 `clamp(48px, 4.6vw, 72px)` (size capped so it stays off the jar labels)
 - ⚠️ Both images are low-res preview exports (640/427px wide) — swap URLs for full-res versions before launch
 
-## Section 7 — Reviews
+## Section 7 — Reviews (rebuilt: late-night broadcast)
+Dark **ink + dead-channel static** stage (breaks the cream rhythm next to the FAQ). Header in cream: blue-boxed ★ + "4.86/5 · 4,000+ CUSTOMER REVIEWS" + "4,000+ PEOPLE FEEL LIKE KIDS AGAIN."
+- **The walnut TV (`.ugc__screen`) is the centerpiece**, now playing the hero clip `hero-main-v2.mp4` (keeps its own CRT grain/grade). REC + ▶PLAY overlays.
+- **Cycling testimonial reel** beside the TV (`.ugc__reel`): blue-boxed ★★★★★ → big cream Bebas quote → `NAME · ✓ VERIFIED BUYER` → `◀◀ CH 0X ▶▶` with a green channel readout. Auto-advances 5s with a **VHS static-cut**, pauses on hover; centered. Grid-stacking (`.ugc__reelwin`) so quotes of any length never clip. JS = IIFE at end of `main.js`. `▶ SEE ALL 4,000+ REVIEWS` → reviews.html.
+- Real curated testimonials cycle; full review app (Judge.me) lives on reviews.html at conversion. Still review-focused — no IG/UGC framing.
+- **Dead CSS (inert, sweep later):** old `.ugc__reviews`/`.rev*` card rules + legacy `.ugc__row`/`.review-card*` — no markup uses them.
 
-- Header: compact star rating eyebrow (5 small blue-boxed ★ + "4.86/5 CUSTOMER REVIEWS") above H1 "4,000+ PEOPLE FEEL LIKE KIDS AGAIN."
-- Cards: photo (square, top) / 5 boxed stars / Figtree quote / Bebas name + red VT323 "VERIFIED BUYER"
-- Mobile: swipeable scroll-snap row (hidden scrollbar); Desktop 1024+: 3×2 grid
-- All photos, quotes, and names are placeholders — feeds from a review app (Judge.me/Loox/Okendo) at conversion
-- NO auto-scroll marquee (reviews must be readable), NO IG/UGC framing — this is a review section
-- The walnut TV (`.ugc__screen`) plays `hero-main.mp4` with the same 90s grain + faded grade as the hero (grain only, no glitch); REC/▶PLAY overlays sit above the grain
-- Note: a 90s time-capsule clip (`assets/video/rewind.mp4` + poster) is parked/unused — tried as a standalone CRT section and in this TV, both rejected
+## Section 7b — FAQ (homepage)
+Alternating-color accordion (`.faq*`) after Reviews, before Email Capture. Native `<details>` cards cycling yellow/blue/red/green (ink/cream text per card), 3px ink border + hard shadow + rotating chevron. 8 questions. **FAQPage JSON-LD schema** included for SEO / AI answer engines.
 
 ## Section 8 — Email Capture
 

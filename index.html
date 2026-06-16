@@ -477,64 +477,127 @@
           <img class="ugc__tv-img" src="assets/img/nn-reviews-tv.png" alt="" aria-hidden="true" width="640" height="640">
           <div class="ugc__screen">
             <video playsinline muted autoplay loop>
-              <source src="assets/video/hero-main.mp4" type="video/mp4">
+              <source src="assets/video/hero-main-v2.mp4" type="video/mp4">
             </video>
             <div class="ugc__rec" aria-hidden="true"><span class="ugc__rec-dot"></span>REC</div>
             <span class="ugc__timestamp" aria-hidden="true">&#9654; PLAY</span>
           </div>
         </div>
 
-        <figure class="ugc__featured">
-          <span class="ugc__featured-stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <blockquote class="ugc__featured-quote">It tastes exactly like being nine years old.</blockquote>
-          <figcaption class="ugc__featured-cite">
-            <span class="ugc__featured-name">JESS M.</span>
-            <span class="ugc__featured-verified">&#10003; VERIFIED BUYER</span>
-          </figcaption>
-        </figure>
+        <!-- Testimonial reel — cycles like a late-night broadcast (JS in main.js) -->
+        <div class="ugc__reel" id="rev-reel" aria-label="Customer testimonials">
+          <div class="ugc__reelwin">
+
+            <figure class="ugc__tm is-active" data-ch="01">
+              <span class="ugc__tm-stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+              <blockquote class="ugc__tm-quote">It tastes exactly like being nine years old.</blockquote>
+              <figcaption class="ugc__tm-cite"><span class="ugc__tm-name">JESS M.</span><span class="ugc__tm-verified">&#10003; VERIFIED BUYER</span></figcaption>
+            </figure>
+
+            <figure class="ugc__tm" data-ch="02">
+              <span class="ugc__tm-stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+              <blockquote class="ugc__tm-quote">I hadn't thought about these in twenty years. First bite and I was nine again, sitting on the kitchen floor.</blockquote>
+              <figcaption class="ugc__tm-cite"><span class="ugc__tm-name">DANNY R.</span><span class="ugc__tm-verified">&#10003; VERIFIED BUYER</span></figcaption>
+            </figure>
+
+            <figure class="ugc__tm" data-ch="03">
+              <span class="ugc__tm-stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+              <blockquote class="ugc__tm-quote">Ordered it as a joke for my brother's birthday. Now we both text about it like idiots &mdash; it tastes EXACTLY like I remember.</blockquote>
+              <figcaption class="ugc__tm-cite"><span class="ugc__tm-name">MARIA T.</span><span class="ugc__tm-verified">&#10003; VERIFIED BUYER</span></figcaption>
+            </figure>
+
+            <figure class="ugc__tm" data-ch="04">
+              <span class="ugc__tm-stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
+              <blockquote class="ugc__tm-quote">I genuinely teared up. These were my after-school snack every day and I thought they were gone forever.</blockquote>
+              <figcaption class="ugc__tm-cite"><span class="ugc__tm-name">KEVIN S.</span><span class="ugc__tm-verified">&#10003; VERIFIED BUYER</span></figcaption>
+            </figure>
+
+            <span class="ugc__static" id="rev-static" aria-hidden="true"></span>
+          </div>
+
+          <div class="ugc__reelnav">
+            <button type="button" class="ugc__reelbtn" id="rev-prev" aria-label="Previous review">&#9664;&#9664;</button>
+            <span class="ugc__chreadout" id="rev-ch">CH 01</span>
+            <button type="button" class="ugc__reelbtn" id="rev-next" aria-label="Next review">&#9654;&#9654;</button>
+          </div>
+        </div>
 
       </div>
 
-      <div class="ugc__reviews">
-        <article class="rev">
-          <span class="rev__mark" aria-hidden="true">&ldquo;</span>
-          <span class="rev__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <p class="rev__quote">I hadn't thought about these in twenty years. First bite and I was nine again, sitting on the kitchen floor. My wife thinks I'm insane.</p>
-          <div class="rev__foot">
-            <img class="rev__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB MAX'D jar" width="120" height="120" loading="lazy">
-            <span class="rev__who">
-              <span class="rev__name">DANNY R.</span>
-              <span class="rev__verified">&#10003; VERIFIED BUYER</span>
-            </span>
-          </div>
-        </article>
-        <article class="rev">
-          <span class="rev__mark" aria-hidden="true">&ldquo;</span>
-          <span class="rev__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <p class="rev__quote">Ordered it as a joke for my brother's birthday. Now we both have a jar and text about it like idiots. It tastes EXACTLY like I remember.</p>
-          <div class="rev__foot">
-            <img class="rev__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="90'S CRISPS jar" width="120" height="120" loading="lazy">
-            <span class="rev__who">
-              <span class="rev__name">MARIA T.</span>
-              <span class="rev__verified">&#10003; VERIFIED BUYER</span>
-            </span>
-          </div>
-        </article>
-        <article class="rev">
-          <span class="rev__mark" aria-hidden="true">&ldquo;</span>
-          <span class="rev__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <p class="rev__quote">I genuinely teared up. These were my after-school snack every single day and I thought they were gone forever. Thank you for bringing them back.</p>
-          <div class="rev__foot">
-            <img class="rev__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="COWABUNGA PIES jar" width="120" height="120" loading="lazy">
-            <span class="rev__who">
-              <span class="rev__name">KEVIN S.</span>
-              <span class="rev__verified">&#10003; VERIFIED BUYER</span>
-            </span>
-          </div>
-        </article>
+      <div class="ugc__foot">
+        <a class="ugc__seeall" href="reviews.html">&#9654; SEE ALL 4,000+ REVIEWS</a>
       </div>
 
     </section>
+
+    <!-- ============================================
+         FAQ — alternating-color accordion (+ FAQPage schema below)
+    ============================================ -->
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 class="section-title faq__title" id="faq-title">FREQUENTLY ASKED</h2>
+
+      <div class="faq__list">
+
+        <details class="faq__item" style="--c:#FFC42E; --ct:#2A2420">
+          <summary class="faq__q">When do pre-orders ship?<span class="faq__chev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+          <div class="faq__a"><p>Pre-orders ship out a couple of weeks after they're placed. You'll get a tracking email the second yours is on the way.</p></div>
+        </details>
+
+        <details class="faq__item" style="--c:#2E6BE6; --ct:#F5E6C8">
+          <summary class="faq__q">Do my Nostalgic Desserts need to be refrigerated?<span class="faq__chev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+          <div class="faq__a"><p>Unless otherwise noted on the label or cap, 95% of our flavors are shelf-stable and do NOT need to be refrigerated!</p></div>
+        </details>
+
+        <details class="faq__item" style="--c:#E63B2E; --ct:#F5E6C8">
+          <summary class="faq__q">Are they safe for my allergies?<span class="faq__chev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+          <div class="faq__a"><p>Every flavor's full ingredients and allergens are listed right on its product page under &ldquo;What's Inside.&rdquo; Check there before ordering &mdash; and reach out if you're ever unsure.</p></div>
+        </details>
+
+        <details class="faq__item" style="--c:#7BC74D; --ct:#2A2420">
+          <summary class="faq__q">Why are some Nostalgic Desserts layered?<span class="faq__chev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+          <div class="faq__a"><p>This is a very good question. To truly capture a flavor &mdash; let's say Ice Cream Truck Strawberry Shortcake &mdash; you can't just have a base nut butter with a bunch of different flavorings mixed in, then throw toppings on the base and expect it to taste authentic. You won't get the true taste of the flavor you're trying to replicate. Sure, it's easier to do it that way, but creating perfection isn't easy &mdash; which is why we truly mimic the flavor by using the layers.</p></div>
+        </details>
+
+        <details class="faq__item" style="--c:#FFC42E; --ct:#2A2420">
+          <summary class="faq__q">Do you ship internationally?<span class="faq__chev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+          <div class="faq__a"><p>Unfortunately we do not at the moment. Sorry about that!</p></div>
+        </details>
+
+        <details class="faq__item" style="--c:#2E6BE6; --ct:#F5E6C8">
+          <summary class="faq__q">Is the 35 lb bucket really worth it?<span class="faq__chev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+          <div class="faq__a"><p>If you go through a lot of one flavor, absolutely &mdash; it's 35 one-pound jars in a single bucket for $399, well under buying them one at a time, and shipping's included.</p></div>
+        </details>
+
+        <details class="faq__item" style="--c:#E63B2E; --ct:#F5E6C8">
+          <summary class="faq__q">What's the free-shipping threshold?<span class="faq__chev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+          <div class="faq__a"><p>Orders of $65 or more ship free. (The 35 lb bucket always ships free.)</p></div>
+        </details>
+
+        <details class="faq__item" style="--c:#7BC74D; --ct:#2A2420">
+          <summary class="faq__q">Returns &amp; money-back guarantee?<span class="faq__chev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+          <div class="faq__a"><p>Every order is backed by our 30-day money-back guarantee. Not happy with it? We'll make it right.</p></div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- FAQPage structured data (SEO / AI answer engines) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "When do pre-orders ship?", "acceptedAnswer": { "@type": "Answer", "text": "Pre-orders ship out a couple of weeks after they're placed. You'll get a tracking email the second yours is on the way." } },
+        { "@type": "Question", "name": "Do my Nostalgic Desserts need to be refrigerated?", "acceptedAnswer": { "@type": "Answer", "text": "Unless otherwise noted on the label or cap, 95% of our flavors are shelf-stable and do not need to be refrigerated." } },
+        { "@type": "Question", "name": "Are they safe for my allergies?", "acceptedAnswer": { "@type": "Answer", "text": "Every flavor's full ingredients and allergens are listed on its product page under What's Inside. Check there before ordering, and reach out if you're unsure." } },
+        { "@type": "Question", "name": "Why are some Nostalgic Desserts layered?", "acceptedAnswer": { "@type": "Answer", "text": "To truly capture a flavor, you can't just mix flavorings into a base nut butter and add toppings and expect it to taste authentic. We mimic the flavor by using layers, because creating perfection isn't easy." } },
+        { "@type": "Question", "name": "Do you ship internationally?", "acceptedAnswer": { "@type": "Answer", "text": "Unfortunately we do not at the moment." } },
+        { "@type": "Question", "name": "Is the 35 lb bucket really worth it?", "acceptedAnswer": { "@type": "Answer", "text": "If you go through a lot of one flavor, yes. It's 35 one-pound jars in a single bucket for $399, well under buying them one at a time, with shipping included." } },
+        { "@type": "Question", "name": "What's the free-shipping threshold?", "acceptedAnswer": { "@type": "Answer", "text": "Orders of $65 or more ship free. The 35 lb bucket always ships free." } },
+        { "@type": "Question", "name": "Returns and money-back guarantee?", "acceptedAnswer": { "@type": "Answer", "text": "Every order is backed by our 30-day money-back guarantee." } }
+      ]
+    }
+    </script>
 
     <!-- ============================================
          SECTION 8: REWIND CLUB — EMAIL CAPTURE
