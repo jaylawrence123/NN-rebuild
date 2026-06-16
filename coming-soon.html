@@ -19,11 +19,6 @@
     <span class="signal__label">&#9654; TUNING IN&hellip;</span>
   </div>
 
-  <!-- Top jar marquee -->
-  <div class="jar-marquee jar-marquee--top" aria-hidden="true">
-    <div class="jar-marquee__track" id="jm-top"></div>
-  </div>
-
   <main class="cs">
 
     <a href="#" class="cs__logo" aria-label="Nutty and Nostalgic">
@@ -68,11 +63,6 @@
 
   </main>
 
-  <!-- Bottom jar marquee -->
-  <div class="jar-marquee jar-marquee--bottom" aria-hidden="true">
-    <div class="jar-marquee__track" id="jm-bottom"></div>
-  </div>
-
   <!-- Chatbot launcher (swap in the pager icon art once hosted) -->
   <button type="button" class="cs-bot" id="cs-bot" aria-label="Chat with us">
     <img src="assets/img/nn-pager-icon.png" alt="" aria-hidden="true">
@@ -101,31 +91,6 @@
 
   <script>
     (function () {
-      // Build the jar marquees (two copies for a seamless loop)
-      var jars = [
-        'https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png',
-        'https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png',
-        'https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png',
-        'https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png',
-        'https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png'
-      ];
-      function fill(el) {
-        if (!el) return;
-        var html = '';
-        // 2 identical halves (for a seamless -50% loop); each half repeats the
-        // set enough times to overflow any desktop width (no right-side gap)
-        for (var half = 0; half < 2; half++) {
-          for (var rep = 0; rep < 5; rep++) {
-            for (var i = 0; i < jars.length; i++) {
-              html += '<img src="' + jars[i] + '" alt="" loading="eager">';
-            }
-          }
-        }
-        el.innerHTML = html;
-      }
-      fill(document.getElementById('jm-top'));
-      fill(document.getElementById('jm-bottom'));
-
       // Dismiss the signal-in intro
       var signal = document.getElementById('signal');
       if (signal) {
