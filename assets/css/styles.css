@@ -669,28 +669,45 @@ main { padding-top: var(--offset); }
 .hero__video-bg {
   position: absolute;
   inset: 0;
+  /* trap all VHS layers (grain/scanlines/tracking/vignette) over the video only —
+     keeps the headline, rating + CTA clean on top */
+  isolation: isolate;
 }
 .hero__video-bg video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: sepia(0.2) contrast(1.1) saturate(0.9) brightness(1.02);
   transform-origin: center;
-  animation: hero-glitch 6.5s steps(1) infinite;
+  transform: scale(1.03);
+  /* Authentic VHS/camcorder: chroma split + soft focus + lifted, punchy grade */
+  filter: url(#vhs-chroma) saturate(1.22) contrast(1.05) brightness(1.04) blur(0.4px);
+  animation: hero-vhs-jitter 7s steps(1) infinite;
 }
-/* Occasional VHS jolt — quick horizontal tear/shift */
-@keyframes hero-glitch {
-  0%, 46%   { transform: scale(1.04) translate(0, 0) skewX(0deg); filter: sepia(0.2) contrast(1.1) saturate(0.9) brightness(1.02); }
-  47%       { transform: scale(1.04) translate(-7px, 1px) skewX(-4deg); filter: sepia(0.2) contrast(1.2) saturate(1.4) brightness(1.08) hue-rotate(8deg); }
-  48%       { transform: scale(1.04) translate(6px, -2px) skewX(3deg); }
-  49%       { transform: scale(1.04) translate(-3px, 1px); }
-  50%, 78%  { transform: scale(1.04) translate(0, 0) skewX(0deg); filter: sepia(0.2) contrast(1.1) saturate(0.9) brightness(1.02); }
-  79%       { transform: scale(1.04) translate(5px, 0) skewX(3deg); filter: contrast(1.25) saturate(1.5) hue-rotate(-6deg); }
-  80%       { transform: scale(1.04) translate(-4px, 0); }
-  81%, 100% { transform: scale(1.04) translate(0, 0); filter: sepia(0.2) contrast(1.1) saturate(0.9) brightness(1.02); }
+/* hidden SVG filter holder */
+.hero__vhs-defs { position: absolute; width: 0; height: 0; pointer-events: none; }
+/* scanlines + lens vignette over the footage */
+.hero__vhs {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,0.16) 2px 3px);
+  box-shadow: inset 0 0 70px 14px rgba(0,0,0,0.5);
+  mix-blend-mode: multiply;
+  opacity: 0.7;
 }
-@media (prefers-reduced-motion: reduce) { .hero__video-bg video { animation: none; } }
+/* subtle handheld jitter + occasional tape jolt */
+@keyframes hero-vhs-jitter {
+  0%, 92%, 100% { transform: scale(1.03) translate(0, 0); }
+  93%           { transform: scale(1.03) translate(-2px, 1px) skewX(-1deg); }
+  95%           { transform: scale(1.03) translate(2px, -1px); }
+  97%           { transform: scale(1.03) translate(-1px, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__video-bg video { animation: none; }
+  .hero__vhs { opacity: 0.5; }
+}
 /* VHS tracking band sweeping down the screen */
 .hero__video-bg::before {
   content: '';
@@ -923,6 +940,81 @@ main { padding-top: var(--offset); }
 /* =====================================================
    SECTION 3: THE DROPS — borderless shelf grid
    ===================================================== */
+/* ============================================
+   HERO PRODUCT — 35LB BUCKET (price anchor, full-bleed broadcast block)
+============================================ */
+.bucket {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 40%, #3470EC 0%, #1F52B8 48%, #143A82 100%);
+  padding: clamp(2.75rem, 6vw, 5rem) 1.25rem;
+  box-shadow: inset 0 0 120px rgba(8, 20, 54, 0.55);
+}
+.bucket::before { /* dead-channel TV static — same as the footer, dialed down */
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='bk'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23bk)'/%3E%3C/svg%3E");
+  background-size: 90px 90px;
+  opacity: 0.14;
+  mix-blend-mode: screen;
+  animation: bucket-snow 0.55s steps(1) infinite;
+}
+@keyframes bucket-snow {
+  0%   { background-position: 0 0;        opacity: 0.14; }
+  25%  { background-position: -20px 14px; opacity: 0.11; }
+  50%  { background-position: 16px -16px; opacity: 0.17; }
+  75%  { background-position: -12px 18px; opacity: 0.11; }
+  100% { background-position: 18px 8px;   opacity: 0.15; }
+}
+@media (prefers-reduced-motion: reduce) { .bucket::before { animation: none; opacity: 0.12; } }
+.bucket__corner {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 2;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+}
+.bucket__corner b { color: var(--red); }
+.bucket__wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 660px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(0.85rem, 2.2vw, 1.25rem);
+}
+.bucket__art {
+  display: block;
+  width: min(70%, 300px);
+  height: auto;
+  margin: 0.25rem auto;
+  filter: drop-shadow(8px 12px 0 rgba(0, 0, 0, 0.45));
+}
+.bucket__eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'VT323', monospace; color: var(--cream); letter-spacing: 0.16em; font-size: 18px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
+.bucket__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--red); animation: bucket-pulse 1.4s infinite; }
+@keyframes bucket-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+@media (prefers-reduced-motion: reduce) { .bucket__dot { animation: none; } }
+.bucket__title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 8vw, 84px); line-height: 0.9; margin: 0; color: var(--cream); }
+.bucket__title em { font-style: normal; color: var(--yellow); text-shadow: -2px 0 rgba(230, 59, 46, 0.55), 2px 0 rgba(46, 107, 230, 0.55); }
+.bucket__copy { font-size: 1.1rem; color: rgba(245, 230, 200, 0.85); max-width: 40ch; margin: 0 auto; line-height: 1.5; }
+.bucket__pricerow { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.bucket__price { font-family: 'Bebas Neue', sans-serif; line-height: 0.85; font-size: clamp(56px, 11vw, 96px); color: var(--yellow); }
+.bucket__flag { display: inline-flex; align-items: center; gap: 7px; background: var(--yellow); color: var(--ink); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.05em; padding: 5px 14px; border: 3px solid var(--ink); border-radius: 999px; }
+.bucket__value { font-family: 'VT323', monospace; color: var(--yellow); font-size: 18px; letter-spacing: 0.04em; }
+.bucket__assure { font-family: 'VT323', monospace; color: rgba(245, 230, 200, 0.6); font-size: 15px; letter-spacing: 0.05em; }
+.bucket__cta { display: inline-block; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.06em; border: 3px solid var(--ink); border-radius: 12px; padding: 0.7rem 1.6rem; background: var(--red); color: var(--cream); box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.4); font-size: 1.6rem; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+.bucket__cta:hover { transform: translate(-1px, -1px); box-shadow: 7px 8px 0 rgba(0, 0, 0, 0.45); }
+.bucket__cta:active { transform: translate(2px, 2px); box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.4); }
+
 .drops {
   padding: 2.5rem 1.125rem 3rem;
   max-width: 1200px;

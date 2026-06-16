@@ -243,9 +243,23 @@
 
         <!-- Hero video loop -->
         <div class="hero__video-bg">
+          <!-- VHS chromatic-aberration filter (red/blue channel split) -->
+          <svg class="hero__vhs-defs" width="0" height="0" aria-hidden="true" focusable="false">
+            <filter id="vhs-chroma" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB">
+              <feOffset in="SourceGraphic" dx="-1.6" dy="0" result="rOff"/>
+              <feColorMatrix in="rOff" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="rCh"/>
+              <feOffset in="SourceGraphic" dx="1.6" dy="0" result="bOff"/>
+              <feColorMatrix in="bOff" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="bCh"/>
+              <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gCh"/>
+              <feBlend in="rCh" in2="gCh" mode="screen" result="rg"/>
+              <feBlend in="rg" in2="bCh" mode="screen"/>
+            </filter>
+          </svg>
           <video playsinline muted autoplay loop>
-            <source src="assets/video/hero-main.mp4" type="video/mp4">
+            <source src="assets/video/hero-main-v2.mp4" type="video/mp4">
           </video>
+          <!-- scanlines + interlace + lens vignette -->
+          <div class="hero__vhs" aria-hidden="true"></div>
         </div>
 
         <!-- REC indicator -->
@@ -253,7 +267,6 @@
           <span class="hero__rec-dot"></span>
           <span class="hero__rec-label">REC</span>
         </div>
-
         <!-- Text + CTA overlaid on the video -->
         <div class="hero__overlay">
           <p class="hero__rating" aria-label="Rated 4.86 out of 5 by customers">
@@ -298,6 +311,32 @@
         <span class="proof-ticker__sep">&#9654;</span>
       </div>
     </div>
+
+    <!-- ============================================
+         HERO PRODUCT: 35LB BUCKET — price anchor / wow piece
+    ============================================ -->
+    <section class="bucket" aria-labelledby="bucket-title">
+      <div class="bucket__corner" aria-hidden="true">CH<b>90</b> &middot; LIVE</div>
+      <div class="bucket__wrap">
+
+        <p class="bucket__eyebrow"><span class="bucket__dot"></span>LIMITED RUN</p>
+        <h2 class="bucket__title" id="bucket-title">35 POUNDS OF<br><em>90'S CRISPS.</em></h2>
+
+        <img class="bucket__art" src="https://i.ibb.co/qFkkRNv9/35lb-90s-crisps.png" alt="35 lb bucket of 90's Crisps" loading="lazy">
+
+        <p class="bucket__copy">One bucket. 35 pounds of 90's Crisps. The biggest haul we make.</p>
+
+        <div class="bucket__pricerow">
+          <span class="bucket__price">$399</span>
+          <span class="bucket__flag">&#9654; FREE SHIPPING</span>
+        </div>
+        <p class="bucket__value">That's 35 of our 1-lb jars &mdash; about $125 less than buying them one at a time.</p>
+
+        <a href="product-bucket.html" class="bucket__cta">CLAIM THE BUCKET</a>
+        <p class="bucket__assure">30-day money-back guarantee &middot; Secure checkout</p>
+
+      </div>
+    </section>
 
     <!-- ============================================
          SECTION 3: THE DROPS

@@ -57,7 +57,8 @@ NN-Rebuild/
 |---|---------|--------|
 | 0 | Announcement Bar | ✅ Done |
 | 1 | Nav (search / account / jar cart) | ✅ Done |
-| 2 | Hero (incl. review badge) | ✅ Done — square video + 90s grain/glitch |
+| 2 | Hero (incl. review badge) | ✅ Done — Jay's own square clip + authentic VHS/camcorder treatment |
+| 2b | 35 lb Bucket — price anchor (full-bleed infomercial) | ✅ Done |
 | 3 | Pre-Order Drop | ✅ Done |
 | 4 | Brand Mission | ❌ Removed from homepage |
 | 5 | Before / After (Channel Flip) | ❌ Removed from homepage |
@@ -158,8 +159,15 @@ Standalone pre-launch teaser for the **live Shopify store's password page**, bui
 - **Email:** collected via **Omnisend** (connected to the store). At Shopify, the demo form becomes the native `{% form 'customer' %}` which auto-syncs to Omnisend; build on a **duplicated** theme's password template, never the live one.
 - **Chatbot (pager) = PARKED for launch.** The retro beeper/pager launcher + green-LCD "pager terminal" chat modal were removed from the page so it can go live. Their markup + JS are gone (recoverable from git); the pager **CSS is left in `coming-soon.css` (inert)** so re-wiring is trivial. To restore: re-add the launcher button + `.pager` modal markup + the pager JS, then wire Jay's Cloudflare bot (needs his embed snippet + clientId). When it existed: mobile popped up centered (`pager-open-center`), desktop grew from the bottom-right launcher (`pager-open`).
 
+## ✅ Coming-soon page is LIVE on Shopify (June 15 2026)
+Live and locked at nuttynostalgic.com, collecting emails. **Working file: `shopify-password.liquid`** (root of repo) — a single self-contained Liquid file = the NN VHS coming-soon design + native `{% form 'customer' %}` email capture (syncs to Omnisend via Shopify Customers).
+- **How it's deployed:** the live "Nutty & Nostalgic — Arcade" theme injects its own intro animation that *leaked* onto the password page, so we use a **clean Dawn theme** instead. Added Dawn → replaced its `layout/password.liquid` with `shopify-password.liquid` → published Dawn → **Preferences → Password protection ON.** Dawn is clean AND ships a password template, so Shopify uses the custom layout (one file, no extras).
+- **Can't preview a Shopify password page anywhere** (editor + thumbnails both show Shopify's default) — only view it via the live storefront in **incognito** (admin login bypasses the lock).
+- **Revert:** republish the Arcade theme + password protection OFF.
+- **Still to verify:** one live test signup lands in Customers + Omnisend.
+
 ## Next (planned)
-- **Port the coming-soon page** into the live Shopify store's password template (native form + Omnisend), and wire the real chatbot into the pager modal.
+- **Wire the real chatbot** into the pager modal (needs Cloudflare embed snippet + clientId) — pager currently parked.
 - Optional: branded 404 (dead-channel) + Shipping/Returns & FAQ page.
 
 ## WHAT'S INSIDE — accordion (all 5 PDPs)
@@ -177,8 +185,15 @@ The before/after "original snack" images are LOCAL in `assets/img/og/` (pb-max, 
 - Cart icon is a custom jar SVG (ridged lid + squat body) matching the feather-style 2.5 stroke of the other icons; red count bubble sits on the lid corner
 - Hero review badge above the H1: five ★ in individual `--blue` boxes (25×23px, 17px star) + "EXCELLENT 4.86/5 CUSTOMER REVIEWS" in small cream Bebas. Mobile: stacked (stars over text) and drops the word "EXCELLENT"; desktop: inline row
 - **Cart icon = basket image** (`assets/img/nn-cart-basket.png`, local — cream basket + red jar + yellow lid) replacing the old jar SVG; `.header-cart__icon` 34px mobile / 56px desktop
-- **Hero video panel is square (1:1) on mobile AND desktop.** Plays `assets/video/hero-main.mp4` (720×720, local). 90s treatment: faded grade + animated **film grain** (`.hero__video-bg::after` — high-contrast B/W noise, `opacity:0.5`, `mix-blend-mode:overlay`; mid-gray noise would be invisible under overlay) + **VHS glitch** (`hero-glitch` jolt/skew/chromatic flash on the video + `.hero__video-bg::before` tracking-band sweep, ~6.5s). All reduced-motion-safe.
+- **Hero video panel is square (1:1) on mobile AND desktop.** Plays Jay's own graded clip `assets/video/hero-main-v2.mp4` (480×480, local). **Authentic VHS/camcorder treatment** on `.hero__video-bg video`: SVG **chromatic aberration** (`#vhs-chroma`, inline svg in the hero markup — R/B channel split) + soft-focus `blur(0.4px)` + a lifted/punchy grade, plus `hero-vhs-jitter` tape jolt, the `::before` tracking band, the `::after` B/W film grain, and a `.hero__vhs` scanline+vignette overlay. **`isolation: isolate` on `.hero__video-bg` traps every VHS layer over the video only — the headline/REC/CTA stay clean** (hard rule: effects on the footage, never the text). Reviews TV still uses the old `hero-main.mp4`. All reduced-motion-safe.
 - **Proof ticker (red marquee):** 3 phrases — "FREE SHIPPING ON ORDERS $65 OR MORE / PRE-ORDER NOW / 3,800+ 5-STAR REVIEWS" — split by a yellow ▶ (`.proof-ticker__sep`). Faster (13s loop) with a VHS tracking shudder on the bar (`ticker-tracking`) + chromatic brand-color text ghost.
+
+## 35 lb Bucket — price anchor (`.bucket` in styles.css, `product-bucket.html`)
+Full-bleed **late-night infomercial** section placed **above the Pre-Order Drop grid** (after the proof ticker). A deliberate **$399 price anchor** so the $14.99 jars read cheap, plus a wow piece with free shipping.
+- **Centered** single column: `● LIMITED RUN` → "35 POUNDS OF / 90'S CRISPS." (cream + yellow) → bucket image → one-line copy → `$399` + yellow `▶ FREE SHIPPING` pill → value reframe ("35 of our 1-lb jars — about $125 less...") → red `CLAIM THE BUCKET` (→ `product-bucket.html`) → "30-day money-back guarantee · Secure checkout". `CH90 · LIVE` corner.
+- **Background = deep radial blue** (`radial-gradient(ellipse at 50% 40%, #3470EC, #1F52B8 48%, #143A82)`) for premium "spotlight" infomercial depth + inset CRT vignette + footer-style dot-snow static (`bucket-snow`, ~half footer intensity).
+- Bucket image on ibb (`i.ibb.co/qFkkRNv9/...`) — localize before launch.
+- **`product-bucket.html`** = the real $399 product page (PDP clone: 35 LB, free-shipping messaging, no flavor switcher, "PREFER THE JARS?" cross-sell to the jar PDPs).
 
 ## Product page (`product.html`) — prototyped on PB Max'd
 
