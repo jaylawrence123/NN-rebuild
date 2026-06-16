@@ -152,8 +152,13 @@ Slide-in-from-right cart (basket icon opens it; markup sits after each page's mo
 - **Line items** (flavor-tinted jar tile, qty stepper, line price, remove), **"COMPLETE THE SET" one-tap upsell row**, and a **sticky footer** (pre-order note, live subtotal, CHECKOUT, Shop Pay/PayPal/G Pay express buttons, secure/money-back trust line).
 - All **live JS**: steppers, upsell add, and remove recompute line prices, subtotal, the count badge, and the progress bar in real time. Demo seeds 2 items @ $14.99. Maps to a Shopify cart-drawer section (AJAX cart API) at conversion.
 
+## Coming-soon / email-capture page (`coming-soon.html`, `coming-soon.css`)
+Standalone pre-launch teaser for the **live Shopify store's password page**, built in the site's VHS/broadcast look so it ties into the future site. Self-contained CSS (ports to a Shopify password template). Signal-in static intro → jar marquees top+bottom (ink + dead-channel static band, glitch) → floating splat logo → **"PRE-ORDERS ARE / DROPPING SOON."** → before/after wipe in a CRT panel → **email field + GET NOTIFIED** (the hero CTA, with a success state).
+- **Email:** collected via **Omnisend** (connected to the store). At Shopify, the demo form becomes the native `{% form 'customer' %}` which auto-syncs to Omnisend; build on a **duplicated** theme's password template, never the live one.
+- **Chatbot launcher = a retro beeper/pager** (`assets/img/nn-pager-icon.png`) floating bottom-right with blinking pixel dots on its green screen; click expands into a **green-LCD "pager terminal" chat modal** (charcoal body, cream bezel, VT323, bot=green/user=amber, quick-chips + red send). Currently a prototype skin with canned replies — Jay's Cloudflare bot drops in later.
+
 ## Next (planned)
-- **Coming-soon / email-capture landing page** for the currently-live site (switching to **Omnisend**): a single fully-custom "get notified" page with everything else hidden. On Shopify = the native password/coming-soon page (fully themed) + Omnisend form; otherwise a standalone single page.
+- **Port the coming-soon page** into the live Shopify store's password template (native form + Omnisend), and wire the real chatbot into the pager modal.
 - Optional: branded 404 (dead-channel) + Shipping/Returns & FAQ page.
 
 ## WHAT'S INSIDE — accordion (all 5 PDPs)
