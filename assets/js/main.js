@@ -604,3 +604,65 @@
     if (noResults) noResults.hidden = anyVisible;
   });
 })();
+
+/* ---- Time Capsule — left-edge REWIND tab + CRT video modal (homepage) ---- */
+(function () {
+  var tab = document.getElementById('capsule-open');
+  var modal = document.getElementById('capsule-modal');
+  if (!tab || !modal) return;
+  var video = document.getElementById('capsule-video');
+  var staticEl = document.getElementById('capsule-static');
+  var screenEl = modal.querySelector('.capsule-tv__screen');
+  var closeBtn = document.getElementById('capsule-close');
+  var muteBtn = document.getElementById('capsule-mute');
+  var backdrop = document.getElementById('capsule-backdrop');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Reveal the tab once you've scrolled past the hero
+  function onScroll() {
+    var show = window.pageYOffset > window.innerHeight * 0.55;
+    tab.classList.toggle('is-visible', show);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  function setMuteIcon() { muteBtn.innerHTML = video.muted ? '🔇' : '🔊'; }
+
+  function open() {
+    if (!video.src) video.src = video.getAttribute('data-src'); // lazy-load
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    video.currentTime = 0;
+    video.muted = false;
+    setMuteIcon();
+    // CRT power-on: flash → static snow + sync-roll → the picture tunes in
+    if (!reduce && staticEl) {
+      if (screenEl) screenEl.classList.add('is-tuning');
+      staticEl.classList.add('is-on');
+      setTimeout(function () {
+        staticEl.classList.remove('is-on');
+        if (screenEl) screenEl.classList.remove('is-tuning');
+      }, 1050);
+    }
+    var p = video.play();
+    if (p && p.catch) p.catch(function () { video.muted = true; setMuteIcon(); video.play(); });
+    closeBtn.focus();
+  }
+  function close() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    video.pause();
+    tab.focus();
+  }
+
+  tab.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  if (backdrop) backdrop.addEventListener('click', close);
+  muteBtn.addEventListener('click', function () { video.muted = !video.muted; setMuteIcon(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+  video.addEventListener('ended', close);
+})();

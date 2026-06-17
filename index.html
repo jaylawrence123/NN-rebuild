@@ -70,7 +70,7 @@
           </svg>
         </a>
         <a href="/cart" class="header-cart" aria-label="Shopping cart, 0 items">
-          <img src="assets/img/nn-cart-basket.png" alt="" class="header-cart__icon" width="28" height="22" aria-hidden="true">
+          <svg class="header-cart__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.4" y="4" width="13.2" height="3.3" rx="1"/><path d="M5 7.3h14v8.4a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V7.3z"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
           <span class="header-cart__count" id="cart-count" aria-live="polite">0</span>
         </a>
       </div>
@@ -533,7 +533,7 @@
       </div>
 
       <div class="ugc__foot">
-        <a class="ugc__seeall" href="reviews.html">&#9654; SEE ALL 4,000+ REVIEWS</a>
+        <a class="ugc__seeall" href="reviews.html">&#9654; SEE ALL REVIEWS</a>
       </div>
 
     </section>
@@ -672,12 +672,40 @@
 
     <div class="site-footer__bottom">
       <span class="site-footer__legal">© 2026 NUTTY &amp; NOSTALGIC. ALL RIGHTS RESERVED.</span>
+      <a class="site-footer__credit" href="https://designmynt.com" target="_blank" rel="noopener" aria-label="Website by Designmynt"><span>WEBSITE BY</span><img src="https://i.ibb.co/G4yX68Hj/Designmynt-Logo-for-Footer.png" alt="Designmynt" class="site-footer__credit-logo" height="22"></a>
     </div>
 
   </footer>
 
   <!-- Full-screen static flicker during rewind scroll -->
   <div class="rewind-static" id="rewind-static" aria-hidden="true"></div>
+
+  <!-- ====== TIME CAPSULE — left-edge REWIND tab + CRT video modal ====== -->
+  <button type="button" class="capsule-tab" id="capsule-open" aria-haspopup="dialog" aria-controls="capsule-modal">
+    <span class="capsule-tab__rec" aria-hidden="true"></span>
+    <span class="capsule-tab__text">&#9664;&#9664; REWIND TO 1990</span>
+  </button>
+
+  <div class="capsule-modal" id="capsule-modal" role="dialog" aria-modal="true" aria-label="Rewind to 1990 — a 90s time capsule" aria-hidden="true">
+    <div class="capsule-modal__backdrop" id="capsule-backdrop"></div>
+    <div class="capsule-tv" role="document">
+      <div class="capsule-tv__bar">
+        <span class="capsule-tv__ch">CH&nbsp;03</span>
+        <span class="capsule-tv__rec" aria-hidden="true"><span class="capsule-tv__recdot"></span>REC</span>
+        <div class="capsule-tv__btns">
+          <button type="button" class="capsule-tv__mute" id="capsule-mute" aria-label="Mute">&#128266;</button>
+          <button type="button" class="capsule-tv__close" id="capsule-close" aria-label="Close time capsule">&#10005;</button>
+        </div>
+      </div>
+      <div class="capsule-tv__screen">
+        <video class="capsule-tv__video" id="capsule-video" playsinline preload="none" data-src="assets/video/time-capsule-90s.mp4"></video>
+        <div class="capsule-tv__grain" aria-hidden="true"></div>
+        <div class="capsule-tv__vhs" aria-hidden="true"></div>
+        <div class="capsule-tv__static" id="capsule-static" aria-hidden="true"></div>
+      </div>
+      <p class="capsule-tv__cap">remember this feeling?</p>
+    </div>
+  </div>
 
   <script src="assets/js/main.js"></script>
 </body>
