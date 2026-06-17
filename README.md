@@ -179,6 +179,16 @@ Ingredients / Allergens / Nutrition Facts are native `<details>`/`<summary>` acc
 - **Ingredients are pasted VERBATIM** (Jay's call — they're real concatenated label declarations; never clean/de-dup/reorder). Nutrition labels are **hosted on ibb** (incl. PB Max'd, swapped off the old local file) → localize before launch. Nutrition is an IMAGE per flavor (old CSS Nutrition-Facts panel deprecated; `.pdp-nutrition*` now unused → sweep later).
 - Made in USA badge (`assets/img/made-in-usa.png`, local) sits below the FREE SHIPPING line in the buy box on all 5 PDPs.
 
+## PDP flavor bullets (the 3 `▶` feature list)
+The short feature bullets under each PDP's star rating (`.pdp-bullets`) are **marketing descriptors, not the verbatim legal ingredient lists** (those live in WHAT'S INSIDE). Rewritten June 16 2026 to read like a flavor's component stack. Some flavors run 2 bullets, some 3:
+- **PB Max'd:** Sweet & Creamy Peanut Butter · Crunchy Wholegrain Cookies · Milk Chocolate Candy Coated Frosting
+- **90's Crisps:** Sweet Peanut Butter Cream · Crispy Crunchy Cookies
+- **Cowabunga Pies:** Vanilla Pudding flavored Cashew Butter · Green Glazed Pie Chips
+- **NuttyFinger BBs:** Sweet & Creamy Peanut Butter · Chopped Crispy Peanut Butter Crunch · Milk Chocolate Chips
+- **Lunch Box Granola:** Chewy & Crispy Peanut Butter · Milk Chocolate Candy Coated Frosting · Mini CandyGems
+- **The King:** Sweet & Creamy Peanut Butter · Banana Mallow Cream · Chocolate Candy Coated Frosting
+- ⚠️ **Trademark-safe naming:** never name real brands in the bullets. "Butterfinger" → **Chopped Crispy Peanut Butter Crunch**; "M&M's"/"Minis" → **Mini CandyGems**. Use generic descriptors or N&N's own coined names.
+
 ## OG snack images — local
 The before/after "original snack" images are LOCAL in `assets/img/og/` (pb-max, pb-crisps, turtle-pies, butterfinger-bbs, kudos-bar) — pulled off ibb after it flaked on load. Before-image alt text fixed per flavor (was a clone leftover "The original PB Max candy bar" on every page).
 
