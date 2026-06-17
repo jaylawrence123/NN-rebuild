@@ -97,9 +97,10 @@ Emotional mission section adapted from the draft Shopify theme: the five jars in
 - ⚠️ Both images are low-res preview exports (640/427px wide) — swap URLs for full-res versions before launch
 
 ## Section 7 — Reviews (rebuilt: late-night broadcast)
-Dark **ink + dead-channel static** stage (breaks the cream rhythm next to the FAQ). Header in cream: blue-boxed ★ + "4.86/5 · 4,000+ CUSTOMER REVIEWS" + "4,000+ PEOPLE FEEL LIKE KIDS AGAIN."
-- **The walnut TV (`.ugc__screen`) is the centerpiece**, now playing the hero clip `hero-main-v2.mp4` (keeps its own CRT grain/grade). REC + ▶PLAY overlays.
-- **Cycling testimonial reel** beside the TV (`.ugc__reel`): blue-boxed ★★★★★ → big cream Bebas quote → `NAME · ✓ VERIFIED BUYER` → `◀◀ CH 0X ▶▶` with a green channel readout. Auto-advances 5s with a **VHS static-cut**, pauses on hover; centered. Grid-stacking (`.ugc__reelwin`) so quotes of any length never clip. JS = IIFE at end of `main.js`. `▶ SEE ALL 4,000+ REVIEWS` → reviews.html.
+Dark **ink + dead-channel static** stage (breaks the cream rhythm next to the FAQ). Header in cream: blue-boxed ★ + "4.86/5 · 4,000+ CUSTOMER REVIEWS" + **"8000+ ADULTS GOT TO FEEL LIKE KIDS AGAIN."** (`.ugc__title`). The header is locked to **2 lines** via a hard `<br>` (break after "TO") + `font-size: clamp(36px, 9.5vw, 64px)` so both lines always fit on mobile.
+- **The walnut TV (`.ugc__screen`) is the centerpiece**, playing the hero clip `hero-main-v2.mp4` (keeps its own CRT grain/grade). REC + ▶PLAY overlays.
+- **Cycling testimonial reel** beside the TV (`.ugc__reel`): now uses **Jay's 4 real reviews**, each with the **flavor jar thumbnail** at the top (`.ugc__tm-jar`, drop-shadow to pop on the dark stage) → blue-boxed ★★★★★ → big cream Bebas quote → `NAME · ✓ VERIFIED BUYER` → `◀◀ CH 0X ▶▶`. CH01 Cowabunga/Michael B. · CH02 90's Crisps/Johnny K. · CH03 NuttyFinger/Jamia · CH04 PB Max'd/Derek M. Quotes are verbatim. Auto-advances 5s with a **VHS static-cut**, pauses on hover; centered.
+- ⚠️ **Quote-clip fix:** `.ugc__reelwin` is `display:grid` whose implicit `auto` track sized to **max-content** (the longest quote on one unwrapped line) — long quotes overflowed/clipped on the right on mobile. Fixed with `grid-template-columns: minmax(0, 1fr); width: 100%` so text wraps.
 - Real curated testimonials cycle; full review app (Judge.me) lives on reviews.html at conversion. Still review-focused — no IG/UGC framing.
 - **Dead CSS (inert, sweep later):** old `.ugc__reviews`/`.rev*` card rules + legacy `.ugc__row`/`.review-card*` — no markup uses them.
 
@@ -160,6 +161,7 @@ All nav/footer links now resolve to real `.html` pages — no remaining `/pages/
 Slide-in-from-right cart (basket icon opens it; markup sits after each page's mobile-nav). Conversion stack from the top-Shopify playbook:
 - **Free-shipping progress bar** (toward $65) with a **celebration** when crossed — bar turns green + shimmers, message flips to "★ FREE SHIPPING UNLOCKED ★", gold stars pop.
 - **Line items** (flavor-tinted jar tile, qty stepper, line price, remove), **"COMPLETE THE SET" one-tap upsell row**, and a **sticky footer** (pre-order note, live subtotal, CHECKOUT, Shop Pay/PayPal/G Pay express buttons, secure/money-back trust line).
+  - **Upsell cards (`.cart-add`) = compact image + price ONLY** (names removed) so they don't eat the vertical space the cart items need on mobile when 2+ items are in the cart. 4 cards = the full set not in the demo cart: Cowabunga, NuttyFinger, Lunch Box, **The King** (added). Horizontal-scroll row. The King jar PNG is tighter-cropped (no transparent padding) so it renders bigger at any equal box — fixed by `.cart-add[data-name="THE KING"] img { padding: 7px; box-sizing: border-box; }` (shrinks just the jar, keeps the 44px box so prices stay aligned). Markup is duplicated on all 13 cart pages; edit via .NET UTF-8 script (see [[feedback-ps-utf8-corruption]]).
 - All **live JS**: steppers, upsell add, and remove recompute line prices, subtotal, the count badge, and the progress bar in real time. Demo seeds 2 items @ $14.99. Maps to a Shopify cart-drawer section (AJAX cart API) at conversion.
 
 ## Coming-soon / email-capture page (`coming-soon.html`, `coming-soon.css`)
@@ -230,6 +232,8 @@ Reviews = Judge.me widgets (connected). Everything else = product data / metafie
 ## Notes
 
 - Desktop Drops card name = 1.875rem, price = 1.625rem (mobile stays small)
+- **Desktop drop-card spacing tightened** (≥1024px): name/price/CTA pulled close to the jar (`.drops .drop-card`, `.shop-grid .drop-card` — `gap: 0.4rem`, `__link` gap 0.3rem, `__name` margin-top 0.2rem + `min-height: 1.15em` so single-line names don't reserve 2 lines). Scoped to `.drops` + `.shop-grid` so mobile is untouched.
+- **Shop page:** the gray "NEXT DROP / COMING SOON" placeholder card was removed (grid ends with The King).
 - All product images in The Drops are placeholders — real shots to be swapped in
 - Logo: left-aligned on desktop, centered on mobile (`https://i.ibb.co/Z6Y6y2kB/nn-logo-rebrand.png`)
 - Hero: VIDEO panel first on mobile (CTA above fold) / side-by-side on desktop (video left, before/after right)
