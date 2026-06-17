@@ -1014,6 +1014,37 @@ main { padding-top: var(--offset); }
 .bucket__cta { display: inline-block; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.06em; border: 3px solid var(--ink); border-radius: 12px; padding: 0.7rem 1.6rem; background: var(--red); color: var(--cream); box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.4); font-size: 1.6rem; transition: transform 0.12s ease, box-shadow 0.12s ease; }
 .bucket__cta:hover { transform: translate(-1px, -1px); box-shadow: 7px 8px 0 rgba(0, 0, 0, 0.45); }
 .bucket__cta:active { transform: translate(2px, 2px); box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.4); }
+/* Desktop: split layout — bucket image left, copy right (mobile stays centered) */
+@media (min-width: 860px) {
+  .bucket__wrap {
+    max-width: 1080px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    column-gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    text-align: left;
+  }
+  .bucket__art {
+    grid-column: 1;
+    grid-row: 1 / span 7;
+    align-self: center;
+    width: 100%;
+    max-width: 360px;
+    margin: 0;
+  }
+  .bucket__eyebrow,
+  .bucket__title,
+  .bucket__copy,
+  .bucket__pricerow,
+  .bucket__value,
+  .bucket__cta,
+  .bucket__assure { grid-column: 2; }
+  .bucket__copy { margin: 0; max-width: 46ch; }
+  .bucket__pricerow { justify-content: flex-start; }
+  .bucket__cta { justify-self: start; }
+  /* pull the CH90 tag in to the centered content's right edge (was bleeding off the far edge) */
+  .bucket__corner { right: max(16px, calc(50% - 540px)); }
+}
 
 .drops {
   padding: 2.5rem 1.125rem 3rem;
@@ -1154,6 +1185,8 @@ main { padding-top: var(--offset); }
 .drop-card--bucket .drop-card__img {
   background: radial-gradient(ellipse at 50% 40%, #3470EC 0%, #1F52B8 48%, #143A82 100%);
 }
+/* The King jar art is tighter-cropped than the others — scale it down to match */
+.drop-card--king .drop-card__img img { width: 70%; }
 
 /* Jar sits on the wrapper, straight, with a hard flash shadow */
 .drop-card__img img {
@@ -1220,6 +1253,11 @@ main { padding-top: var(--offset); }
   font-size: 1.75rem;
   color: var(--ink);
   line-height: 1.05;
+  /* reserve 2 lines so 1- and 2-line names take equal height → price + button align */
+  min-height: 2.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .drop-card__price {
   font-family: 'Bebas Neue', sans-serif;

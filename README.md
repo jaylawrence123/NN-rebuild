@@ -193,7 +193,8 @@ The before/after "original snack" images are LOCAL in `assets/img/og/` (pb-max, 
 
 ## 35 lb Bucket — price anchor (`.bucket` in styles.css, `product-bucket.html`)
 Full-bleed **late-night infomercial** section placed **above the Pre-Order Drop grid** (after the proof ticker). A deliberate **$399 price anchor** so the $14.99 jars read cheap, plus a wow piece with free shipping.
-- **Centered** single column: `● LIMITED RUN` → "35 POUNDS OF / 90'S CRISPS." (cream + yellow) → bucket image → one-line copy → `$399` + yellow `▶ FREE SHIPPING` pill → value reframe ("35 of our 1-lb jars — about $125 less...") → red `CLAIM THE BUCKET` (→ `product-bucket.html`) → "30-day money-back guarantee · Secure checkout". `CH90 · LIVE` corner.
+- **Mobile = centered** single column: `● LIMITED RUN` → "35 POUNDS OF / 90'S CRISPS." (cream + yellow) → bucket image → one-line copy → `$399` + yellow `▶ FREE SHIPPING` pill → value reframe ("35 of our 1-lb jars — about $125 less...") → red `CLAIM THE BUCKET` (→ `product-bucket.html`) → "30-day money-back guarantee · Secure checkout". `CH90 · LIVE` corner.
+- **Desktop (≥860px) = split:** bucket image LEFT, copy RIGHT (CSS-grid placement on the flat markup, so mobile stays centered). `CH90 · LIVE` pinned to the centered-content right edge (`right: max(16px, calc(50% - 540px))`) so it doesn't bleed off the full-bleed edge.
 - **Background = deep radial blue** (`radial-gradient(ellipse at 50% 40%, #3470EC, #1F52B8 48%, #143A82)`) for premium "spotlight" infomercial depth + inset CRT vignette + footer-style dot-snow static (`bucket-snow`, ~half footer intensity).
 - Bucket image on ibb (`i.ibb.co/qFkkRNv9/...`) — localize before launch.
 - **`product-bucket.html`** = the real $399 product page (PDP clone: 35 LB, free-shipping messaging, no flavor switcher, "PREFER THE JARS?" cross-sell to the jar PDPs).
