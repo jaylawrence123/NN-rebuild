@@ -1281,6 +1281,22 @@ main { padding-top: var(--offset); }
   font-size: 0.875rem;
 }
 
+/* Homepage drops + shop grid: tight name/price/CTA stack hugging the jar.
+   Name is top-aligned and reserves 2 lines (mobile names can wrap) so every
+   price + ADD TO CART lines up across a row regardless of name length.
+   Desktop names fit one line, so it reserves just one (override at >=1024). */
+.drops .drop-card,
+.shop-grid .drop-card { gap: 0.4rem; }
+.drops .drop-card__link,
+.shop-grid .drop-card__link { gap: 0.3rem; }
+.drops .drop-card__name,
+.shop-grid .drop-card__name {
+  margin-top: 0.15rem;
+  min-height: 2.05em;
+  line-height: 1.0;
+  align-items: flex-start;
+}
+
 /* =====================================================
    SECTION 5: CHANNEL FLIP — full-bleed wipe transformation
    ===================================================== */
@@ -2096,15 +2112,9 @@ main { padding-top: var(--offset); }
   .drop-card { gap: 0.625rem; }
   .drop-card__name { font-size: 2.5rem; line-height: 1.02; margin-top: 0.5rem; }
   .drop-card__price { font-size: 2.125rem; }
-  /* Homepage drops + shop grid: tighter name/price/CTA stack — pull them closer
-     to the jar with just a little breathing room (single-line names don't reserve
-     2 lines). */
-  .drops .drop-card,
-  .shop-grid .drop-card { gap: 0.4rem; }
-  .drops .drop-card__link,
-  .shop-grid .drop-card__link { gap: 0.3rem; }
+  /* Desktop names fit one line — reserve just one so the stack is extra tight. */
   .drops .drop-card__name,
-  .shop-grid .drop-card__name { margin-top: 0.2rem; min-height: 1.15em; }
+  .shop-grid .drop-card__name { min-height: 1.15em; }
   .section-title { font-size: clamp(36px, 4vw, 52px); }
   .brand-mission__overlay { padding: 3.5rem 4rem; }
   .brand-mission__headline { font-size: clamp(64px, 6vw, 104px); }
