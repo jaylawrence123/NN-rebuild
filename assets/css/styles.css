@@ -1150,6 +1150,10 @@ main { padding-top: var(--offset); }
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 .drop-card--soldout { --flavor: #8A867E; }
+/* 35lb bucket card — deep radial blue matching the homepage bucket section (distinct from the #2E6BE6 jar) */
+.drop-card--bucket .drop-card__img {
+  background: radial-gradient(ellipse at 50% 40%, #3470EC 0%, #1F52B8 48%, #143A82 100%);
+}
 
 /* Jar sits on the wrapper, straight, with a hard flash shadow */
 .drop-card__img img {
@@ -1213,13 +1217,13 @@ main { padding-top: var(--offset); }
 /* Name, desc, button */
 .drop-card__name {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1rem;
+  font-size: 1.75rem;
   color: var(--ink);
-  line-height: 1.2;
+  line-height: 1.05;
 }
 .drop-card__price {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.125rem;
+  font-size: 1.625rem;
   color: var(--ink);
   letter-spacing: 0.04em;
   line-height: 1;
@@ -2052,8 +2056,8 @@ main { padding-top: var(--offset); }
   .drops__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 1.5rem; }
   .drop-shelf { display: contents; }
   .drop-card { gap: 0.625rem; }
-  .drop-card__name { font-size: 1.875rem; line-height: 1.05; margin-top: 0.5rem; }
-  .drop-card__price { font-size: 1.625rem; }
+  .drop-card__name { font-size: 2.5rem; line-height: 1.02; margin-top: 0.5rem; }
+  .drop-card__price { font-size: 2.125rem; }
   .section-title { font-size: clamp(36px, 4vw, 52px); }
   .brand-mission__overlay { padding: 3.5rem 4rem; }
   .brand-mission__headline { font-size: clamp(64px, 6vw, 104px); }

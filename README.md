@@ -21,12 +21,14 @@ Then open `http://localhost:8080`
 ```
 NN-Rebuild/
 ├── index.html            # homepage
-├── shop.html             # Shop the Drop collection page (all 5 flavors)
+├── shop.html             # Shop the Drop collection page (35lb bucket + 6 flavors)
 ├── product.html              # PB Max'd product page
 ├── product-crisps.html       # 90's Crisps product page
 ├── product-cowabunga.html    # Cowabunga Pies product page
 ├── product-nuttyfinger.html  # NuttyFinger BBs product page
 ├── product-lunchbox.html     # Lunch Box Granola product page
+├── product-the-king.html     # The King PB & Banana Creme (purple #7A3DB8; orig = 2007 Elvis Reese's)
+├── product-bucket.html       # 35 lb bucket of 90's Crisps ($399 anchor)
 ├── about.html                # About page (founder + the archive)
 ├── contact.html              # Contact page (call/text, request a revival, message form, FAQ)
 ├── get-notified.html         # Get Notified (20 per-flavor "notify me" cards → Kbite)
@@ -45,7 +47,7 @@ NN-Rebuild/
 
 ## Pages & links
 - Nav "SHOP THE DROP" + all shop CTAs → `shop.html` (was `/collections/all`). Product breadcrumb: HOME / THE DROPS (shop.html) / flavor.
-- **shop.html**: mobile-only before/after wipe banner (reuses hero `hero-ba-wipe`, hidden ≥768px — too stretched wide) → "SHOP THE DROP" header → `.shop-grid` (1 col mobile / 2 col 600px / 3 col 1024px) of the 5 flavor wrapper cards + a gray "NEXT DROP / COMING SOON ?" card.
+- **shop.html**: mobile-only before/after wipe banner (reuses hero `hero-ba-wipe`, hidden ≥768px — too stretched wide) → "SHOP THE DROP" header → `.shop-grid` (1 col mobile / 2 col 600px / 3 col 1024px): the 35 lb bucket card FIRST (deep radial blue, `.drop-card--bucket`), then the 6 flavor wrapper cards, then a gray "NEXT DROP / COMING SOON ?" card. Card name/price enlarged (1.75/1.625rem mobile, 2.5/2.125rem desktop).
 - **All 5 flavor pages built + fully cross-linked:** product.html = PB Max'd (#E63B2E, cream), product-crisps.html = 90's Crisps (#2E6BE6, cream), product-cowabunga.html = Cowabunga Pies (#7BC74D, ink), product-nuttyfinger.html = NuttyFinger BBs (#1F2A63, cream), product-lunchbox.html = Lunch Box Granola (#FFC42E, ink). Pattern `product-<slug>.html`. Each PDP's switcher leads with its own flavor; every switcher swatch + Collect-All-5 card + homepage/shop card resolves to a real page (only the PB Max'd swatch points to product.html, correctly).
   - Flavor-text rule: cream (#F5E6C8) on dark bands (red/blue/navy), ink (#2A2420) on light bands (green/yellow).
   - Origin stories (all researched/verified): PB Max'd = Mars PB Max (1989, ~$50M/yr, killed reportedly over Mars family disliking PB); 90's Crisps = Planters P.B. Crisps (1992 giant-peanut graham cookie, killed 1995); Cowabunga Pies = Hostess TMNT Pudding Pies (1991 movie tie-in, green-glazed vanilla puddin', gone same year); NuttyFinger BBs = Nestlé Butterfinger BB's (1992, Bart Simpson ads, killed 2006, most-missed '90s snack in 2021 poll); Lunch Box Granola = Mars Kudos bar (1986 candy-as-granola, "Kudos I'm yours", discontinued 2017).
