@@ -173,8 +173,8 @@ Live and locked at nuttynostalgic.com, collecting emails. **Working file: `shopi
 
 ## WHAT'S INSIDE — accordion (all 5 PDPs)
 Ingredients / Allergens / Nutrition Facts are native `<details>`/`<summary>` accordions (no JS, accessible; `+`→`−` toggle). Single centered column (`.pdp-inside` max-width 760px, the old 2-col grid removed). Maps cleanly to Shopify (Dawn uses the same `<details>` pattern) — drawer content → metafields (ingredients/allergens rich text, nutrition = image), wrapper stays static.
-- **PB Max'd has REAL data**: full ingredient list (cased to Title Case from a mixed paste; content unchanged), allergens "Contains: Milk, Wheat, Peanuts, Soy" + facility note, and the real Nutrition Facts label IMAGE (`assets/img/nutrition/pb-max.png`, framed, local).
-- Other 4 flavors: accordion placeholders ("Nutrition label coming soon") until Jay sends each flavor's ingredients/allergens/label image. Nutrition is now an IMAGE per flavor (the old CSS Nutrition-Facts panel is deprecated; `.pdp-nutrition*` CSS now unused → sweep later).
+- **ALL 5 FLAVORS HAVE REAL LABEL DATA** (PB Max'd, 90's Crisps, Cowabunga Pies, Lunch Box Granola, NuttyFinger BBs): verbatim ingredient list, allergen "Contains:" line + facility note, and a real Nutrition Facts label IMAGE per flavor. The **35 lb bucket page shares 90's Crisps' data**.
+- **Ingredients are pasted VERBATIM** (Jay's call — they're real concatenated label declarations; never clean/de-dup/reorder). Nutrition labels are **hosted on ibb** (incl. PB Max'd, swapped off the old local file) → localize before launch. Nutrition is an IMAGE per flavor (old CSS Nutrition-Facts panel deprecated; `.pdp-nutrition*` now unused → sweep later).
 - Made in USA badge (`assets/img/made-in-usa.png`, local) sits below the FREE SHIPPING line in the buy box on all 5 PDPs.
 
 ## OG snack images — local
