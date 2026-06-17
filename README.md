@@ -31,7 +31,7 @@ NN-Rebuild/
 ├── product-bucket.html       # 35 lb bucket of 90's Crisps ($399 anchor)
 ├── about.html                # About page (founder + the archive)
 ├── contact.html              # Contact page (call/text, request a revival, message form, FAQ)
-├── get-notified.html         # Get Notified (20 per-flavor "notify me" cards → Kbite)
+├── get-notified.html         # Get Notified (58 flavors, 3 channels, search + tabs → Kbite)
 ├── reviews.html              # Reviews page (scoreboard + Judge.me All Reviews container)
 ├── assets/
 │   ├── css/styles.css    # homepage + shop + shared
@@ -143,7 +143,13 @@ CONTACT nav link wired sitewide (`contact.html`, replacing the old `/pages/conta
 - Contact-page footer has the real IG/TikTok URLs; the other 7 pages' footer FOLLOW links are still `#` placeholders (propagate before launch).
 
 ## Get Notified page (`get-notified.html`, `get-notified.css`)
-Per-flavor "notify me when it drops" page powered by **Kbite: Back in Stock** at conversion. "GET ON THE LIST." header → grid of **20 placeholder "COMING SOON" cards** (wrapper-style, cycling brand colors, `NN·01`–`NN·20` tag, big "?", NOTIFY ME button). Each button has a `data-notify="flavor-0X"` hook; at conversion swap name/color/jar per flavor and wire the button to Kbite (popup trigger, or link to that product's coming-soon page where Kbite's form lives). Jay sends the real 20 flavors later.
+Out-of-stock flavor catalog powered by **Kbite: Back in Stock** at conversion. "GET ON THE LIST." header + sub "Out of stock flavors — sign up to be notified when they're available." → **search bar** → **3 channel jump-tabs** → **3 category sections, all on the page** (the tabs smooth-scroll to each; they do NOT show/hide).
+- **58 flavors, fully populated** across 3 channels: **CH 01 DISCONTINUED SNACKS (21)**, **CH 02 MOVIE & TV (17)**, **CH 03 MISC. NOSTALGIA (20)**. Each section = a broadcast channel header (`CH 0X` chip + title + ink underline) over a `.notify-grid` (2→3→4→5 col).
+- **Cards = bare** (no colored swatch/border/box — the homepage `.drop-card` overridden in get-notified.css): transparent slot with a **soft radial spotlight** lifting the jar off the wax bg, **bigger jar (92%)** with a layered drop-shadow (hard sticker-offset + soft contact), lift-on-hover. Each card = jar `<img>` + flavor name + red NOTIFY ME button carrying `data-notify="<product-handle>"` (the slug) for Kbite.
+- **Row uniformity (locked):** name font shrunk + reserves ~2 lines, `align-items:flex-start`; the grid stretches every card in a row to equal height and `.drop-card__btn { margin-top:auto }` pins the button to the bottom — so NOTIFY ME always aligns across a row even when a name wraps to 3 lines.
+- **Live search** (`#notify-search`, JS in main.js): filters cards by name, hides any channel with zero matches, shows a no-results line. **Jump-tabs** (`.notify-tab` anchors) smooth-scroll to each `#sec-*` (respects the global fixed-header `[id]` scroll-margin; reduced-motion safe).
+- All 58 jar images are on **ibb** (transparent PNGs) → localize before launch. Display names were derived from the image filenames (a few formatting calls: PB&J, S'mores, 90's, "Lil Hustlers Caramel…" fixes a "carmamel" filename typo).
+- ⚠️ **Generation:** the 58 cards are emitted by a throwaway PowerShell script that splices between the `<!-- Category jump-tabs` marker and `</main>`. It MUST read/write via `[System.IO.File]::ReadAllText/WriteAllText` with `UTF8Encoding($false)` — `Set-Content -Encoding utf8` corrupts the file's existing em-dashes/stars into mojibake.
 
 ## Reviews page (`reviews.html`, `reviews.css`)
 Container for the **Judge.me All Reviews Widget**. Branded **scoreboard panel** (giant 4.86 + blue-boxed stars + 3,800+ count + WRITE A REVIEW + hi-fi-meter rating breakdown bars), filter chips, and a 1/2/3-col grid of branded review cards (stars/date/quote/flavor-jar/name/verified), closing CTA "TASTED ONE? TELL THE WORLD." H1 "DON'T TAKE OUR WORD FOR IT." At conversion: replace the `.rv-list` placeholder cards with `<div class="jdgm-all-reviews-widget">` (comment marks the spot) and restyle Judge.me's output via the CSS overrides. CSS-restyle only — full custom card HTML would need the Judge.me API (skipped).

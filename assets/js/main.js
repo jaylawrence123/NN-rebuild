@@ -555,3 +555,52 @@
   reel.addEventListener('mouseleave', restart);
   restart();
 })();
+
+/* ---- Get Notified — category jump-tabs (smooth scroll to section) ---- */
+(function () {
+  var tabs = document.querySelector('.notify-tabs');
+  if (!tabs) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  tabs.addEventListener('click', function (e) {
+    var a = e.target.closest('.notify-tab');
+    if (!a) return;
+    var id = a.getAttribute('href');
+    if (!id || id.charAt(0) !== '#') return;
+    var target = document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    if (history.replaceState) history.replaceState(null, '', id);
+  });
+})();
+
+/* ---- Get Notified — live search (filter cards by name, hide empty channels) ---- */
+(function () {
+  var input = document.getElementById('notify-search');
+  if (!input) return;
+  var cats = Array.prototype.slice.call(document.querySelectorAll('.notify-cat'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.notify-card'));
+  var noResults = document.getElementById('notify-noresults');
+
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    var anyVisible = false;
+
+    cards.forEach(function (card) {
+      var nameEl = card.querySelector('.drop-card__name');
+      var name = nameEl ? nameEl.textContent.toLowerCase() : '';
+      var match = !q || name.indexOf(q) !== -1;
+      card.classList.toggle('is-hidden', !match);
+      if (match) anyVisible = true;
+    });
+
+    // Hide a channel if none of its cards match
+    cats.forEach(function (cat) {
+      var hasVisible = cat.querySelector('.notify-card:not(.is-hidden)');
+      cat.classList.toggle('is-hidden', !hasVisible);
+    });
+
+    if (noResults) noResults.hidden = anyVisible;
+  });
+})();

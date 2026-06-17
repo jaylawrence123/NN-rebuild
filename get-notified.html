@@ -200,155 +200,405 @@
     <section class="notify-hero">
       <p class="notify-hero__eyebrow">&#9654; NOW LOADING</p>
       <h1 class="notify-hero__title">GET ON THE LIST.</h1>
-      <p class="notify-hero__sub">New flavors are coming back from the dead. Pick the ones you want and we'll email you the second they drop &mdash; before they sell out.</p>
+      <p class="notify-hero__sub">Out of stock flavors &mdash; sign up to be notified when they're available.</p>
     </section>
 
-    <!-- Notify grid — 20 placeholder cards. Each NOTIFY ME button wires to
-         Kbite: Back in Stock at conversion (popup trigger or product link),
-         keyed by data-notify="<product-handle>". Swap name/color/jar per flavor. -->
+    <!-- Category jump-tabs + live search. Search filters cards by name and
+         hides empty channels; tabs smooth-scroll to each section. -->
+    <div class="notify-search">
+      <svg class="notify-search__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="notify-search" class="notify-search__input" placeholder="Search flavors&hellip;" aria-label="Search flavors" autocomplete="off">
+    </div>
+
+    <nav class="notify-tabs" aria-label="Jump to a category">
+      <a class="notify-tab" href="#sec-discontinued">DISCONTINUED SNACKS</a>
+      <a class="notify-tab" href="#sec-movietv">MOVIE &amp; TV</a>
+      <a class="notify-tab" href="#sec-misc">MISC. NOSTALGIA</a>
+    </nav>
+
+    <p class="notify-noresults" id="notify-noresults" hidden>No flavors match that search yet &mdash; try another name.</p>
+
     <section class="notify-grid-wrap" aria-label="Upcoming flavors">
-      <div class="notify-grid">
 
-        <article class="notify-card" style="--flavor:#E63B2E; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;01</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-01">NOTIFY ME</button>
-        </article>
+      <!-- ===== DISCONTINUED SNACKS ===== -->
+      <div class="notify-cat" id="sec-discontinued">
+        <header class="notify-cat__hd">
+          <span class="notify-cat__ch">CH 01</span>
+          <h2 class="notify-cat__title">DISCONTINUED SNACKS</h2>
+        </header>
+        <div class="notify-grid">
 
-        <article class="notify-card" style="--flavor:#2E6BE6; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;02</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-02">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/GvjK1NYZ/boston-creme-logs.png" alt="Boston Creme Logs" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Boston Creme Logs</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="boston-creme-logs">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#7BC74D; --flavor-text:#2A2420">
-          <span class="notify-card__tag">NN&middot;03</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-03">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/Q7N87SNz/bubble-nutty.png" alt="Bubble Nutty" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Bubble Nutty</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="bubble-nutty">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#1F2A63; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;04</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-04">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/HDJStbZz/choco-bliss.png" alt="Choco Bliss" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Choco Bliss</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="choco-bliss">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#FFC42E; --flavor-text:#2A2420">
-          <span class="notify-card__tag">NN&middot;05</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-05">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/k6PzGcDt/cookie-butter-bar.png" alt="Cookie Butter Bar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Cookie Butter Bar</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="cookie-butter-bar">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#E63B2E; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;06</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-06">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/PvHJFDrs/crispy-treats-cereal.png" alt="Crispy Treats Cereal" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Crispy Treats Cereal</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="crispy-treats-cereal">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#2E6BE6; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;07</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-07">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/whqBpXKz/ecto-nutty.png" alt="Ecto Nutty" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Ecto Nutty</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="ecto-nutty">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#7BC74D; --flavor-text:#2A2420">
-          <span class="notify-card__tag">NN&middot;08</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-08">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/DHLz7KbT/fruity-cereal-sandwich-cookie.png" alt="Fruity Cereal Sandwich Cookie" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Fruity Cereal Sandwich Cookie</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="fruity-cereal-sandwich-cookie">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#1F2A63; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;09</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-09">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/xqrqmxrn/ICT-Chocolate-Taco.png" alt="ICT Chocolate Taco" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">ICT Chocolate Taco</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="ict-chocolate-taco">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#FFC42E; --flavor-text:#2A2420">
-          <span class="notify-card__tag">NN&middot;10</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-10">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/V0vFwX37/mcnuttys-fried-apple-pie.png" alt="McNutty's Fried Apple Pie" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">McNutty's Fried Apple Pie</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="mcnuttys-fried-apple-pie">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#E63B2E; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;11</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-11">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/60r9ytLY/nutty-grizzlies.png" alt="Nutty Grizzlies" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Nutty Grizzlies</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="nutty-grizzlies">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#2E6BE6; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;12</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-12">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/zTzS6w1R/nuttyfinger-ice-cream-bar.png" alt="NuttyFinger Ice Cream Bar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">NuttyFinger Ice Cream Bar</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="nuttyfinger-ice-cream-bar">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#7BC74D; --flavor-text:#2A2420">
-          <span class="notify-card__tag">NN&middot;13</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-13">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/LzNy2xHV/pb-bites.png" alt="PB Bites" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">PB Bites</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="pb-bites">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#1F2A63; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;14</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-14">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/NXbyTFV/pb-j-creme-pies.png" alt="PB&amp;J Creme Pies" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">PB&amp;J Creme Pies</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="pb-j-creme-pies">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#FFC42E; --flavor-text:#2A2420">
-          <span class="notify-card__tag">NN&middot;15</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-15">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/dwHsKq9f/smores-candy-bar.png" alt="S'mores Candy Bar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">S'mores Candy Bar</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="smores-candy-bar">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#E63B2E; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;16</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-16">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/Df4yrrzs/strawberry-cheesecake-snack-bar.png" alt="Strawberry Cheesecake Snack Bar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Strawberry Cheesecake Snack Bar</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="strawberry-cheesecake-snack-bar">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#2E6BE6; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;17</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-17">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/j9PjPSrs/suddenly-smores.png" alt="Suddenly S'mores" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Suddenly S'mores</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="suddenly-smores">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#7BC74D; --flavor-text:#2A2420">
-          <span class="notify-card__tag">NN&middot;18</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-18">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/FSXbzmS/yooo-gos.png" alt="Yooo Gos" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Yooo Gos</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="yooo-gos">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#1F2A63; --flavor-text:#F5E6C8">
-          <span class="notify-card__tag">NN&middot;19</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-19">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/rRzJ4xnc/90-s-fancy-ice-cream.png" alt="90's Fancy Ice Cream" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">90's Fancy Ice Cream</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="90s-fancy-ice-cream">NOTIFY ME</button>
+          </article>
 
-        <article class="notify-card" style="--flavor:#FFC42E; --flavor-text:#2A2420">
-          <span class="notify-card__tag">NN&middot;20</span>
-          <span class="notify-card__q" aria-hidden="true">?</span>
-          <span class="notify-card__name">COMING SOON</span>
-          <button type="button" class="notify-card__btn" data-notify="flavor-20">NOTIFY ME</button>
-        </article>
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/fGHXwYtQ/90s-pizza-chip.png" alt="90's Pizza Chip" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">90's Pizza Chip</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="90s-pizza-chip">NOTIFY ME</button>
+          </article>
 
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/tR8PKpW/banana-look-alikes.png" alt="Banana Look-Alikes" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Banana Look-Alikes</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="banana-look-alikes">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/VcW17bpZ/banana-pudding-logs.png" alt="Banana Pudding Logs" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Banana Pudding Logs</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="banana-pudding-logs">NOTIFY ME</button>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ===== MOVIE and TV ===== -->
+      <div class="notify-cat" id="sec-movietv">
+        <header class="notify-cat__hd">
+          <span class="notify-cat__ch">CH 02</span>
+          <h2 class="notify-cat__title">MOVIE &amp; TV</h2>
+        </header>
+        <div class="notify-grid">
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/ZpsMvrKr/mallow-man-freakshake.png" alt="Mallow Man Freakshake" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Mallow Man Freakshake</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="mallow-man-freakshake">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/39ThZKMv/matilda-cake.png" alt="Matilda Cake" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Matilda Cake</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="matilda-cake">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/rXtvksq/me-eat-cookies.png" alt="Me Eat Cookies" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Me Eat Cookies</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="me-eat-cookies">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/ynbF56F3/nutty-at-night.png" alt="Nutty At Night" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Nutty At Night</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="nutty-at-night">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/5h2jsqZ6/rockford-peach-pie.png" alt="Rockford Peach Pie" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Rockford Peach Pie</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="rockford-peach-pie">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/HfVnX18L/saturday-morning-in-the-90s.png" alt="Saturday Morning in the 90's" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Saturday Morning in the 90's</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="saturday-morning-in-the-90s">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/yFrsfFkQ/stupid-flanders-hot-chocorino.png" alt="Stupid Flanders Hot Chocorino" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Stupid Flanders Hot Chocorino</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="stupid-flanders-hot-chocorino">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/S74NPnn8/the-max.png" alt="The Max" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">The Max</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="the-max">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/xSPVWgVT/tianas-beignets.png" alt="Tiana's Beignets" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Tiana's Beignets</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="tianas-beignets">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/jPTmc55q/wizards-brew.png" alt="Wizard's Brew" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Wizard's Brew</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="wizards-brew">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/WNwjvntG/youre-killing-me-smores.png" alt="You're Killing Me S'mores" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">You're Killing Me S'mores</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="youre-killing-me-smores">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/wFqdSBVn/adventurous-george.png" alt="Adventurous George" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Adventurous George</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="adventurous-george">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/9m9XBkh4/cartoon-dinosaur-bar.png" alt="Cartoon Dinosaur Bar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Cartoon Dinosaur Bar</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="cartoon-dinosaur-bar">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/67G9KQGP/fat-camp.png" alt="Fat Camp" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Fat Camp</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="fat-camp">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/RpGPgfxs/friday-night-in-the-90s.png" alt="Friday Night in the 90's" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Friday Night in the 90's</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="friday-night-in-the-90s">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/hRG6V06Y/homeys-dohnut.png" alt="Homey's Dohnut" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Homey's Dohnut</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="homeys-dohnut">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/KpqJwJQW/imaginary-pie-cake-batter-cream-pie.png" alt="Imaginary Pie Cake Batter Cream Pie" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Imaginary Pie Cake Batter Cream Pie</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="imaginary-pie-cake-batter-cream-pie">NOTIFY ME</button>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ===== MISC. NOSTALGIA ===== -->
+      <div class="notify-cat" id="sec-misc">
+        <header class="notify-cat__hd">
+          <span class="notify-cat__ch">CH 03</span>
+          <h2 class="notify-cat__title">MISC. NOSTALGIA</h2>
+        </header>
+        <div class="notify-grid">
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/svxG0rnQ/ICT-Strawberry-shortcake.png" alt="ICT Strawberry Shortcake" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">ICT Strawberry Shortcake</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="ict-strawberry-shortcake">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/9HZP9Pr7/kids-club-cupcake-shake.png" alt="Kids Club Cupcake Shake" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Kids Club Cupcake Shake</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="kids-club-cupcake-shake">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/G4K8XWnJ/kids-club-sundae-pie.png" alt="Kids Club Sundae Pie" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Kids Club Sundae Pie</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="kids-club-sundae-pie">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/PvMqmfTF/lil-hustlers-carmamel-coconut-fudge.png" alt="Lil Hustlers Caramel Coconut Fudge" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Lil Hustlers Caramel Coconut Fudge</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="lil-hustlers-caramel-coconut-fudge">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/N6pgGHS2/lil-hustlers-choc-pb-crispy-cookie.png" alt="Lil Hustlers Choc PB Crispy Cookie" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Lil Hustlers Choc PB Crispy Cookie</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="lil-hustlers-choc-pb-crispy-cookie">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/QZ3SbKH/lunch-lady-pb-bar.png" alt="Lunch Lady PB Bar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Lunch Lady PB Bar</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="lunch-lady-pb-bar">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/8L5Ycjqz/nutty-jack.png" alt="Nutty Jack" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Nutty Jack</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="nutty-jack">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/nsBhjfV9/nutty-pb-cup-crack.png" alt="Nutty PB Cup Crack" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Nutty PB Cup Crack</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="nutty-pb-cup-crack">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/VprZCR4s/powdered-donut.png" alt="Powdered Donut" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Powdered Donut</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="powdered-donut">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/bgLVh7wM/strawberry-funnel-cake.png" alt="Strawberry Funnel Cake" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Strawberry Funnel Cake</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="strawberry-funnel-cake">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/TMCJG3yD/uncaged-animals.png" alt="Uncaged Animals" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Uncaged Animals</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="uncaged-animals">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/rGChdJ9J/90s-dunkers.png" alt="90's Dunkers" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">90's Dunkers</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="90s-dunkers">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/jkP0vfbF/90s-orange-mall-drink.png" alt="90's Orange Mall Drink" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">90's Orange Mall Drink</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="90s-orange-mall-drink">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/9PwmhfW/90s-Schwag.png" alt="90's Schwag" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">90's Schwag</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="90s-schwag">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/yngcV2b0/90s-toy-oven-mommy-i-made-cookies.png" alt="90's Toy Oven Mommy I Made Cookies" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">90's Toy Oven Mommy I Made Cookies</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="90s-toy-oven-mommy-i-made-cookies">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/5J8YHmw/90s-toy-oven-undercooked-brownie.png" alt="90's Toy Oven Undercooked Brownie" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">90's Toy Oven Undercooked Brownie</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="90s-toy-oven-undercooked-brownie">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/RGYxMHDm/90s-toy-oven-yellow-cake.png" alt="90's Toy Oven Yellow Cake" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">90's Toy Oven Yellow Cake</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="90s-toy-oven-yellow-cake">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/rRvG2WDs/cakeys-n-creme.png" alt="Cakeys 'n' Creme" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Cakeys 'n' Creme</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="cakeys-n-creme">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/WW489XbC/deep-fried-candy-bar.png" alt="Deep Fried Candy Bar" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Deep Fried Candy Bar</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="deep-fried-candy-bar">NOTIFY ME</button>
+          </article>
+
+          <article class="drop-card notify-card">
+            <div class="drop-card__img"><img class="drop-card__jar" src="https://i.ibb.co/35jgYFvJ/deep-fried-sandwich-cookie.png" alt="Deep Fried Sandwich Cookie" width="400" height="400" loading="lazy"></div>
+            <h3 class="drop-card__name">Deep Fried Sandwich Cookie</h3>
+            <button type="button" class="btn btn--primary drop-card__btn" data-notify="deep-fried-sandwich-cookie">NOTIFY ME</button>
+          </article>
+
+        </div>
       </div>
 
       <p class="notify-foot">More dropping all the time. Tap any flavor to get on its list &mdash; powered by your back-in-stock alerts.</p>

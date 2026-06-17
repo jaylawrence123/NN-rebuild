@@ -31,6 +31,95 @@
   margin: 0.9rem auto 0;
 }
 
+/* ---- Search bar ---- */
+.notify-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 520px;
+  margin: 0 auto 1.25rem;
+  padding: 0 1.375rem;
+}
+.notify-search__icon {
+  position: absolute;
+  left: calc(1.375rem + 14px);
+  color: var(--ink);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.notify-search__input {
+  width: 100%;
+  font-family: 'Figtree', sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 2.5px solid var(--ink);
+  border-radius: 10px;
+  padding: 0.7rem 1rem 0.7rem 2.85rem;
+  box-shadow: 3px 3px 0 rgba(42, 36, 32, 0.22);
+}
+.notify-search__input::placeholder { color: var(--ink); opacity: 0.5; }
+.notify-search__input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+/* ---- Category filter tabs (channel-style) ---- */
+.notify-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 880px;
+  margin: 0 auto 0.5rem;
+  padding: 0 1.375rem;
+}
+.notify-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(15px, 4vw, 19px);
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--cream);
+  border: 2.5px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.5rem 0.95rem;
+  min-height: 44px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(42, 36, 32, 0.22);
+  transition: transform 0.12s ease, background 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;
+}
+.notify-tab:hover { transform: translateY(-2px); background: var(--ink); color: var(--cream); }
+.notify-tab:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+/* ---- Category sections (broadcast channel headers) ---- */
+.notify-cat { margin-bottom: 2.75rem; }
+.notify-cat:last-of-type { margin-bottom: 0; }
+.notify-cat__hd {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 3px solid var(--ink);
+}
+.notify-cat__ch {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  background: var(--ink);
+  padding: 2px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.notify-cat__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 8vw, 46px);
+  line-height: 1;
+  color: var(--ink);
+}
+
 /* ---- Grid ---- */
 .notify-grid-wrap {
   max-width: 1200px;
@@ -43,66 +132,63 @@
   gap: 1rem;
 }
 
-/* ---- Card — mystery flavor wrapper ---- */
-.notify-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ---- Bare cards: no swatch/border/box — jar stands out on a soft spotlight ---- */
+.notify-card { cursor: default; }
+
+/* Drop the colored square: transparent, no border/shadow, soft radial spotlight
+   so the jar (and the "?" placeholder) lift off the busy wax-paper background. */
+.notify-card .drop-card__img {
+  background-color: transparent;
+  background-image: radial-gradient(ellipse 70% 58% at 50% 56%,
+    rgba(255, 249, 236, 0.7) 0%, rgba(255, 249, 236, 0) 70%);
+  background-size: 100% 100%;
+  background-blend-mode: normal;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+/* Bigger jar + layered shadow: hard offset (brand sticker pop) + soft contact shadow (float). */
+.notify-card .drop-card__img img {
+  width: 92%;
+  filter: drop-shadow(4px 6px 0 rgba(42, 36, 32, 0.20))
+          drop-shadow(0 9px 12px rgba(42, 36, 32, 0.30));
+}
+/* Hover: lift the jar, not a card box */
+.notify-card:hover .drop-card__img { transform: none; box-shadow: none; }
+.notify-card:hover .drop-card__img img { transform: translateY(-5px) scale(1.05); }
+
+/* Uniform rows: smaller name reserves 2 lines; the grid stretches every card in a
+   row to equal height and the button is pinned to the bottom, so NOTIFY ME always
+   aligns across a row even when one name runs to 3 lines. */
+.notify-card .drop-card__name {
+  font-size: clamp(1.0625rem, 2.9vw, 1.375rem);
+  line-height: 1.08;
+  min-height: 2.3em;
+  align-items: flex-start;
+  padding-top: 0.1em;
+}
+.notify-card .drop-card__btn { margin-top: auto; }
+
+/* Search filtering: hide non-matching cards / empty channels */
+.is-hidden { display: none !important; }
+.notify-noresults {
   text-align: center;
-  gap: 0.5rem;
-  padding: 1.25rem 0.875rem 1.1rem;
-  border: 3px solid var(--ink);
-  border-radius: 14px;
-  box-shadow: 6px 6px 0 rgba(42, 36, 32, 0.22);
-  background-color: var(--flavor);
-  background-image: url('https://i.ibb.co/W4Mz606Q/nn-rebuild-background.png');
-  background-size: 380px 380px;
-  background-blend-mode: multiply;
-  overflow: hidden;
-}
-.notify-card__tag {
-  align-self: flex-start;
   font-family: 'VT323', monospace;
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  color: var(--flavor-text);
-  opacity: 0.8;
-  border: 1.5px solid var(--flavor-text);
-  padding: 0 6px;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  padding: 1rem 1.375rem 0;
 }
+
+/* "?" placeholder shown in the image slot until a real jar is added.
+   Ink on the light spotlight so it reads on the bare card. */
 .notify-card__q {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(72px, 22vw, 120px);
+  font-size: clamp(64px, 18vw, 110px);
   line-height: 0.85;
-  color: var(--flavor-text);
-  opacity: 0.9;
-  text-shadow: 4px 4px 0 rgba(42, 36, 32, 0.28);
-  margin: 0.25rem 0 0.1rem;
+  color: var(--ink);
+  opacity: 0.32;
 }
-.notify-card__name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(15px, 4.4vw, 20px);
-  letter-spacing: 0.06em;
-  color: var(--flavor-text);
-  line-height: 1;
-}
-.notify-card__btn {
-  margin-top: 0.65rem;
-  width: 100%;
-  padding: 0.6rem 0.5rem;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.0625rem;
-  letter-spacing: 0.08em;
-  color: var(--flavor);
-  background: var(--flavor-text);
-  border: 2.5px solid var(--ink);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.12s ease, opacity 0.12s ease;
-}
-.notify-card__btn:hover { transform: translateY(-2px); opacity: 0.92; }
-.notify-card__btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 
 /* ---- Footnote ---- */
 .notify-foot {
