@@ -3813,8 +3813,10 @@ main { padding-top: var(--offset); }
   position: fixed;
   left: 50%;
   top: max(calc(var(--offset) + 14px), calc((100vh - 600px) / 2));
+  top: max(calc(var(--offset) + 14px), calc((var(--vvh, 100dvh) - 600px) / 2));
   width: min(420px, calc(100vw - 28px));
   height: min(600px, calc(100vh - var(--offset) - 28px));
+  height: min(600px, calc(var(--vvh, 100dvh) - var(--offset) - 28px));
   display: flex; flex-direction: column;
   background: #16121a;
   border: 2.5px solid var(--ink); border-radius: 14px;

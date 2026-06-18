@@ -818,6 +818,20 @@
   var quick = document.getElementById('nn-call-quick');
   var greeted = false;
 
+  // True visible viewport height — excludes mobile toolbars AND the on-screen keyboard.
+  // Drives the modal's --vvh so the input bar is never clipped (the #1 mobile-modal bug).
+  function setVVH() {
+    var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+    document.documentElement.style.setProperty('--vvh', h + 'px');
+  }
+  setVVH();
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setVVH);
+    window.visualViewport.addEventListener('scroll', setVVH);
+  } else {
+    window.addEventListener('resize', setVVH);
+  }
+
   var REPLIES = {
     shipping: "We're in pre-order, so jars ship in the order they're placed as each batch is ready. The second yours goes out you'll get a tracking email. Need a status check? Call or text us from the Contact page.",
     allergens: "Every jar lists its full ingredients and allergens on its product page under What's Inside. Read those before ordering, and if you're unsure, talk to a human before you buy. Safety first, nostalgia second.",
