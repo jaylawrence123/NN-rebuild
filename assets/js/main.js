@@ -585,13 +585,43 @@
   restart();
 })();
 
-/* ---- Get Notified — category jump-tabs (smooth scroll to section) ---- */
+/* ---- Get Notified — channel tuner: jump-tabs, scroll-spy, channel-change FX ---- */
 (function () {
-  var tabs = document.querySelector('.notify-tabs');
-  if (!tabs) return;
+  var tabsNav = document.querySelector('.notify-tabs');
+  if (!tabsNav) return;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tabs = Array.prototype.slice.call(tabsNav.querySelectorAll('.notify-tab'));
+  var osd = document.getElementById('notify-osd');
+  var snow = document.getElementById('notify-static');
+  var snowTimer, osdTimer;
 
-  tabs.addEventListener('click', function (e) {
+  function setActive(id) {
+    tabs.forEach(function (t) { t.classList.toggle('is-active', t.getAttribute('href') === id); });
+  }
+
+  function channelChange(tab) {
+    if (reduce) return;
+    if (snow) {
+      snow.classList.remove('is-on');
+      void snow.offsetWidth; // restart the burst
+      snow.classList.add('is-on');
+      clearTimeout(snowTimer);
+      snowTimer = setTimeout(function () { snow.classList.remove('is-on'); }, 320);
+    }
+    if (osd) {
+      var chEl = osd.querySelector('.notify-osd__ch');
+      var nameEl = osd.querySelector('.notify-osd__name');
+      if (chEl) chEl.textContent = tab.getAttribute('data-ch') || '';
+      if (nameEl) nameEl.textContent = tab.getAttribute('data-name') || '';
+      osd.classList.remove('is-on');
+      void osd.offsetWidth;
+      osd.classList.add('is-on');
+      clearTimeout(osdTimer);
+      osdTimer = setTimeout(function () { osd.classList.remove('is-on'); }, 1650);
+    }
+  }
+
+  tabsNav.addEventListener('click', function (e) {
     var a = e.target.closest('.notify-tab');
     if (!a) return;
     var id = a.getAttribute('href');
@@ -599,39 +629,66 @@
     var target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
+    setActive(id);
+    channelChange(a);
     target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     if (history.replaceState) history.replaceState(null, '', id);
   });
+
+  if (tabs[0]) setActive(tabs[0].getAttribute('href'));
+
+  // Scroll-spy: light the channel whose section is in view
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) setActive('#' + en.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    Array.prototype.forEach.call(document.querySelectorAll('.notify-cat'), function (c) { spy.observe(c); });
+  }
 })();
 
-/* ---- Get Notified — live search (filter cards by name, hide empty channels) ---- */
+/* ---- Get Notified — live search (OSD tuner readout + filter, hide empty channels) ---- */
 (function () {
   var input = document.getElementById('notify-search');
   if (!input) return;
+  var screen = input.closest('.notify-search');
   var cats = Array.prototype.slice.call(document.querySelectorAll('.notify-cat'));
   var cards = Array.prototype.slice.call(document.querySelectorAll('.notify-card'));
   var noResults = document.getElementById('notify-noresults');
+  var readout = document.getElementById('notify-readout');
+  var total = cards.length;
+
+  function setReadout(q, count) {
+    if (!readout) return;
+    if (!q) { readout.textContent = total + ' FLAVORS'; readout.classList.remove('is-nosignal'); }
+    else if (count === 0) { readout.textContent = 'NO SIGNAL'; readout.classList.add('is-nosignal'); }
+    else { readout.textContent = count + ' FOUND'; readout.classList.remove('is-nosignal'); }
+  }
 
   input.addEventListener('input', function () {
     var q = input.value.trim().toLowerCase();
-    var anyVisible = false;
+    var count = 0;
 
     cards.forEach(function (card) {
       var nameEl = card.querySelector('.drop-card__name');
       var name = nameEl ? nameEl.textContent.toLowerCase() : '';
       var match = !q || name.indexOf(q) !== -1;
       card.classList.toggle('is-hidden', !match);
-      if (match) anyVisible = true;
+      if (match) count++;
     });
 
-    // Hide a channel if none of its cards match
     cats.forEach(function (cat) {
       var hasVisible = cat.querySelector('.notify-card:not(.is-hidden)');
       cat.classList.toggle('is-hidden', !hasVisible);
     });
 
-    if (noResults) noResults.hidden = anyVisible;
+    if (noResults) noResults.hidden = !(q && count === 0);
+    if (screen) screen.classList.toggle('is-typing', q.length > 0);
+    setReadout(q, count);
   });
+
+  setReadout('', total);
 })();
 
 /* ---- Time Capsule — left-edge REWIND tab + CRT video modal (homepage) ---- */

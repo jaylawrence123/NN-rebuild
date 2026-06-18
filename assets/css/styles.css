@@ -459,8 +459,8 @@ body.paper-off {
 }
 .mobile-nav__close {
   position: absolute;
-  top: 1rem;
-  right: 1.25rem;
+  top: 0.6rem;
+  right: 0.85rem;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -477,9 +477,9 @@ body.paper-off {
 .mobile-nav__link {
   display: block;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: var(--cream);
-  padding: 0.875rem 0;
+  padding: 0.72rem 0;
   letter-spacing: 0.06em;
   transition: color 0.1s ease, padding-left 0.1s ease;
 }
