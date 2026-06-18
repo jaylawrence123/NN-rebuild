@@ -399,6 +399,8 @@
   var drawerCount = document.getElementById('cart-drawer-count');
   var navCount = document.getElementById('cart-count');
   var threshold = parseFloat(shipEl.getAttribute('data-threshold')) || 65;
+  var LOWEST_JAR = 14.99; // cheapest eligible jar — drives the "add N more jars" math + the one-away nudge
+  if (shipMsg) shipMsg.setAttribute('aria-live', 'polite');
   var wasUnlocked = false;
 
   function money(n) { return '$' + n.toFixed(2); }
@@ -448,15 +450,15 @@
     if (drawerCount) drawerCount.textContent = count;
     if (navCount) navCount.textContent = count;
 
+    // hide the free-ship bar entirely when the cart is empty
+    shipEl.style.display = count ? '' : 'none';
+
     var pct = Math.min(100, (subtotal / threshold) * 100);
     shipFill.style.width = pct + '%';
 
     var unlocked = subtotal >= threshold;
     if (unlocked) {
-      var remain = subtotal - threshold;
-      shipMsg.innerHTML = remain > 0
-        ? '★ FREE SHIPPING UNLOCKED ★'
-        : '★ FREE SHIPPING UNLOCKED ★';
+      shipMsg.innerHTML = '★ FREE SHIPPING UNLOCKED ★';
       if (!wasUnlocked) {
         // retrigger the celebration animation + burst confetti
         shipEl.classList.remove('is-unlocked');
@@ -466,9 +468,18 @@
       }
     } else {
       var left = threshold - subtotal;
-      shipMsg.innerHTML = "You're <strong>" + money(left) + "</strong> away from FREE SHIPPING";
+      var jars = Math.ceil(left / LOWEST_JAR);
+      shipMsg.innerHTML = "You're <strong>" + money(left) + "</strong> away &mdash; add " + jars + " more jar" + (jars === 1 ? "" : "s") + " for FREE shipping";
       shipEl.classList.remove('is-unlocked');
     }
+
+    // #7 — when adding one jar would land free shipping, light up a "Complete the Set" jar
+    var oneAway = count > 0 && !unlocked && (threshold - subtotal) <= LOWEST_JAR;
+    var nudgeCard = drawer.querySelector('.cart-add');
+    var upsellTitle = drawer.querySelector('.cart-upsell__title');
+    if (nudgeCard) nudgeCard.classList.toggle('is-ship-nudge', oneAway);
+    if (upsellTitle) upsellTitle.textContent = oneAway ? 'ONE JAR FROM FREE SHIPPING' : 'COMPLETE THE SET';
+
     wasUnlocked = unlocked;
   }
 
@@ -523,6 +534,7 @@
         var price = btn.getAttribute('data-price');
         var jar = btn.getAttribute('data-jar');
         var flavor = btn.getAttribute('data-flavor');
+        var variant = btn.getAttribute('data-variant') || '16 oz jar';
         var el = document.createElement('div');
         el.className = 'cart-item';
         el.setAttribute('data-price', price);
@@ -532,7 +544,7 @@
           '<img class="cart-item__jar" src="' + jar + '" alt="' + name + '" width="120" height="120">' +
           '<div class="cart-item__info">' +
             '<span class="cart-item__name">' + name + '</span>' +
-            '<span class="cart-item__variant">16 oz jar</span>' +
+            '<span class="cart-item__variant">' + variant + '</span>' +
             '<div class="cart-qty" role="group" aria-label="Quantity">' +
               '<button type="button" class="cart-qty__btn" data-step="-1" aria-label="Decrease quantity">−</button>' +
               '<span class="cart-qty__n">1</span>' +

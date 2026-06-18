@@ -128,6 +128,8 @@ Channel-surfing was REMOVED June 13 2026 (Jay: "get rid of the channel arrows").
 - **Footer copy enlarged on desktop (June 17):** in the `@media (min-width:768px)` block — column titles 16→19px, links 1.125→1.5rem, END OF BROADCAST 20→25px, REWIND 1.25→1.5rem. Mobile untouched.
 
 ## Time Capsule — left-edge REWIND tab + CRT video modal (HOMEPAGE ONLY)
+> ⚠️ **PARKED — removed from the homepage June 18 2026.** The left-edge REWIND tab crowded mobile next to the bottom-right hotline launcher. Markup removed from index.html (breadcrumb comment left in place); `.capsule*` CSS + the JS IIFE are inert; the video stays at `assets/video/time-capsule-90s.mp4`. Restore the `.capsule-tab` + `.capsule-modal` markup (from git history pre-`4ed984d`) once the layout allows — e.g. move it so it doesn't fight the hotline.
+
 A click-to-open "rewind to the 90s" video. Deliberately a **modal, not a section** — earlier "REWIND" video *sections* were rejected for lengthening the page; the modal adds zero page length and the video **lazy-loads only on open** (`preload="none"` + `data-src`).
 - **Trigger:** `.capsule-tab` — a vertical ink "◀◀ REWIND TO 1990" tab fixed to the LEFT edge (mobile: bottom-left), blinking REC dot. Fades in only after you scroll past the hero (`pageYOffset > 55vh`). Left edge keeps it clear of the sticky ADD TO CART and the future bottom-right chatbot. Broadcast-ink, not red — never competes with the buy CTA.
 - **Modal:** `.capsule-modal` → `.capsule-tv` CRT frame: bar with **CH 03** + blinking REC + mute + close; 16:9 `.capsule-tv__screen` holding the `<video>` + overlays; caption **"remember this feeling?"**. Closes on ✕ / backdrop / Esc; pauses video + unlocks scroll on close. Plays with sound (the click is the opt-in) + mute toggle.
@@ -182,6 +184,15 @@ Fully custom chatbot, late-night **infomercial call-in** concept (loud, on-brand
 - **Call-in modal:** dark CRT panel + scanlines, blinking `● OPERATORS STANDING BY` header, `CH 90 · THE NUTTY HOTLINE` chyron, connect-flash on open. Bot answers as "the operator" (cream bubbles + green label + typing dots); you get yellow bubbles. Quick-replies `▸ PRESS 1–3 / 0` + a VT323 OSD input + red SEND. Desktop grows from the corner; mobile centers. Esc / backdrop / hang-up close.
 - **Prototype:** canned replies grounded in real facts (shipping, allergens→PDP, 30-day guarantee, 954 number/email, Get Notified + Request a Revival). The **real bot wires in via Jay's Cloudflare embed snippet + clientId** (still pending).
 - ⚠️ **Gotcha (fixed):** the markup sits after the `main.js` script tag, so the hotline IIFE inits on `DOMContentLoaded` — otherwise the launcher renders but the click does nothing.
+
+## Mobile + cart polish (June 18 2026)
+- **Mobile nav:** the dead-channel static now fills the whole slide-in — `.mobile-nav` is `overflow:hidden` and the link list scrolls instead (`.mobile-nav__list` overflow-y:auto), so the static can't scroll away; logo + CTA stay pinned.
+- **Cart drawer (mobile):** slimmed "Complete the Set" + tightened the footer so 2–3 line items show (was ~1); `overscroll-behavior:contain` on the drawer/items/upsell-row stops scroll-chaining to the page behind.
+- **35lb bucket** added as a 5th "Complete the Set" card (all 13 pages); cart line-item variant is now `data-variant`-driven (bucket reads "35 lb bucket", default "16 oz jar").
+- **Free-ship bar:** shows a **jar count** ("add N more jars", gap ÷ $14.99), **hides when empty**, `aria-live` on the label. **One-jar nudge:** the first upsell jar pulses red + the title flips to "ONE JAR FROM FREE SHIPPING". Threshold stays **$65** (`data-threshold`), `LOWEST_JAR` const. *Port: do this in cents, hook real `cart/*.js`, enforce free shipping via a Shopify automatic rate — never in JS.*
+- **Tap targets:** qty steppers got a 44px hit area (invisible `::before`, no added row height); REMOVE demoted + separated from the price.
+- **Pre-order note** reworded → "Pre-orders ship within two weeks", restyled as a centered yellow badge with a subtle pulse.
+- **Hotline call-in modal** recentered + clamped below the fixed header via `--offset` (`top: max(...)`) — never cut off, ✕ always visible; centered on desktop, header-cleared on mobile.
 
 ## Coming-soon / email-capture page (`coming-soon.html`, `coming-soon.css`)
 Standalone pre-launch teaser for the **live Shopify store's password page**, built in the site's VHS/broadcast look so it ties into the future site. Self-contained CSS (ports to a Shopify password template). Signal-in static intro → floating splat logo → **"PRE-ORDERS ARE / DROPPING SOON."** → before/after wipe in a CRT panel → **email field + GET NOTIFIED** (the hero CTA, with a success state) → IG/TikTok.
