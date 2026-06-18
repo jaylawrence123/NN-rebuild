@@ -205,21 +205,22 @@
         <h1 class="rv-summary__title">DON'T TAKE OUR<br>WORD FOR IT.</h1>
       </div>
 
-      <div class="rv-summary__panel">
+      <div class="rv-summary__panel is-armed">
+        <span class="rv-summary__osd" aria-hidden="true"><span class="rv-summary__osd-dot"></span>TONIGHT'S RATINGS</span>
         <div class="rv-summary__score">
-          <span class="rv-summary__avg">4.86</span>
+          <span class="rv-summary__avg" id="rv-avg" data-count="4.86">4.86</span>
           <span class="rv-summary__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
           <span class="rv-summary__count">3,800+ VERIFIED REVIEWS</span>
           <a href="#write" class="btn btn--primary rv-summary__cta">WRITE A REVIEW</a>
         </div>
 
-        <!-- breakdown bars — fed by Judge.me aggregate at conversion -->
+        <!-- breakdown bars — VU-meter sweep on view; fed by Judge.me aggregate at conversion -->
         <ul class="rv-bars" aria-hidden="true">
-          <li class="rv-bar"><span class="rv-bar__label">5&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:92%"></span></span><span class="rv-bar__num">3,420</span></li>
-          <li class="rv-bar"><span class="rv-bar__label">4&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:9%"></span></span><span class="rv-bar__num">266</span></li>
-          <li class="rv-bar"><span class="rv-bar__label">3&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:3%"></span></span><span class="rv-bar__num">76</span></li>
-          <li class="rv-bar"><span class="rv-bar__label">2&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:1.5%"></span></span><span class="rv-bar__num">19</span></li>
-          <li class="rv-bar"><span class="rv-bar__label">1&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="width:1.5%"></span></span><span class="rv-bar__num">19</span></li>
+          <li class="rv-bar"><span class="rv-bar__label">5&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="--w:92%"></span></span><span class="rv-bar__num">3,420</span></li>
+          <li class="rv-bar"><span class="rv-bar__label">4&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="--w:9%"></span></span><span class="rv-bar__num">266</span></li>
+          <li class="rv-bar"><span class="rv-bar__label">3&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="--w:3%"></span></span><span class="rv-bar__num">76</span></li>
+          <li class="rv-bar"><span class="rv-bar__label">2&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="--w:1.5%"></span></span><span class="rv-bar__num">19</span></li>
+          <li class="rv-bar"><span class="rv-bar__label">1&#9733;</span><span class="rv-bar__track"><span class="rv-bar__fill" style="--w:1.5%"></span></span><span class="rv-bar__num">19</span></li>
         </ul>
       </div>
     </section>

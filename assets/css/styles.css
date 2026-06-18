@@ -3185,6 +3185,12 @@ main { padding-top: var(--offset); }
     grid-template-columns: repeat(3, auto);
     gap: 2rem 4.5rem;
   }
+
+  /* Bigger footer copy on desktop */
+  .site-footer__col-title { font-size: 19px; }
+  .site-footer__link { font-size: 1.5rem; }
+  .offair-line { font-size: 25px; }
+  .footer-rewind { font-size: 1.5rem; }
 }
 
 /* Desktop: copy overlays the clean lower-left counter */

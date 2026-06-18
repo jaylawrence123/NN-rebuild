@@ -691,6 +691,45 @@
   setReadout('', total);
 })();
 
+/* ---- Reviews — ratings-board power-on (VU sweep + count-up + star flicker) ---- */
+(function () {
+  var panel = document.querySelector('.rv-summary__panel');
+  if (!panel) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { panel.classList.remove('is-armed'); return; }
+
+  var avg = document.getElementById('rv-avg');
+  if (avg) avg.textContent = '0.00';
+
+  var played = false;
+  function play() {
+    if (played) return;
+    played = true;
+    panel.classList.remove('is-armed');
+    panel.classList.add('is-on');
+    if (!avg) return;
+    var target = parseFloat(avg.getAttribute('data-count')) || 0;
+    var start = null, dur = 1050;
+    function tick(t) {
+      if (start === null) start = t;
+      var p = Math.min((t - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      avg.textContent = (eased * target).toFixed(2);
+      if (p < 1) requestAnimationFrame(tick); else avg.textContent = target.toFixed(2);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { play(); io.disconnect(); } });
+    }, { threshold: 0.35 });
+    io.observe(panel);
+  } else {
+    play();
+  }
+})();
+
 /* ---- Time Capsule — left-edge REWIND tab + CRT video modal (homepage) ---- */
 (function () {
   var tab = document.getElementById('capsule-open');
