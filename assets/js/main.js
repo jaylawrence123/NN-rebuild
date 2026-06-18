@@ -403,6 +403,34 @@
 
   function money(n) { return '$' + n.toFixed(2); }
 
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // On-brand confetti: SMPTE color chips + play triangles + stars burst from the bar
+  function spawnConfetti() {
+    if (reduceMotion) return;
+    var colors = ['#F5E6C8', '#FFC42E', '#2E6BE6', '#7BC74D', '#E63B2E', '#ffffff', '#54c8d6'];
+    var layer = document.createElement('div');
+    layer.className = 'cart-confetti';
+    layer.style.top = (shipEl.offsetTop + shipEl.offsetHeight / 2) + 'px'; // bar center, in the drawer
+    for (var i = 0; i < 24; i++) {
+      var bit = document.createElement('span');
+      var t = Math.random();
+      var kind = t < 0.62 ? 'chip' : (t < 0.82 ? 'tri' : 'star');
+      bit.className = 'cart-confetti__bit cart-confetti__bit--' + kind;
+      if (kind === 'chip') {
+        bit.style.background = colors[i % colors.length];
+      } else {
+        bit.textContent = kind === 'tri' ? '▶' : '★';
+        bit.style.color = (i % 2) ? '#FFC42E' : '#E63B2E';
+      }
+      bit.style.setProperty('--dx', ((Math.random() * 2 - 1) * 155).toFixed(0) + 'px');
+      bit.style.setProperty('--spin', ((Math.random() * 2 - 1) * 540).toFixed(0) + 'deg');
+      bit.style.animationDelay = (Math.random() * 0.09).toFixed(3) + 's';
+      layer.appendChild(bit);
+    }
+    shipEl.parentNode.appendChild(layer); // the cart drawer (positioned) — no viewport math
+    setTimeout(function () { layer.remove(); }, 1700);
+  }
+
   function recalc() {
     var subtotal = 0, count = 0;
     itemsWrap.querySelectorAll('.cart-item').forEach(function (item) {
@@ -430,10 +458,11 @@
         ? '★ FREE SHIPPING UNLOCKED ★'
         : '★ FREE SHIPPING UNLOCKED ★';
       if (!wasUnlocked) {
-        // retrigger the celebration animation
+        // retrigger the celebration animation + burst confetti
         shipEl.classList.remove('is-unlocked');
         void shipEl.offsetWidth;
         shipEl.classList.add('is-unlocked');
+        spawnConfetti();
       }
     } else {
       var left = threshold - subtotal;

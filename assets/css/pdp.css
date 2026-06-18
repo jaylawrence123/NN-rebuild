@@ -747,7 +747,10 @@
   transform: translate(-2px, -2px);
   box-shadow: 6px 7px 0 rgba(42, 36, 32, 0.26);
 }
-.mini-card__jar { position: relative; z-index: 1; width: 80%; filter: drop-shadow(3px 4px 0 rgba(42,36,32,0.32)); transition: transform 0.2s ease; }
+.mini-card__jar { position: relative; z-index: 1; width: 94%; filter: drop-shadow(3px 4px 0 rgba(42,36,32,0.32)); transition: transform 0.2s ease; }
+/* The King jar art is tighter-cropped (little transparent padding) — keep it smaller
+   so it reads the SAME size as the others (which are padded and need the bigger width). */
+.mini-card[href="product-the-king.html"] .mini-card__jar { width: 80%; }
 .mini-card:hover .mini-card__jar { transform: scale(1.04); }
 .mini-card__name {
   font-family: 'Bebas Neue', sans-serif;

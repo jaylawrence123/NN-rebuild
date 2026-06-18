@@ -2296,6 +2296,12 @@ main { padding-top: var(--offset); }
   flex-direction: column;
   gap: 1.75rem;
 }
+/* Tighten the stacked spacing on mobile only (header -> TV -> reviews) */
+@media (max-width: 767px) {
+  .ugc { padding: 2.25rem 0 2.5rem; }
+  .ugc__hd { margin-bottom: 1rem; }
+  .ugc__stage { gap: 0.85rem; }
+}
 
 /* The TV — illustrated 90s set; video keys into the screen */
 .ugc__tv {
@@ -3310,19 +3316,88 @@ main { padding-top: var(--offset); }
   background: var(--blue);
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* unlocked celebration */
-.cart-ship.is-unlocked .cart-ship__msg { color: #4e9a2f; }
+/* unlocked — INFOMERCIAL BLOWOUT (matches the 35lb-bucket late-night infomercial) */
+.cart-ship { overflow: hidden; }
+.cart-ship__msg, .cart-ship__track { position: relative; z-index: 1; }
+.cart-ship.is-unlocked .cart-ship__pop { display: none; } /* infomercial replaces the old stars */
 .cart-ship.is-unlocked .cart-ship__fill {
   background: linear-gradient(90deg, #7BC74D, #b6e89a, #7BC74D);
   background-size: 200% 100%;
   animation: ship-shimmer 1.1s linear infinite;
 }
-.cart-ship.is-unlocked { animation: ship-flash 0.7s ease; }
+.cart-ship.is-unlocked { animation: ship-flash 0.7s ease, ship-shake 0.5s ease; }
+/* spinning starburst rays behind the bar (centered square so rays stay circular) */
+.cart-ship::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 150%; aspect-ratio: 1;
+  transform: translate(-50%, -50%) scale(0.4);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 196, 46, 0.55), rgba(255, 196, 46, 0) 60%),
+    repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 196, 46, 0.9) 0deg 5deg, rgba(255, 196, 46, 0) 5deg 12deg);
+}
+.cart-ship.is-unlocked::before { animation: info-burst 1.5s cubic-bezier(0.2, 0.9, 0.3, 1); }
+/* white camera-flash pop */
+.cart-ship::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: #fff;
+  opacity: 0;
+}
+.cart-ship.is-unlocked::after { animation: info-flash 0.45s ease-out; }
+/* headline stamps in like an infomercial price sticker (red + yellow outline) */
+.cart-ship.is-unlocked .cart-ship__msg {
+  color: var(--red);
+  text-shadow: 0 1.5px 0 var(--yellow), 1.5px 0 0 var(--yellow), -1.5px 0 0 var(--yellow), 0 -1.5px 0 var(--yellow);
+  animation: info-stamp 0.6s cubic-bezier(0.2, 1.5, 0.35, 1);
+}
 @keyframes ship-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 @keyframes ship-flash {
-  0% { background: rgba(123, 199, 77, 0); }
-  30% { background: rgba(123, 199, 77, 0.28); }
-  100% { background: rgba(123, 199, 77, 0); }
+  0% { background: rgba(255, 196, 46, 0); }
+  30% { background: rgba(255, 196, 46, 0.3); }
+  100% { background: rgba(255, 196, 46, 0); }
+}
+@keyframes ship-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+@keyframes info-burst {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.4) rotate(-18deg); }
+  18%  { opacity: 1; transform: translate(-50%, -50%) scale(1.05) rotate(0deg); }
+  70%  { opacity: 0.8; transform: translate(-50%, -50%) scale(1.05) rotate(8deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15) rotate(14deg); }
+}
+@keyframes info-flash { 0% { opacity: 0.75; } 100% { opacity: 0; } }
+@keyframes info-stamp {
+  0%   { opacity: 0; transform: scale(1.8) rotate(-4deg); }
+  55%  { opacity: 1; transform: scale(0.94) rotate(1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+/* On-brand confetti — broadcast bits (SMPTE color chips + play triangles + stars)
+   burst out of the bar. Spawned by JS into a fixed layer so it can fly past edges. */
+.cart-confetti { position: absolute; left: 0; right: 0; z-index: 30; pointer-events: none; }
+.cart-confetti__bit {
+  position: absolute;
+  left: 50%; top: 0;
+  animation: confetti-fly 1.5s cubic-bezier(0.22, 0.7, 0.35, 1) forwards;
+}
+.cart-confetti__bit--chip { width: 9px; height: 13px; border-radius: 1px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
+.cart-confetti__bit--tri { font-size: 14px; line-height: 1; }
+.cart-confetti__bit--star { font-size: 15px; line-height: 1; }
+@keyframes confetti-fly {
+  0%   { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
+  18%  { transform: translate(calc(-50% + (var(--dx) * 0.35)), calc(-50% - 34px)) rotate(calc(var(--spin) * 0.4)); opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + 96px)) rotate(var(--spin)); opacity: 0; }
 }
 .cart-ship__pop {
   position: absolute;
@@ -3347,8 +3422,9 @@ main { padding-top: var(--offset); }
 }
 @media (prefers-reduced-motion: reduce) {
   .cart-ship.is-unlocked .cart-ship__fill { animation: none; }
-  .cart-ship.is-unlocked .cart-ship__pop span { animation: none; opacity: 0; }
   .cart-ship.is-unlocked { animation: none; }
+  .cart-ship.is-unlocked::before, .cart-ship.is-unlocked::after { animation: none; opacity: 0; }
+  .cart-ship.is-unlocked .cart-ship__msg { animation: none; }
 }
 
 /* Line items */
