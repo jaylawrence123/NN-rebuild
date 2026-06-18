@@ -3246,7 +3246,8 @@ main { padding-top: var(--offset); }
   position: fixed;
   top: 0;
   right: 0;
-  height: 100%;
+  height: 100vh;
+  height: var(--vvh, 100dvh);
   width: min(420px, 92vw);
   background: var(--cream);
   z-index: 600;
@@ -3892,8 +3893,8 @@ main { padding-top: var(--offset); }
   .cart-express { margin-top: 0.4rem; gap: 0.4rem; }
   .cart-express__btn { padding: 0.4rem 0.3rem; font-size: 0.8rem; }
   .cart-foot__trust { font-size: 11px; margin-top: 0.4rem; }
-  /* guarantee the items region keeps a healthy minimum */
-  .cart-items { min-height: 30vh; }
+  /* items yield to the pinned footer (flex:1 still gives ~2-3 items on a normal phone) */
+  .cart-items { min-height: 0; }
 }
 /* ---- Cart: one-jar-from-free-ship nudge (#7) + pre-order badge + tap targets ---- */
 .cart-add.is-ship-nudge {
