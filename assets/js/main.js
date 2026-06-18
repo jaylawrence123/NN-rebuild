@@ -791,3 +791,90 @@
   });
   video.addEventListener('ended', close);
 })();
+
+/* ---- Nutty Hotline — launcher + call-in modal (canned-reply prototype; real bot wires in via Cloudflare embed) ---- */
+(function () {
+  function nnHotlineInit() {
+  var openBtn = document.getElementById('nn-hotline-open');
+  var modal = document.getElementById('nn-call');
+  if (!openBtn || !modal) return;
+  var backdrop = document.getElementById('nn-call-backdrop');
+  var closeBtn = document.getElementById('nn-call-close');
+  var log = document.getElementById('nn-call-log');
+  var form = document.getElementById('nn-call-form');
+  var input = document.getElementById('nn-call-input');
+  var quick = document.getElementById('nn-call-quick');
+  var greeted = false;
+
+  var REPLIES = {
+    shipping: "We're in pre-order, so jars ship in the order they're placed as each batch is ready. The second yours goes out you'll get a tracking email. Need a status check? Call or text us from the Contact page.",
+    allergens: "Every jar lists its full ingredients and allergens on its product page under What's Inside. Read those before ordering, and if you're unsure, talk to a human before you buy. Safety first, nostalgia second.",
+    flavors: "58 and counting. The full lineup lives on the Get Notified page, tap NOTIFY ME on any flavor and we'll signal you the second it drops. Want one we killed brought back? Drop it in Request a Revival on the Contact page.",
+    returns: "Every order is backed by our 30-day money-back guarantee. Not for you? We'll refund or replace it, no hoops.",
+    human: "Say less. Call or text 954-275-6577, or email jay@nuttynostalgic.com, a real human gets back fast.",
+    "default": "I'm a late-night operator, so I'm best on shipping, allergens, flavors, returns, or getting you a human. Tap a button up top, or just ask away."
+  };
+  var CHIP_LABEL = { shipping: "Shipping?", allergens: "Allergens?", flavors: "Flavors?", human: "Talk to a human" };
+
+  function scrollDown() { log.scrollTop = log.scrollHeight; }
+  function addMsg(who, text, cls) {
+    var wrap = document.createElement('div');
+    wrap.className = 'nn-msg ' + cls;
+    var w = document.createElement('div'); w.className = 'nn-msg__who'; w.textContent = who;
+    var b = document.createElement('div'); b.className = 'nn-msg__bubble'; b.textContent = text;
+    wrap.appendChild(w); wrap.appendChild(b); log.appendChild(wrap); scrollDown();
+  }
+  function operatorReply(text) {
+    var typing = document.createElement('div');
+    typing.className = 'nn-msg nn-msg--op nn-typing';
+    typing.innerHTML = '<div class="nn-msg__who">OPERATOR</div><div class="nn-msg__bubble"><span></span><span></span><span></span></div>';
+    log.appendChild(typing); scrollDown();
+    setTimeout(function () { if (typing.parentNode) log.removeChild(typing); addMsg('OPERATOR', text, 'nn-msg--op'); }, 750);
+  }
+  function answer(key) { operatorReply(REPLIES[key] || REPLIES["default"]); }
+  function route(text) {
+    var q = text.toLowerCase();
+    if (/ship|track|order|arrive|deliver/.test(q)) return 'shipping';
+    if (/allerg|peanut|nut|gluten|dairy|safe|ingredient/.test(q)) return 'allergens';
+    if (/flavor|drop|notify|stock|revival|suggest|when/.test(q)) return 'flavors';
+    if (/return|refund|guarantee|money/.test(q)) return 'returns';
+    if (/human|person|talk|call|text|email|contact|phone/.test(q)) return 'human';
+    return 'default';
+  }
+  function openModal() {
+    if (backdrop) backdrop.classList.add('is-open');
+    modal.classList.add('is-open', 'is-connecting');
+    modal.setAttribute('aria-hidden', 'false');
+    openBtn.classList.add('is-read');
+    setTimeout(function () { modal.classList.remove('is-connecting'); }, 460);
+    if (!greeted) {
+      greeted = true;
+      setTimeout(function () { operatorReply("You're through to the Nutty Hotline, operators (okay, operator) standing by. What can I get you: shipping, allergens, flavors, or a real human?"); }, 380);
+    }
+    if (input) setTimeout(function () { input.focus(); }, 240);
+  }
+  function closeModal() {
+    if (backdrop) backdrop.classList.remove('is-open');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    openBtn.focus();
+  }
+  openBtn.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
+  if (quick) quick.addEventListener('click', function (e) {
+    var chip = e.target.closest('.nn-call__chip'); if (!chip) return;
+    var key = chip.getAttribute('data-ask');
+    addMsg('YOU', CHIP_LABEL[key] || key, 'nn-msg--me');
+    answer(key);
+  });
+  if (form) form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var val = input.value.trim(); if (!val) return;
+    addMsg('YOU', val, 'nn-msg--me'); input.value = '';
+    answer(route(val));
+  });
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', nnHotlineInit); } else { nnHotlineInit(); }
+})();

@@ -376,5 +376,38 @@
   <div class="rewind-static" id="rewind-static" aria-hidden="true"></div>
 
   <script src="assets/js/main.js"></script>
+  <!-- ====== NUTTY HOTLINE — chatbot launcher + call-in modal (prototype; real bot wires in via Cloudflare embed) ====== -->
+  <button type="button" class="nn-hotline" id="nn-hotline-open" aria-label="Open the Nutty Hotline">
+    <span class="nn-hotline__burst" aria-hidden="true"><img src="https://i.ibb.co/fzGsmFn6/nn-hotline-burst.png" alt="" width="120" height="120"></span>
+    <span class="nn-hotline__handset" aria-hidden="true"><img src="https://i.ibb.co/zWpnSDxK/nn-hotline-handset.png" alt="" width="96" height="96"></span>
+    <span class="nn-hotline__tag" aria-hidden="true">CALL NOW</span>
+    <span class="nn-hotline__dot" aria-hidden="true">1</span>
+  </button>
+  <div class="nn-call__backdrop" id="nn-call-backdrop" aria-hidden="true"></div>
+  <aside class="nn-call" id="nn-call" role="dialog" aria-modal="true" aria-labelledby="nn-call-title" aria-hidden="true">
+    <div class="nn-call__flash" aria-hidden="true"></div>
+    <div class="nn-call__scan" aria-hidden="true"></div>
+    <header class="nn-call__head">
+      <span class="nn-call__live"><span class="nn-call__live-dot"></span>OPERATORS STANDING BY</span>
+      <button type="button" class="nn-call__close" id="nn-call-close" aria-label="Hang up">&#10005;</button>
+    </header>
+    <div class="nn-call__chyron">
+      <span class="nn-call__ch">CH 90</span>
+      <span class="nn-call__title" id="nn-call-title">THE NUTTY HOTLINE</span>
+    </div>
+    <div class="nn-call__log" id="nn-call-log" aria-live="polite"></div>
+    <div class="nn-call__quick" id="nn-call-quick">
+      <button type="button" class="nn-call__chip" data-ask="shipping">&#9656; PRESS 1 &mdash; SHIPPING</button>
+      <button type="button" class="nn-call__chip" data-ask="allergens">&#9656; PRESS 2 &mdash; ALLERGENS</button>
+      <button type="button" class="nn-call__chip" data-ask="flavors">&#9656; PRESS 3 &mdash; FLAVORS</button>
+      <button type="button" class="nn-call__chip" data-ask="human">&#9656; PRESS 0 &mdash; A HUMAN</button>
+    </div>
+    <form class="nn-call__bar" id="nn-call-form">
+      <span class="nn-call__prompt" aria-hidden="true">&#9654;</span>
+      <input type="text" class="nn-call__input" id="nn-call-input" placeholder="Type your message&hellip;" autocomplete="off" aria-label="Type your message">
+      <button type="submit" class="nn-call__send">SEND</button>
+    </form>
+  </aside>
+
 </body>
 </html>
