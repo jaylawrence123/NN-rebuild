@@ -3755,11 +3755,15 @@ main { padding-top: var(--offset); }
   cursor: pointer;
   z-index: 55;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, bottom 0.25s ease;
 }
 .nn-hotline:hover { transform: scale(1.06); }
 .nn-hotline:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; border-radius: 8px; }
 .nn-hotline.is-hidden { display: none; }
+/* yield to the PDP sticky ADD TO CART bar — lift above it while it's showing (mobile only) */
+@media (max-width: 767px) {
+  .nn-hotline--lifted { bottom: 88px; }
+}
 .nn-hotline__burst { position: absolute; inset: 0; }
 .nn-hotline__burst img {
   width: 100%; height: 100%; display: block;

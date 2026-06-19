@@ -320,8 +320,13 @@
   var atc = document.querySelector('.pdp-atc');
   if (sticky && atc) {
     new IntersectionObserver(function (entries) {
-      sticky.classList.toggle('is-visible', !entries[0].isIntersecting);
-      sticky.setAttribute('aria-hidden', entries[0].isIntersecting ? 'true' : 'false');
+      var show = !entries[0].isIntersecting;
+      sticky.classList.toggle('is-visible', show);
+      sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
+      // lift the hotline launcher above the sticky bar so they don't overlap (mobile).
+      // Look it up here, not at setup — the hotline markup is parsed AFTER main.js.
+      var hotlineBtn = document.getElementById('nn-hotline-open');
+      if (hotlineBtn) hotlineBtn.classList.toggle('nn-hotline--lifted', show);
     }, { rootMargin: '-80px 0px 0px 0px' }).observe(atc);
   }
 })();
