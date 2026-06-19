@@ -887,8 +887,10 @@ main { padding-top: var(--offset); }
   .proof-ticker { animation: none; }
 }
 @keyframes proof-scroll {
+  /* -20% = exactly one of the 5 identical segments (see index.html); keeps the loop
+     seamless on any desktop width because 4 segments always cover the viewport. */
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(-20%); }
 }
 /* VHS tracking glitch — mostly still, brief vertical shudder + signal tear */
 @keyframes ticker-tracking {

@@ -109,7 +109,7 @@ STORAGE:
 LAUNCH PROMO:
 - 15% off all pre-orders for the launch — code NUTTY15 at checkout. Mention it on natural openings, don't spam it, and don't promise an end date (call it "the launch special, on right now").
 
-SOCIAL PROOF: 4.86/5 rating, and 8,000+ people have grabbed a jar. Don't inflate past that, and don't confuse it with the review count.
+SOCIAL PROOF: 4.86/5 rating from 4,000+ reviews. Don't inflate past that.
 
 PAYMENTS: card, Shop Pay, PayPal, Google Pay.
 
