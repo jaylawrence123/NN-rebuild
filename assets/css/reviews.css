@@ -117,40 +117,7 @@
   flex-shrink: 0;
 }
 
-/* ---- Filter chips ---- */
-.rv-filters {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0.5rem 1.375rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.rv-chip {
-  font-family: 'VT323', monospace;
-  font-size: 16px;
-  letter-spacing: 0.06em;
-  color: var(--ink);
-  background: transparent;
-  border: 2px solid var(--ink);
-  border-radius: 999px;
-  padding: 0.3rem 0.9rem;
-  cursor: pointer;
-  transition: background 0.12s ease, color 0.12s ease;
-}
-.rv-chip:hover { background: rgba(42, 36, 32, 0.08); }
-.rv-chip.is-active { background: var(--ink); color: var(--cream); }
-.rv-chip:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
-
-/* ---- Reviews list ---- */
-.rv-list {
-  max-width: 1100px;
-  margin: 1.5rem auto 0;
-  padding: 0 1.375rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
+/* ---- Review cards ---- */
 .rv-card {
   display: flex;
   flex-direction: column;
@@ -186,6 +153,13 @@
   font-size: 15px;
   letter-spacing: 0.08em;
   color: var(--ink-soft);
+}
+.rv-card__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+  line-height: 1.05;
+  color: var(--ink);
 }
 .rv-card__quote {
   font-family: 'Figtree', sans-serif;
@@ -272,11 +246,7 @@
   }
   .rv-summary__score { flex: 0 0 300px; border-right: 2.5px solid rgba(42, 36, 32, 0.15); padding-right: 2.5rem; }
   .rv-bars { flex: 1; }
-  .rv-list { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
   .rv-cta__btns { flex-direction: row; justify-content: center; }
-}
-@media (min-width: 1100px) {
-  .rv-list { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* =====================================================
@@ -340,15 +310,15 @@
 
 /* ---- B: review cards as broadcast lower-thirds ---- */
 .rv-card { padding: 1.25rem 1.25rem 0; overflow: hidden; }
-.rv-card__date { display: inline-flex; align-items: center; gap: 6px; }
+/* top-right stamp — generic (no exact dates); steady, no blink */
+.rv-card__date { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 .rv-card__date::before {
   content: '';
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--red);
-  box-shadow: 0 0 5px rgba(230, 59, 46, 0.7);
-  animation: rv-rec 1.2s steps(1) infinite;
+  background: var(--green);
+  box-shadow: 0 0 5px rgba(123, 199, 77, 0.6);
 }
 .rv-card__foot {
   margin: auto -1.25rem 0;
@@ -367,5 +337,321 @@
   .rv-summary__panel .rv-bar__fill { width: var(--w); }
   .rv-summary__panel.is-armed .rv-summary__stars span { opacity: 1; }
   .rv-summary__osd-dot,
-  .rv-card__date::before { animation: none; }
+  .rv-flavornav__dot { animation: none; }
 }
+
+/* =====================================================
+   REVIEWS BY FLAVOR — sticky jump-nav + per-flavor carousels (Jun 18 2026)
+   ===================================================== */
+
+/* page-scoped smooth jump-scroll */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ---- Sticky flavor jump-nav ---- */
+.rv-flavornav {
+  position: sticky;
+  top: calc(var(--offset) + 8px);
+  z-index: 30;
+  width: min(100% - 1.75rem, 1100px);
+  margin: 1.25rem auto 0.5rem;
+  padding: 0.5rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--cream-card);
+  border: 2.5px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 4px 5px 0 rgba(42, 36, 32, 0.16);
+}
+.rv-flavornav__osd {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  padding-right: 0.55rem;
+  border-right: 2px solid rgba(42, 36, 32, 0.18);
+}
+.rv-flavornav__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 6px rgba(230, 59, 46, 0.8);
+  animation: rv-rec 1.1s steps(1) infinite;
+}
+.rv-flavornav__chips {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.rv-flavornav__chips::-webkit-scrollbar { display: none; }
+.rv-fchip {
+  flex: 0 0 auto;
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0.26rem 0.7rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.rv-fchip:hover { background: rgba(42, 36, 32, 0.08); }
+.rv-fchip:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.rv-fchip.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+  box-shadow: inset 0 -4px 0 var(--flavor);
+}
+
+/* ---- Flavor section + header ---- */
+.rv-flavor {
+  max-width: 1100px;
+  margin: 2.25rem auto 0;
+  scroll-margin-top: calc(var(--offset) + 76px);
+}
+.rv-flavor__head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  padding: 0 1.375rem;
+}
+.rv-flavor__ch {
+  flex: 0 0 auto;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  background: var(--ink);
+  border-left: 4px solid var(--flavor);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+.rv-flavor__jar {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  filter: drop-shadow(2px 3px 0 rgba(42, 36, 32, 0.18));
+}
+.rv-flavor__meta {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.rv-flavor__name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(26px, 6vw, 38px);
+  line-height: 0.95;
+  color: var(--ink);
+}
+.rv-flavor__shop {
+  flex: 0 0 auto;
+  margin-left: auto;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  background: var(--ink);
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--flavor);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.rv-flavor__shop:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--flavor); }
+.rv-flavor__shop:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--flavor); }
+.rv-flavor__shop:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+/* ---- Carousel ---- */
+.rv-carousel { position: relative; margin-top: 0.9rem; }
+.rv-car__track {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 1.375rem;
+  padding: 0.4rem 1.375rem 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.rv-car__track::-webkit-scrollbar { display: none; }
+.rv-car__track > .rv-card {
+  flex: 0 0 clamp(255px, 80vw, 320px);
+  height: 380px;            /* uniform cards — content never sets height */
+  scroll-snap-align: start;
+}
+/* clamp title + body inside carousel so every card is identical height */
+.rv-car__track .rv-card__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.rv-car__track .rv-card__quote {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* "Read more" — appears (via JS) only on clamped cards */
+.rv-card__more {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-bottom: 2px solid var(--flavor);
+  line-height: 1.1;
+}
+.rv-card__more:hover { color: var(--flavor); }
+.rv-card__more:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+/* nav arrows — desktop only (mobile = native swipe) */
+.rv-car__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--cream);
+  background: var(--ink);
+  border: 2.5px solid var(--ink);
+  box-shadow: 3px 3px 0 rgba(42, 36, 32, 0.25);
+  cursor: pointer;
+  z-index: 5;
+}
+.rv-car__nav--prev { left: 4px; }
+.rv-car__nav--next { right: 4px; }
+.rv-car__nav:hover { background: var(--flavor); }
+.rv-car__nav:disabled { opacity: 0.32; cursor: default; }
+.rv-car__nav:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+@media (min-width: 768px) { .rv-car__nav { display: inline-flex; } }
+
+/* ---- End-of-carousel shop CTA card ---- */
+.rv-card--cta {
+  scroll-snap-align: start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  text-align: center;
+  text-decoration: none;
+  background: var(--ink);
+  border: 2.5px solid var(--ink);
+  box-shadow: 5px 6px 0 var(--flavor);
+  padding: 1.6rem 1.3rem;
+  color: var(--cream);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.rv-card--cta:hover { transform: translate(-1px, -1px); box-shadow: 7px 8px 0 var(--flavor); }
+.rv-card--cta:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.rv-ctacard__eyebrow {
+  font-family: 'VT323', monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--red);
+}
+.rv-ctacard__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+}
+.rv-ctacard__jar {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+  filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.3));
+}
+.rv-ctacard__go {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  border: 2px solid var(--cream);
+  border-radius: 999px;
+  padding: 0.28rem 1rem;
+}
+
+/* ---- Read-more review modal ---- */
+.rv-modal { position: fixed; inset: 0; z-index: 1000; display: none; }
+.rv-modal.is-open { display: block; }
+.rv-modal__backdrop { position: absolute; inset: 0; background: rgba(12, 10, 8, 0.62); }
+.rv-modal__panel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 540px);
+  max-height: 85dvh;
+  overflow-y: auto;
+  background: var(--cream-card);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 8px 9px 0 rgba(42, 36, 32, 0.3);
+  padding: 2rem 1.6rem 1.4rem;
+}
+.rv-modal__close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.8rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+.rv-modal__osd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--red);
+}
+.rv-modal__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 5px rgba(123, 199, 77, 0.6); }
+.rv-modal__stars { display: flex; gap: 3px; margin: 0.6rem 0 0.45rem; }
+.rv-modal__stars span { background: var(--blue); color: var(--yellow); width: 22px; height: 21px; display: flex; align-items: center; justify-content: center; font-size: 13px; line-height: 1; }
+.rv-modal__title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; line-height: 1.02; letter-spacing: 0.02em; color: var(--ink); margin-bottom: 0.5rem; }
+.rv-modal__quote { font-family: 'Figtree', sans-serif; font-size: 1.0625rem; line-height: 1.6; color: var(--ink); }
+.rv-modal__foot { display: flex; align-items: center; gap: 12px; margin-top: 1.1rem; padding-top: 0.9rem; border-top: 2px solid rgba(42, 36, 32, 0.14); }
+.rv-modal__jar { width: 42px; height: 42px; object-fit: contain; flex-shrink: 0; }
+.rv-modal__who { display: flex; flex-direction: column; line-height: 1.15; }
+.rv-modal__name { font-family: 'Bebas Neue', sans-serif; font-size: 1.125rem; letter-spacing: 0.06em; color: var(--ink); }
+.rv-modal__meta { font-family: 'VT323', monospace; font-size: 14px; color: var(--ink-soft); }
+.rv-modal__verified { color: var(--green); }

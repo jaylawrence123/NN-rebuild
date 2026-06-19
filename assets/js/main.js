@@ -742,6 +742,118 @@
   }
 })();
 
+/* ---- Reviews — per-flavor carousels + sticky flavor jump-nav scrollspy ---- */
+(function () {
+  var nav = document.getElementById('rv-flavornav');
+  if (!nav) return;
+
+  // Carousel arrows (desktop). Mobile uses native swipe.
+  var carousels = document.querySelectorAll('.rv-carousel');
+  Array.prototype.forEach.call(carousels, function (car) {
+    var track = car.querySelector('.rv-car__track');
+    var prev = car.querySelector('.rv-car__nav--prev');
+    var next = car.querySelector('.rv-car__nav--next');
+    if (!track || !prev || !next) return;
+
+    function step() {
+      var card = track.querySelector('.rv-card');
+      return card ? card.getBoundingClientRect().width + 16 : track.clientWidth * 0.8;
+    }
+    function update() {
+      var max = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max;
+    }
+    prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+
+  // Scrollspy — light up the chip whose flavor section is in view.
+  var chips = Array.prototype.slice.call(nav.querySelectorAll('.rv-fchip'));
+  function setActive(id) {
+    chips.forEach(function (c) {
+      c.classList.toggle('is-active', c.getAttribute('href') === '#' + id);
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target.id); });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    chips.forEach(function (c) {
+      var sec = document.querySelector(c.getAttribute('href'));
+      if (sec) spy.observe(sec);
+    });
+  }
+  if (chips[0]) chips[0].classList.add('is-active');
+})();
+
+/* ---- Reviews — "Read more" modal for clamped cards ---- */
+(function () {
+  var modal = document.getElementById('rv-modal');
+  if (!modal) return;
+  var mStars = document.getElementById('rv-modal-stars');
+  var mTitle = document.getElementById('rv-modal-title');
+  var mQuote = document.getElementById('rv-modal-quote');
+  var mJar = document.getElementById('rv-modal-jar');
+  var mName = document.getElementById('rv-modal-name');
+  var mFlavor = document.getElementById('rv-modal-flavor');
+  var lastFocus = null;
+
+  function openModal(card) {
+    var stars = card.querySelector('.rv-card__stars');
+    var title = card.querySelector('.rv-card__title');
+    var quote = card.querySelector('.rv-card__quote');
+    var jar = card.querySelector('.rv-card__jar');
+    var name = card.querySelector('.rv-card__name');
+    var section = card.closest('.rv-flavor');
+    var fname = section ? section.querySelector('.rv-flavor__name') : null;
+
+    mStars.innerHTML = stars ? stars.innerHTML : '';
+    mTitle.textContent = title ? title.textContent : '';
+    mQuote.innerHTML = quote ? quote.innerHTML : '';
+    mJar.src = jar ? jar.src : '';
+    mName.textContent = name ? name.textContent : '';
+    mFlavor.textContent = fname ? fname.textContent : '';
+
+    lastFocus = document.activeElement;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('rv-modal-close').focus();
+  }
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  modal.addEventListener('click', function (e) {
+    if (e.target.hasAttribute('data-rv-close') || e.target.id === 'rv-modal-close') closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+
+  // Add "Read more" only to cards whose body actually overflows the clamp.
+  var cards = document.querySelectorAll('.rv-car__track > .rv-card:not(.rv-card--cta)');
+  Array.prototype.forEach.call(cards, function (card) {
+    var quote = card.querySelector('.rv-card__quote');
+    if (!quote) return;
+    if (quote.scrollHeight - quote.clientHeight > 2) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'rv-card__more';
+      btn.textContent = 'READ MORE ▸';
+      quote.insertAdjacentElement('afterend', btn);
+      btn.addEventListener('click', function () { openModal(card); });
+    }
+  });
+})();
+
 /* ---- Time Capsule — left-edge REWIND tab + CRT video modal (homepage) ---- */
 (function () {
   var tab = document.getElementById('capsule-open');

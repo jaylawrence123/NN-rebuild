@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reviews — Nutty &amp; Nostalgic</title>
-  <meta name="description" content="4.86/5 from 3,800+ verified buyers. Read what people say about the snacks we brought back from the dead.">
+  <meta name="description" content="4.86/5 from 4,000+ verified buyers. Read what people say about the snacks we brought back from the dead.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,7 +215,7 @@
         <div class="rv-summary__score">
           <span class="rv-summary__avg" id="rv-avg" data-count="4.86">4.86</span>
           <span class="rv-summary__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <span class="rv-summary__count">3,800+ VERIFIED REVIEWS</span>
+          <span class="rv-summary__count">4,000+ VERIFIED REVIEWS</span>
           <a href="#write" class="btn btn--primary rv-summary__cta">WRITE A REVIEW</a>
         </div>
 
@@ -230,114 +230,474 @@
       </div>
     </section>
 
-    <!-- Filter chips — replaced by Judge.me's own filter/sort controls at conversion -->
-    <div class="rv-filters" role="tablist" aria-label="Filter reviews">
-      <button type="button" class="rv-chip is-active">ALL REVIEWS</button>
-      <button type="button" class="rv-chip">WITH PHOTOS</button>
-      <button type="button" class="rv-chip">5 &#9733;</button>
-      <button type="button" class="rv-chip">4 &#9733;</button>
-      <button type="button" class="rv-chip">MOST RECENT</button>
-    </div>
+    <!-- Flavor filter — sticky jump-nav. Click a flavor to scroll to its carousel. -->
+    <nav class="rv-flavornav" id="rv-flavornav" aria-label="Jump to reviews by flavor">
+      <span class="rv-flavornav__osd" aria-hidden="true"><span class="rv-flavornav__dot"></span>TUNE IN</span>
+      <div class="rv-flavornav__chips">
+        <a href="#rv-pb-maxd" class="rv-fchip" style="--flavor:#E63B2E">PB MAX'D</a>
+        <a href="#rv-crisps" class="rv-fchip" style="--flavor:#2E6BE6">90'S CRISPS</a>
+        <a href="#rv-cowabunga" class="rv-fchip" style="--flavor:#7BC74D">COWABUNGA PIES</a>
+        <a href="#rv-nuttyfinger" class="rv-fchip" style="--flavor:#1F2A63">NUTTYFINGER BB'S</a>
+        <a href="#rv-lunchbox" class="rv-fchip" style="--flavor:#FFC42E">LUNCH BOX GRANOLA</a>
+        <a href="#rv-theking" class="rv-fchip" style="--flavor:#7A3DB8">PB &amp; BANANA CREME</a>
+      </div>
+    </nav>
 
     <!-- ============================================
-         REVIEWS LIST
-         At Shopify conversion, replace the placeholder
-         cards below with the Judge.me ALL REVIEWS WIDGET:
-         <div class="jdgm-all-reviews-widget"></div>
-         then brand it with the CSS overrides in reviews.css.
+         REVIEWS BY FLAVOR — each flavor is its own carousel (7 cards + a shop CTA).
+         Hand-curated: transcribed from Judge.me, no live widget on this page.
+         To add a real review, copy an <article class="rv-card"> into the right
+         flavor's .rv-car__track (keep the CTA card last).
     ============================================ -->
-    <section class="rv-list" aria-label="Customer reviews">
 
-      <article class="rv-card">
-        <header class="rv-card__top">
-          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <span class="rv-card__date">JUN 2026</span>
-        </header>
-        <p class="rv-card__quote">First bite and I was nine again, sitting on the kitchen floor watching Saturday cartoons. I genuinely got emotional. My wife thinks I've lost it.</p>
-        <footer class="rv-card__foot">
-          <img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB MAX'D" width="120" height="120" loading="lazy">
-          <span class="rv-card__who">
-            <span class="rv-card__name">DANNY R.</span>
-            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span>
-          </span>
-        </footer>
-      </article>
+    <!-- ===== CH 01 · PB MAX'D ===== -->
+    <section class="rv-flavor" id="rv-pb-maxd" style="--flavor:#E63B2E" aria-labelledby="rv-pb-maxd-h">
+      <header class="rv-flavor__head">
+        <span class="rv-flavor__ch" aria-hidden="true">CH 01</span>
+        <img class="rv-flavor__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB MAX'D" width="120" height="120" loading="lazy">
+        <span class="rv-flavor__meta">
+          <h2 class="rv-flavor__name" id="rv-pb-maxd-h">PB MAX'D</h2>
+        </span>
+        <a href="product.html" class="rv-flavor__shop">SHOP &#9656;</a>
+      </header>
+      <div class="rv-carousel">
+        <button type="button" class="rv-car__nav rv-car__nav--prev" aria-label="Scroll PB MAX'D reviews left">&#8249;</button>
+        <div class="rv-car__track" role="group" aria-label="PB MAX'D reviews">
 
-      <article class="rv-card">
-        <header class="rv-card__top">
-          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <span class="rv-card__date">JUN 2026</span>
-        </header>
-        <p class="rv-card__quote">Ordered it as a joke for my brother's birthday. Now we both have a jar and text about it like idiots. Tastes EXACTLY like I remember.</p>
-        <footer class="rv-card__foot">
-          <img class="rv-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="90'S CRISPS" width="120" height="120" loading="lazy">
-          <span class="rv-card__who">
-            <span class="rv-card__name">MARIA T.</span>
-            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; 90'S CRISPS</span>
-          </span>
-        </footer>
-      </article>
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Yum!</p>
+            <p class="rv-card__quote">Tastes just like the PB Max candy bars did!!! Awesome flavor! So happy! &#128522;</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">B BOWMAN</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span></span></footer>
+          </article>
 
-      <article class="rv-card">
-        <header class="rv-card__top">
-          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <span class="rv-card__date">MAY 2026</span>
-        </header>
-        <p class="rv-card__quote">These were my after-school snack every single day and I thought they were gone forever. I teared up opening the box. Thank you for bringing them back.</p>
-        <footer class="rv-card__foot">
-          <img class="rv-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="COWABUNGA PIES" width="120" height="120" loading="lazy">
-          <span class="rv-card__who">
-            <span class="rv-card__name">KEVIN S.</span>
-            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; COWABUNGA PIES</span>
-          </span>
-        </footer>
-      </article>
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">P.B. .... TO THE MAX!!!!</p>
+            <p class="rv-card__quote">I still remember the original PB Max candy bar, and it's like N&amp;N went and jumped in the time machine and headed for the 90s!!!!<br>And now they're back powered by 1.21 jigawatts, and feeling totally tubular....<br>To THE MAX ( Hey maybe that's where the name came from &#128563; ... and THAT my friends, is a Paradox &#127744; )<br>So before the fabric of SpaceTime collapses upon itself.... Go grab you a jar... Or 17 &#128517;</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">VAN M</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span></span></footer>
+          </article>
 
-      <article class="rv-card">
-        <header class="rv-card__top">
-          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <span class="rv-card__date">MAY 2026</span>
-        </header>
-        <p class="rv-card__quote">I hadn't thought about these in twenty years. One spoonful and the whole memory came flooding back. Unreal how close it is to the original.</p>
-        <footer class="rv-card__foot">
-          <img class="rv-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="NUTTYFINGER BBS" width="120" height="120" loading="lazy">
-          <span class="rv-card__who">
-            <span class="rv-card__name">ALEX P.</span>
-            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; NUTTYFINGER BB'S</span>
-          </span>
-        </footer>
-      </article>
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Really good !</p>
+            <p class="rv-card__quote">I ordered the pb max it was really good, just like opening up a package of pb max the taste is out of this world I'll order again. Thank you.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">ERIK BEAUMONT</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span></span></footer>
+          </article>
 
-      <article class="rv-card">
-        <header class="rv-card__top">
-          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <span class="rv-card__date">APR 2026</span>
-        </header>
-        <p class="rv-card__quote">Bought one to try, came back and bought four more. My whole family is obsessed. This is the most fun I've had with a snack in years.</p>
-        <footer class="rv-card__foot">
-          <img class="rv-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="LUNCH BOX GRANOLA" width="120" height="120" loading="lazy">
-          <span class="rv-card__who">
-            <span class="rv-card__name">SAM W.</span>
-            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; LUNCH BOX GRANOLA</span>
-          </span>
-        </footer>
-      </article>
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Very tasty but not a dupe</p>
+            <p class="rv-card__quote">Is this is very tasty but it's not a dupe for the PB Max. I recommend trying it though because it was really good.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">HILARY HUDSON</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span></span></footer>
+          </article>
 
-      <article class="rv-card">
-        <header class="rv-card__top">
-          <span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span>
-          <span class="rv-card__date">APR 2026</span>
-        </header>
-        <p class="rv-card__quote">Shipping was fast and the packaging is gorgeous. But the taste — it's a straight-up time machine. Already signed up to be notified for the next drop.</p>
-        <footer class="rv-card__foot">
-          <img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="PB MAX'D" width="120" height="120" loading="lazy">
-          <span class="rv-card__who">
-            <span class="rv-card__name">JESS M.</span>
-            <span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span>
-          </span>
-        </footer>
-      </article>
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">PB Max, I loved it then, do I love it now?</p>
+            <p class="rv-card__quote">Well I finished the jar in 4 sessions, so I would say yes. You can craft the perfect bite with the ratios in the jar. At first I thought it was just going to be peanut butter and chocolate frosting, but the peanut butter is more structured like you would find in a candy bar. The milk chocolate does actually taste like what would be on a candy bar and had a nice texture. The whole wheat cookies provide a nice crunch. I haven't had PB Max since I was like 5 so this was great to try.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">DAN ROSS</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span></span></footer>
+          </article>
 
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Memories in a jar</p>
+            <p class="rv-card__quote">For 30 years, I longed to taste a PB Max again. I thought it would never happen...until recently. The flavor is almost spot on to the original. I really hope this version doesn't disappear for another 30 years. I'll be buying this again in the near future!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">CECIL HICKS</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Replicating the greatest candy bar of all time</p>
+            <p class="rv-card__quote">I was a PB Max fiend back in the day. In my opinion, it was the greatest candy bar ever, uncontested. I continue to await the day that the Mars family comes to their senses, and re-releases this confectionary treasure. In the meantime, PB Max'd is as close as we are going to get. Delicious! A near-perfect mixture of ingredients from the original candy bar, particularly the peanut butter - whose flavor, texture and consistency have to be tasted to be believed.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">KEVIN HULME</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB MAX'D</span></span></footer>
+          </article>
+
+          <a class="rv-card rv-card--cta" href="product.html">
+            <span class="rv-ctacard__eyebrow">&#9654; LOVED THE REVIEWS?</span>
+            <span class="rv-ctacard__title">SHOP PB MAX'D</span>
+            <img class="rv-ctacard__jar" src="https://i.ibb.co/nqC0h1NL/pb-max-d-transparent.png" alt="" width="120" height="120" loading="lazy">
+            <span class="rv-ctacard__go">VIEW THE JAR &#9656;</span>
+          </a>
+
+        </div>
+        <button type="button" class="rv-car__nav rv-car__nav--next" aria-label="Scroll PB MAX'D reviews right">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- ===== CH 02 · 90'S CRISPS ===== -->
+    <section class="rv-flavor" id="rv-crisps" style="--flavor:#2E6BE6" aria-labelledby="rv-crisps-h">
+      <header class="rv-flavor__head">
+        <span class="rv-flavor__ch" aria-hidden="true">CH 02</span>
+        <img class="rv-flavor__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="90'S CRISPS" width="120" height="120" loading="lazy">
+        <span class="rv-flavor__meta">
+          <h2 class="rv-flavor__name" id="rv-crisps-h">90'S CRISPS</h2>
+        </span>
+        <a href="product-crisps.html" class="rv-flavor__shop">SHOP &#9656;</a>
+      </header>
+      <div class="rv-carousel">
+        <button type="button" class="rv-car__nav rv-car__nav--prev" aria-label="Scroll 90'S CRISPS reviews left">&#8249;</button>
+        <div class="rv-car__track" role="group" aria-label="90'S CRISPS reviews">
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Pb crisp</p>
+            <p class="rv-card__quote">Wel loved the PB crisp reminds me of my childhood, growing up in the 90s now just like the 90s PB crisp is gone &#128521; thank you Jay for the moment of memories!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">LORI COOPER</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; 90'S CRISPS</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">An amazingly accurate recreation!</p>
+            <p class="rv-card__quote">My wife literally cried after her first taste. The PB crisp is exactly how she remembers it tasting and brought back all the good memories of her and her late grandmother's favorite snack. Will definitely purchase again!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">FREDDY</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; 90'S CRISPS</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">These are AMAZING</p>
+            <p class="rv-card__quote">This is DELICIOUS, so much better than I was even expecting I've been seeing these for years in varying flavors and finally ordered for this one and I'm kicking myself for not trying these earlier. I REALLY hope this one restocks, because I am stocking up next time!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">GLITTERFLAME89</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; 90'S CRISPS</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Is that you 90's?</p>
+            <p class="rv-card__quote">Just how I remembered them! Deeelicious! I wish I could say this lasted longer than a day but sadly - it did not. My girls and I devoured it and it was worth every bite! Yum, yum, YUM!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">CARRIE MARTIN</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; 90'S CRISPS</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">99%</p>
+            <p class="rv-card__quote">Bro! I have looked and looked for The Infamous PB Crisps for what seems like an eternity. Well, low and behold, you have made this fatboy a little Giddy I must say because the 90's Crisp mix is very, VERY, close to the original fun little bite size crispy then creamy morsels of Heaven! Lol The texture thing is something that's really persuasive of determining rather a food is awesome or not to a true foodie so it is ABSOLUTELY MIND BLOWING how the cookie pieces stay crispy so that you get the soft, creaminess as well as that crunch!! However you do it, it's freaking amazing! I can't wait to try your Dubai flavors!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">BLAKE C</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; 90'S CRISPS</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Made this 90's kid happy</p>
+            <p class="rv-card__quote">I was a kid in the 90's (I'm 40 now) and the on crisps were addicting, so to taste it again when I assumed I'd never again is just crazy. This item also reminds me of those butter butter cookies (shaped like a peanut) I love the crunchy pieces in the jar and I have braces, so it's a safe food for them :) I'd love to get the pizzeria chip jar next (wish it was in stock!) Because those were super addictive lol. Thank you for making this 90's kid heart happy &#128522;</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">NICE NERD</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; 90'S CRISPS</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">PB Crisp reborn!</p>
+            <p class="rv-card__quote">Other reviews had said this was the next best thing to the beloved PB Crisp. I am happy to affirm those claims to be 100% correct. Will definitely be buying more!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">JOE PIASTA</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; 90'S CRISPS</span></span></footer>
+          </article>
+
+          <a class="rv-card rv-card--cta" href="product-crisps.html">
+            <span class="rv-ctacard__eyebrow">&#9654; LOVED THE REVIEWS?</span>
+            <span class="rv-ctacard__title">SHOP 90'S CRISPS</span>
+            <img class="rv-ctacard__jar" src="https://i.ibb.co/nqRbWfKd/90s-crisps-transparent.png" alt="" width="120" height="120" loading="lazy">
+            <span class="rv-ctacard__go">VIEW THE JAR &#9656;</span>
+          </a>
+
+        </div>
+        <button type="button" class="rv-car__nav rv-car__nav--next" aria-label="Scroll 90'S CRISPS reviews right">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- ===== CH 03 · COWABUNGA PIES ===== -->
+    <section class="rv-flavor" id="rv-cowabunga" style="--flavor:#7BC74D" aria-labelledby="rv-cowabunga-h">
+      <header class="rv-flavor__head">
+        <span class="rv-flavor__ch" aria-hidden="true">CH 03</span>
+        <img class="rv-flavor__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="COWABUNGA PIES" width="120" height="120" loading="lazy">
+        <span class="rv-flavor__meta">
+          <h2 class="rv-flavor__name" id="rv-cowabunga-h">COWABUNGA PIES</h2>
+        </span>
+        <a href="product-cowabunga.html" class="rv-flavor__shop">SHOP &#9656;</a>
+      </header>
+      <div class="rv-carousel">
+        <button type="button" class="rv-car__nav rv-car__nav--prev" aria-label="Scroll COWABUNGA PIES reviews left">&#8249;</button>
+        <div class="rv-car__track" role="group" aria-label="COWABUNGA PIES reviews">
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Radical!</p>
+            <p class="rv-card__quote">The flavor of Cowabunga Pies has everything I loved about the original Hostess Turtle Pies and so much more. Totally radical.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">DANNY HOLLIFIELD</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; COWABUNGA PIES</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Bomb dot Com</p>
+            <p class="rv-card__quote">Everything about this spread was delicious. The only thing I would improve is the amount of pie chunks are put in or sold separately. Definitely grabbing this again and the Homer Simpson Donut one</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">ANTHONY SM</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; COWABUNGA PIES</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">It's dam good!!!</p>
+            <p class="rv-card__quote">As a 90s kid this is a must try. The texture, the flavors, not a miss. Definitely turn on some ninja turtles and get to snackin 10/10 would recommend folks.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">ANTHONY</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; COWABUNGA PIES</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">I miss my childhood</p>
+            <p class="rv-card__quote">I searched with my grandpa high and low of turtles pies when they first came out. We would literally look everywhere but could never find them. I finally got to try this version of the pies and I can imagine this is what I would have experienced as a child. I had traditional pudding pies in the past and knew it was the same just with the green frosting missing. This is my second time ordering this because I enjoyed the first batch so much. Thank you for letting me live a little piece of my childhood that never got to have this.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">TODD T</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; COWABUNGA PIES</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Good, But Not My Favorite</p>
+            <p class="rv-card__quote">my bf and i enjoyed this one just fine! since it had a less "independent" flavor (unlike cotton candy bubblegum), we ate it with apples and bananas, as well as by itself! the texture was good, but since vanilla pudding is not a super strong flavor, the cashew flavor was really strong and it wasn't my favorite! i like cashews, but for some reason, mixed with the vanilla pudding and glazed pie flavors, i couldn't like it as much as i thought i would! also many people were saying it doesn't have enough pie chips, i don't know if he saw that and changed this batch, but it was definitely NOT LACKING in the pie chips department at all. i liked the pie chips a lot, but i think there was a little too much glaze on the pieces&hellip;</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">B DIAZ</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; COWABUNGA PIES</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Yummy</p>
+            <p class="rv-card__quote">So glad this was restocked so I could get a chance to try and I was not disappointed. I tried it plain, and with bananas, my personal favorite. Has a creamy consistency similar to cake batter with cookie pieces and light not overly sweet pudding flavor. So happy I ordered 2.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">KIKI</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; COWABUNGA PIES</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Delicious !</p>
+            <p class="rv-card__quote">I can't exactly do a side by side comparison, since the pies have been gone for decades, but this is delicious &amp; the cashew butter really does have a vanilla pudding taste to it. The pie pieces are great, and I'm pretty sure how I remember them. The shipping was fast, and the quality is great. Happy to support a small business, and I'll be shopping here again.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">ERIN</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; COWABUNGA PIES</span></span></footer>
+          </article>
+
+          <a class="rv-card rv-card--cta" href="product-cowabunga.html">
+            <span class="rv-ctacard__eyebrow">&#9654; LOVED THE REVIEWS?</span>
+            <span class="rv-ctacard__title">SHOP COWABUNGA PIES</span>
+            <img class="rv-ctacard__jar" src="https://i.ibb.co/1YTLY8gd/cowabunga-pies-transparent.png" alt="" width="120" height="120" loading="lazy">
+            <span class="rv-ctacard__go">VIEW THE JAR &#9656;</span>
+          </a>
+
+        </div>
+        <button type="button" class="rv-car__nav rv-car__nav--next" aria-label="Scroll COWABUNGA PIES reviews right">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- ===== CH 04 · NUTTYFINGER BB'S ===== -->
+    <section class="rv-flavor" id="rv-nuttyfinger" style="--flavor:#1F2A63" aria-labelledby="rv-nuttyfinger-h">
+      <header class="rv-flavor__head">
+        <span class="rv-flavor__ch" aria-hidden="true">CH 04</span>
+        <img class="rv-flavor__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="NUTTYFINGER BB'S" width="120" height="120" loading="lazy">
+        <span class="rv-flavor__meta">
+          <h2 class="rv-flavor__name" id="rv-nuttyfinger-h">NUTTYFINGER BB'S</h2>
+        </span>
+        <a href="product-nuttyfinger.html" class="rv-flavor__shop">SHOP &#9656;</a>
+      </header>
+      <div class="rv-carousel">
+        <button type="button" class="rv-car__nav rv-car__nav--prev" aria-label="Scroll NUTTYFINGER BB'S reviews left">&#8249;</button>
+        <div class="rv-car__track" role="group" aria-label="NUTTYFINGER BB'S reviews">
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Peanut butter BB</p>
+            <p class="rv-card__quote">This is literally the best pretty much taste exactly like I remember. You guys do I fantastic job and I will eventually try more flavors, keep doing what your doing because it's working!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">KAYLIE SENSING</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; NUTTYFINGER BB'S</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Nobody better lay a finger on my Butterfinger BBs!</p>
+            <p class="rv-card__quote">Okay maybe the title was a bit harsh but really though...you aren't going to want to share this after the first spoonful! Pairs well with buttery popcorn for that movie theater vibe</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">JOSH W.</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; NUTTYFINGER BB'S</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Wow...</p>
+            <p class="rv-card__quote">This left me completely speechless! Not only was it completely reminiscent of the BB Candy, it also had a really deep, rich, peanut butter flavor. The different textures really added to the crunch and made it that much more special. This definitely requires some self control if you're prone to sweets (like me).</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">COURTNEY</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; NUTTYFINGER BB'S</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Some best spreads I've ever had</p>
+            <p class="rv-card__quote">That creamy, dreamy spread takes me right back to Saturday morning cartoons. Slathering it on toast is pure bliss, a little taste of simpler times. The flavors are so spot-on, it's like unlocking a core memory. Forget fancy jams, this nostalgic stuff is where it's at. I could eat the whole jar with a spoon, no regrets.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">DENFORD BRISCOE</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; NUTTYFINGER BB'S</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Butterfinger heaven</p>
+            <p class="rv-card__quote">Tastes exactly as it sounds. Crushed butterfingers bb's in a jar. One of my favorites!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">TWAHLEE ROLLINS</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; NUTTYFINGER BB'S</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">My first time eating this .</p>
+            <p class="rv-card__quote">Loved it . Tasted just like what it shows but with a better twist , I can't wait to try the smores and the rice crispy treat one , omg I love it I'm a ores more and my friends wants some too so I'm putting people on to it , it's worth it. Keep on doing great treats like this.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">TOMMY ROMERO</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; NUTTYFINGER BB'S</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Delicious</p>
+            <p class="rv-card__quote">This was my first time trying Nutty &amp; Nostalgic (ended up getting this and the Nutty Buddy one) . This was so delicious! It really took me back to childhood and eating the Butterfinger BBs. Highly recommend this one &#128523;</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">INDIA</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; NUTTYFINGER BB'S</span></span></footer>
+          </article>
+
+          <a class="rv-card rv-card--cta" href="product-nuttyfinger.html">
+            <span class="rv-ctacard__eyebrow">&#9654; LOVED THE REVIEWS?</span>
+            <span class="rv-ctacard__title">SHOP NUTTYFINGER BB'S</span>
+            <img class="rv-ctacard__jar" src="https://i.ibb.co/jk3cJV3z/nuttyfinger-bbs-transparent.png" alt="" width="120" height="120" loading="lazy">
+            <span class="rv-ctacard__go">VIEW THE JAR &#9656;</span>
+          </a>
+
+        </div>
+        <button type="button" class="rv-car__nav rv-car__nav--next" aria-label="Scroll NUTTYFINGER BB'S reviews right">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- ===== CH 05 · LUNCH BOX GRANOLA ===== -->
+    <section class="rv-flavor" id="rv-lunchbox" style="--flavor:#FFC42E" aria-labelledby="rv-lunchbox-h">
+      <header class="rv-flavor__head">
+        <span class="rv-flavor__ch" aria-hidden="true">CH 05</span>
+        <img class="rv-flavor__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="LUNCH BOX GRANOLA" width="120" height="120" loading="lazy">
+        <span class="rv-flavor__meta">
+          <h2 class="rv-flavor__name" id="rv-lunchbox-h">LUNCH BOX GRANOLA</h2>
+        </span>
+        <a href="product-lunchbox.html" class="rv-flavor__shop">SHOP &#9656;</a>
+      </header>
+      <div class="rv-carousel">
+        <button type="button" class="rv-car__nav rv-car__nav--prev" aria-label="Scroll LUNCH BOX GRANOLA reviews left">&#8249;</button>
+        <div class="rv-car__track" role="group" aria-label="LUNCH BOX GRANOLA reviews">
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Better than imaginable</p>
+            <p class="rv-card__quote">I love the texture, the crunch. It's a delicious combination of chocolate and peanut butter. I could literally eat a whole jar in one sitting.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">ABSPALDING</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; LUNCH BOX GRANOLA</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Loved every bite</p>
+            <p class="rv-card__quote">So addictive and good. I think I prefer this to the actual snack!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">FREDDY</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; LUNCH BOX GRANOLA</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">It's pretty damn close to the real thing</p>
+            <p class="rv-card__quote">I've bought a few flavors and this one slaps just as hard. I roll it in a burrito and heat it up in the pan till golden brown on both sides! Chefs kiss</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">DYLAN DELEON</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; LUNCH BOX GRANOLA</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Super delicious</p>
+            <p class="rv-card__quote">Honestly was not expecting much when I ordered this but man the m&amp;ms and the crunchiness of the butter are so good! Will definitely order again</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">SETH PACKARD</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; LUNCH BOX GRANOLA</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Awesome! So close to the original&hellip;</p>
+            <p class="rv-card__quote">This is a great flavor. But I'm so sure that they're all amazing that after buying this one and another flavor, I went back and bought three more, one from the new drop!! I seriously can't wait to get them. I went for this one last night and it was almost gone and I looked at my wife and she looked back at me with, you know that look, the "yeah I ate it what are you going to do about it and it's allllll your fault because you brought this delicious concoction into our lives" look. You should probably make more of this one before you get calls from my wife about it hahaha</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">SHAWN TURNER</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; LUNCH BOX GRANOLA</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Tastes like what you're hoping for</p>
+            <p class="rv-card__quote">Hits the mark. Will be buying again when it restocks. Couldn't hurt to have a few more mini m&amp;ms in the jar but that could just be personal preference. Happy I followed the "not slime" video link to the website and found this flavor.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">RYAN THOMAS</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; LUNCH BOX GRANOLA</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Amazing birthday treat for myself!</p>
+            <p class="rv-card__quote">I have been craving a kudos bar for years and I figured out they were discontinued(ridiculous) but I ran across this website. It took me a bit to convince myself to get one. I got one and it arrived on my birthday and it was amazing. Best birthday treat to get myself! Highly recommend</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">RACHEL COLLINSWORTH</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; LUNCH BOX GRANOLA</span></span></footer>
+          </article>
+
+          <a class="rv-card rv-card--cta" href="product-lunchbox.html">
+            <span class="rv-ctacard__eyebrow">&#9654; LOVED THE REVIEWS?</span>
+            <span class="rv-ctacard__title">SHOP LUNCH BOX GRANOLA</span>
+            <img class="rv-ctacard__jar" src="https://i.ibb.co/XkGvC1N4/granola-bar-transparent.png" alt="" width="120" height="120" loading="lazy">
+            <span class="rv-ctacard__go">VIEW THE JAR &#9656;</span>
+          </a>
+
+        </div>
+        <button type="button" class="rv-car__nav rv-car__nav--next" aria-label="Scroll LUNCH BOX GRANOLA reviews right">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- ===== CH 06 · PB & BANANA CREME ===== -->
+    <section class="rv-flavor" id="rv-theking" style="--flavor:#7A3DB8" aria-labelledby="rv-theking-h">
+      <header class="rv-flavor__head">
+        <span class="rv-flavor__ch" aria-hidden="true">CH 06</span>
+        <img class="rv-flavor__jar" src="https://i.ibb.co/B23CVtBS/the-king-pb-banana-creme.png" alt="PB &amp; BANANA CREME" width="120" height="120" loading="lazy">
+        <span class="rv-flavor__meta">
+          <h2 class="rv-flavor__name" id="rv-theking-h">PB &amp; BANANA CREME</h2>
+        </span>
+        <a href="product-the-king.html" class="rv-flavor__shop">SHOP &#9656;</a>
+      </header>
+      <div class="rv-carousel">
+        <button type="button" class="rv-car__nav rv-car__nav--prev" aria-label="Scroll PB &amp; BANANA CREME reviews left">&#8249;</button>
+        <div class="rv-car__track" role="group" aria-label="PB &amp; BANANA CREME reviews">
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Perfect for PB&amp;B sandwiches</p>
+            <p class="rv-card__quote">Delicious. Kids love it. Perfect to spread on some white bread</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/B23CVtBS/the-king-pb-banana-creme.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">JORDAN PRADO</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB &amp; BANANA CREME</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Delicious</p>
+            <p class="rv-card__quote">Absolutely delicious can't wait to try more flavors!!!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/B23CVtBS/the-king-pb-banana-creme.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">JAMES NELSON</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB &amp; BANANA CREME</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Amazing</p>
+            <p class="rv-card__quote">I honestly didn't think I'd truly love this flavor due to the banana. But the banana really adds to the traditional PB and chocolate combo. The salty PB is lovely with the sweetness of the chocolate and banana. Very well balanced. If you want something sweet but not sickly sweet, this is for you. I would imagine this would be amazing on toast or a cinnamon raisin bagel.</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/B23CVtBS/the-king-pb-banana-creme.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">VANESSA WIKEL</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB &amp; BANANA CREME</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Absolutely banging</p>
+            <p class="rv-card__quote">This stuff is delicious. Great as a spread honesty it's hard to not eat it out of the jar!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/B23CVtBS/the-king-pb-banana-creme.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">TROY KINGSTON</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB &amp; BANANA CREME</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">Seriously surprising!</p>
+            <p class="rv-card__quote">Ordered this flavor without expecting to like it. Sounded like a stretch. But it became one of my favorites! Totally unlike any of the other flavors. In a really good way!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/B23CVtBS/the-king-pb-banana-creme.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">BRETT STORSETH</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB &amp; BANANA CREME</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">PB and Banana Cr&egrave;me</p>
+            <p class="rv-card__quote">Spreads so easy and also delicious right out of the jar. I am basic so I put it on my chocolate rice cake and was in heaven. Definitely a must try! 9.3/10</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/B23CVtBS/the-king-pb-banana-creme.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">CORY MCDOWELL</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB &amp; BANANA CREME</span></span></footer>
+          </article>
+
+          <article class="rv-card">
+            <header class="rv-card__top"><span class="rv-card__stars" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span class="rv-card__date">VERIFIED</span></header>
+            <p class="rv-card__title">BANNANZA!</p>
+            <p class="rv-card__quote">This was the bomb dot com! I dipped Fritos in it to give it a salty crunch, and was subsequently was blown out of this galaxy into flavor town. Do your self a favor, try this NOW!</p>
+            <footer class="rv-card__foot"><img class="rv-card__jar" src="https://i.ibb.co/B23CVtBS/the-king-pb-banana-creme.png" alt="" width="120" height="120" loading="lazy"><span class="rv-card__who"><span class="rv-card__name">ZACHARY T ROBERTS</span><span class="rv-card__meta"><span class="rv-card__verified">&#10003; VERIFIED BUYER</span> &middot; PB &amp; BANANA CREME</span></span></footer>
+          </article>
+
+          <a class="rv-card rv-card--cta" href="product-the-king.html">
+            <span class="rv-ctacard__eyebrow">&#9654; LOVED THE REVIEWS?</span>
+            <span class="rv-ctacard__title">SHOP PB &amp; BANANA CREME</span>
+            <img class="rv-ctacard__jar" src="https://i.ibb.co/B23CVtBS/the-king-pb-banana-creme.png" alt="" width="120" height="120" loading="lazy">
+            <span class="rv-ctacard__go">VIEW THE JAR &#9656;</span>
+          </a>
+
+        </div>
+        <button type="button" class="rv-car__nav rv-car__nav--next" aria-label="Scroll PB &amp; BANANA CREME reviews right">&#8250;</button>
+      </div>
     </section>
 
     <!-- CTA -->
@@ -395,6 +755,25 @@
   </footer>
 
   <div class="rewind-static" id="rewind-static" aria-hidden="true"></div>
+
+  <!-- Read-more review modal (populated by main.js) -->
+  <div class="rv-modal" id="rv-modal" aria-hidden="true">
+    <div class="rv-modal__backdrop" data-rv-close></div>
+    <div class="rv-modal__panel" role="dialog" aria-modal="true" aria-labelledby="rv-modal-title">
+      <button type="button" class="rv-modal__close" id="rv-modal-close" aria-label="Close review">&#10005;</button>
+      <span class="rv-modal__osd" aria-hidden="true"><span class="rv-modal__dot"></span>VERIFIED REVIEW</span>
+      <span class="rv-modal__stars" id="rv-modal-stars" aria-hidden="true"></span>
+      <h3 class="rv-modal__title" id="rv-modal-title"></h3>
+      <p class="rv-modal__quote" id="rv-modal-quote"></p>
+      <footer class="rv-modal__foot">
+        <img class="rv-modal__jar" id="rv-modal-jar" src="" alt="" width="120" height="120">
+        <span class="rv-modal__who">
+          <span class="rv-modal__name" id="rv-modal-name"></span>
+          <span class="rv-modal__meta"><span class="rv-modal__verified">&#10003; VERIFIED BUYER</span> &middot; <span id="rv-modal-flavor"></span></span>
+        </span>
+      </footer>
+    </div>
+  </div>
 
   <script src="assets/js/main.js"></script>
   <!-- ====== NUTTY HOTLINE — chatbot launcher + call-in modal (prototype; real bot wires in via Cloudflare embed) ====== -->
