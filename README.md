@@ -276,6 +276,12 @@ One OS 2.0 template; everything flavor-specific comes from each product's data/m
 ### Shopify conversion map
 Reviews = Judge.me widgets (connected). Everything else = product data / metafields: flavor_color, bullets, ingredients, allergens, nutrition_*, original_story, original_image; gallery = product.media; flavor switcher = the "All Drops" collection. Guarantee/trust/shipping are static in the template.
 
+## Email Program (Omnisend) — `emails/`
+Hand-coded HTML templates for the N&N Omnisend automations live in **`emails/`** (see `emails/README.md`). Two looks: **Template 1 (kraft)** for warm/welcome emails, **Template 2 (dark TV-static)** for urgency/abandoned. Pasted into Omnisend via the **HTML Code element** (imported-HTML Saved Templates don't load in automation editors).
+- **Welcome series (3 emails) — DONE** (automation "Welcome No.2"; old "Welcome (3 Emails)" turned off).
+- **Abandoned Checkout (3 emails) — DONE** (recovery link `[[event.raw.abandoned_checkout_url]]`, 1hr/24hr/48hr; final email carries `WELCOME10` 10% off).
+- **Next:** Order Followup, then Abandoned Cart / Customer Reactivation / Product Abandonment.
+
 ## Notes
 
 - Desktop Drops card name = 1.875rem, price = 1.625rem (mobile stays small)
